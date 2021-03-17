@@ -1,0 +1,7 @@
+sensor_msgs/Image input_image
+
+---
+sensor_msgs/Image output_mask
+sensor_msgs/Image output_viz
+mask_rcnn/SemanticObject[] semantic_objects
+bool success
