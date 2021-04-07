@@ -1,0 +1,8 @@
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/install/strip.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/install/local.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/vdo_slam_example.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/list_install_components.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/vdo_slam.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/edit_cache.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/rebuild_cache.dir
+/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/install.dir

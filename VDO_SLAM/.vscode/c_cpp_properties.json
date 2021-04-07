@@ -1,0 +1,46 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/jesse/Code/src/ros/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/dataset_tools/custom_point_types/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/darknet_ros/darknet_ros/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/dataset_tools/dataset_tools/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/dataset_tools/h264_bag_playback/include/**",
+                "/home/jesse/Code/src/ros/src/third_parties/lanelet2_interface_ros/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/libutransform/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/lidar_camera_projection/lidar_camera_projection/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/lidar_motion_correction/lidar_motion_correction/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/localiser/localiser/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/localiser/localiser_core/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/g2o_mapper/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/panorama_generator/multi_image_processor/include/**",
+                "/home/jesse/Code/src/ros/src/third_parties/ros-bridge/pcl_recorder/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/point_cloud_features/include/**",
+                "/home/jesse/Code/src/ros/src/multi_robot_perception/python_service_starter/include/**",
+                "/home/jesse/Code/src/ros/src/multi_robot_perception/realtime_vdo_slam/include/**",
+                "/home/jesse/Code/src/ros/src/third_parties/rosinterface_handler/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/lidar_motion_correction/rslidar_correction/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/rslidar-master/rslidar_pointcloud/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/lidar_motion_correction/velodyne_correction/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/velodyne-master/velodyne_driver/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/dataset_metapackage/velodyne-master/velodyne_pointcloud/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/zio_obstacle/virtual_bumper/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/zio_maps/include/**",
+                "/home/jesse/Code/src/ros/src/acfr/zio_obstacle/zio_obstacle_msgs/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14"
+        }
+    ],
+    "version": 4
+}

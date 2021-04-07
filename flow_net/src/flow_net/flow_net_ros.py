@@ -220,15 +220,14 @@ def main():
     args = parser.parse_args()
     
     topic = args.topic
-
-    input_device = "camera"
+    
 
 
     flownet = FlowNetRos()
     is_first = True
 
     if topic == "0":
-        
+        input_device = "camera"
         cam = cv2.VideoCapture(2)
         previous_image = None
         while True:
@@ -258,6 +257,5 @@ def main():
 
 
 if __name__ == "__main__":
-    
     main()
 

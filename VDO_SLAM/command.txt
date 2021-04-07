@@ -1,0 +1,8 @@
+
+./example/vdo_slam /Users/steed/work/kitti_ms/0000-0013.yaml  /Users/steed/work/kitti_ms/0003
+
+./example/vdo_slam /Users/steed/work/omd/swinging_4_unconstrained/omd.yaml  /Users/steed/work/omd/swinging_4_unconstrained
+
+./example/vdo_slam example/kitti-0000-0013.yaml PATH_TO_KITTI_SEQUENCE_DATA_FOLDER
+
+./example/vdo_slam example/omd.yaml PATH_TO_OMD_SEQUENCE_DATA_FOLDER

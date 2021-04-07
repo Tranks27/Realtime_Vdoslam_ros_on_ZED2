@@ -335,9 +335,13 @@ class MaskRcnnTopic():
         response_image, semantic_objects = self.mask_rcnn.analyse_image(input_image[:,:,0:3]) # only selects the first 3 channels excluding alpha channel
         display_image = self.mask_rcnn.generate_coloured_mask(response_image)
         bounding_box_image = self.mask_rcnn.generated_bounding_boxes(input_image, semantic_objects)
+        cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('detections', 600, 600)
         cv2.imshow("detections", display_image)
         cv2.waitKey(1)
 
+        cv2.namedWindow('Input image',cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('Input image', 600, 600)
         cv2.imshow("Input image", bounding_box_image)
         cv2.waitKey(1)
 
@@ -366,7 +370,7 @@ if __name__ == "__main__":
         rospy.loginfo("Using video camera as input")
 
 
-        cam = cv2.VideoCapture(2)
+        cam = cv2.VideoCapture(1)
         while not rospy.is_shutdown():
             start_time = time.time()
             ret_val, img = cam.read()
@@ -377,6 +381,9 @@ if __name__ == "__main__":
             bb_imagg = maskrcnn.generated_bounding_boxes(img, sematic_objects)
             # test_image = maskrcnn.display_predictions(img)
             print("Time: {:.2f} s / img".format(time.time() - start_time))
+            
+            cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
+            cv2.resizeWindow('detections', 600, 600)
             cv2.imshow("detections", bb_imagg)
             # cv2.imshow("Preds", test_image)
             if cv2.waitKey(1) == 27:
