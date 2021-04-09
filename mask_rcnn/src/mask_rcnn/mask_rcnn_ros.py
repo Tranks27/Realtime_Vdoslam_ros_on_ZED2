@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import cv2
 
 import sys
@@ -30,7 +32,7 @@ from geometry_msgs.msg import Pose2D
 import struct
 import rospy
 import random
-
+from std_msgs.msg import String
 
 import time
 
@@ -327,24 +329,30 @@ class MaskRcnnTopic():
         self.mask_rcnn = mask_rcnn
         self.image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
+        #for sync
+        self.pub = rospy.Publisher("/mask_out", String, queue_size=5)
 
     def image_callback(self, data):
         input_image = ros_numpy.numpify(data)
-        
+        start_time = time.time()
         # Naing edit at the end
         response_image, semantic_objects = self.mask_rcnn.analyse_image(input_image[:,:,0:3]) # only selects the first 3 channels excluding alpha channel
         display_image = self.mask_rcnn.generate_coloured_mask(response_image)
         bounding_box_image = self.mask_rcnn.generated_bounding_boxes(input_image, semantic_objects)
-        cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('detections', 600, 600)
-        cv2.imshow("detections", display_image)
-        cv2.waitKey(1)
+        # cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
+        # cv2.resizeWindow('detections', 600, 600)
+        # cv2.imshow("detections", display_image)
+        # cv2.waitKey(1)
 
+        print("mask Time: {:.2f} s / img".format(time.time() - start_time))
+        
+        
         cv2.namedWindow('Input image',cv2.WINDOW_NORMAL)
         cv2.resizeWindow('Input image', 600, 600)
         cv2.imshow("Input image", bounding_box_image)
         cv2.waitKey(1)
 
+        self.pub.publish("mask_rcnn output") # for sync
 
 def shutdown_hook():
     cv2.destroyAllWindows()
@@ -354,13 +362,16 @@ def shutdown_hook():
 if __name__ == "__main__":
     rospy.init_node("mask_rcnn_ros_node")
     rospy.on_shutdown(shutdown_hook)
-    import argparse
-    parser = argparse.ArgumentParser()
+    # import argparse
+    # parser = argparse.ArgumentParser()
 
-    parser.add_argument('--topic', default="0")
-    args = parser.parse_args()
+    # parser.add_argument('--topic', default="0")
+    # args = parser.parse_args()
+    # topic = args.topic
+
+    #######topic = rospy.get_param('topic')
     
-    topic = args.topic
+    topic = "/zed2/zed_node/left/image_rect_color"
 
     input_device = "camera"
     maskrcnn = MaskRcnnRos()

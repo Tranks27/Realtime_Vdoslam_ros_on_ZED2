@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import time
 import os
 import struct
@@ -189,6 +191,9 @@ class FlowNetTopic():
         self.previous_image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
 
+        #for sync
+        self.pub = rospy.Publisher("/flownet_out", String, queue_size=5)
+
     def image_callback(self, data):
         
         input_image = ros_numpy.numpify(data)
@@ -199,10 +204,17 @@ class FlowNetTopic():
             self.is_first = False
             return 0
             
+        start_time = time.time() #time
+
         composite = self.flownet.analyse_flow(self.previous_image, input_image)
         rgb_flow = self.flownet.flow2rgb(composite)
+        
+        print("flow Time: {:.2f} s / img".format(time.time() - start_time)) #time
+        
         cv2.imshow("RGB Flow", rgb_flow)
         
+        self.pub.publish("flownet output") # for sync
+
         self.previous_image = input_image
         cv2.waitKey(1)
 
@@ -213,14 +225,16 @@ def main():
     rospy.init_node("flownet_ros_node")
     rospy.on_shutdown(shutdown_hook)
 
-    import argparse
-    parser = argparse.ArgumentParser()
+    # import argparse
+    # parser = argparse.ArgumentParser()
 
-    parser.add_argument('--topic', default="0")
-    args = parser.parse_args()
+    # parser.add_argument('--topic', default="0")
+    # args = parser.parse_args()
     
-    topic = args.topic
+    #### topic = rospy.get_param('topic')
     
+    # topic = args.topic
+    topic = "/zed2/zed_node/left/image_rect_color"
 
 
     flownet = FlowNetRos()
