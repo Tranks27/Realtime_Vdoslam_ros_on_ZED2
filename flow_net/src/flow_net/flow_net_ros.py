@@ -231,7 +231,7 @@ def main():
     # parser.add_argument('--topic', default="0")
     # args = parser.parse_args()
     
-    #### topic = rospy.get_param('topic')
+    ##### topic = rospy.get_param('topic')
     
     # topic = args.topic
     topic = "/zed2/zed_node/left/image_rect_color"
