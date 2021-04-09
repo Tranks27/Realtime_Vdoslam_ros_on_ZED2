@@ -3,3 +3,4 @@ geometry2/
 ros_numpy/
 vision_msgs/
 zed-ros-wrapper/
+image_view/
