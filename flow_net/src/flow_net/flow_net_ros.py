@@ -31,6 +31,10 @@ from sensor_msgs.msg import Image
 import rospkg
 # from cv_bridge import CvBridge, CvBridgeError
 
+#####for synchronizer
+from synchronizer.msg import Sync
+
+
 #TODO relative paths
 rospack = rospkg.RosPack()
 
@@ -192,7 +196,7 @@ class FlowNetTopic():
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
 
         #for sync
-        self.pub = rospy.Publisher("/flownet_out", String, queue_size=5)
+        self.pub = rospy.Publisher("/flownet_raw", Sync, queue_size=20)
 
     def image_callback(self, data):
         
@@ -204,19 +208,30 @@ class FlowNetTopic():
             self.is_first = False
             return 0
             
-        start_time = time.time() #time
+        start_time = rospy.Time.from_sec(time.time()) #time
 
         composite = self.flownet.analyse_flow(self.previous_image, input_image)
         rgb_flow = self.flownet.flow2rgb(composite)
         
-        print("flow Time: {:.2f} s / img".format(time.time() - start_time)) #time
+        current_time = rospy.Time.from_sec(time.time())
+        print("flow Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec())) #time
         
         cv2.imshow("RGB Flow", rgb_flow)
-        
-        self.pub.publish("flownet output") # for sync
-
         self.previous_image = input_image
+        
+
+        # publish the flownet output image
+        # output_image_msg = ros_numpy.msgify(Image, composite, encoding='32FC2')
+        flow_image_msg = ros_numpy.msgify(Image, rgb_flow, encoding='rgb8')
+        
+        image_temp = Sync()
+        image_temp.header.stamp = start_time
+        image_temp.header.frame_id = "flownet_raw_frame"
+        image_temp.img = flow_image_msg
+        self.pub.publish(image_temp) # for sync
+
         cv2.waitKey(1)
+        
 
 def shutdown_hook():
     cv2.destroyAllWindows()
@@ -230,10 +245,10 @@ def main():
 
     # parser.add_argument('--topic', default="0")
     # args = parser.parse_args()
-    
-    ##### topic = rospy.get_param('topic')
-    
     # topic = args.topic
+    #### topic = rospy.get_param('topic')
+    
+    
     topic = "/zed2/zed_node/left/image_rect_color"
 
 

@@ -7,6 +7,7 @@
 
 static const std::string OPENCV_WINDOW = "raw image";
 
+///////////// Using image transport package for efficiency
 class Video_Displayer
 {
     ros::NodeHandle nh;

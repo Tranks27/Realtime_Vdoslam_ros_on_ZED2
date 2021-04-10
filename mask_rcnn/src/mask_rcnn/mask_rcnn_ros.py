@@ -36,6 +36,8 @@ from std_msgs.msg import String
 
 import time
 
+####for synchronizer
+from synchronizer.msg import Sync
 
 rospack = rospkg.RosPack()
 
@@ -330,11 +332,11 @@ class MaskRcnnTopic():
         self.image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
         #for sync
-        self.pub = rospy.Publisher("/mask_out", String, queue_size=5)
+        self.pub = rospy.Publisher("/maskrcnn_raw", Sync, queue_size=5)
 
     def image_callback(self, data):
         input_image = ros_numpy.numpify(data)
-        start_time = time.time()
+        start_time = rospy.Time.from_sec(time.time())
         # Naing edit at the end
         response_image, semantic_objects = self.mask_rcnn.analyse_image(input_image[:,:,0:3]) # only selects the first 3 channels excluding alpha channel
         display_image = self.mask_rcnn.generate_coloured_mask(response_image)
@@ -344,7 +346,8 @@ class MaskRcnnTopic():
         # cv2.imshow("detections", display_image)
         # cv2.waitKey(1)
 
-        print("mask Time: {:.2f} s / img".format(time.time() - start_time))
+        current_time = rospy.Time.from_sec(time.time())
+        print("mask Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec()))
         
         
         cv2.namedWindow('Input image',cv2.WINDOW_NORMAL)
@@ -352,7 +355,15 @@ class MaskRcnnTopic():
         cv2.imshow("Input image", bounding_box_image)
         cv2.waitKey(1)
 
-        self.pub.publish("mask_rcnn output") # for sync
+        # publish the maskrcnn output image
+        # output_image_msg = ros_numpy.msgify(Image, response_image, encoding='mono8')
+        display_image_msg = ros_numpy.msgify(Image, display_image, encoding='rgb8')
+        
+        image_temp = Sync()
+        image_temp.header.stamp = start_time
+        image_temp.header.frame_id = "maskrcnn_raw_frame"
+        image_temp.img = display_image_msg
+        self.pub.publish(image_temp) # for sync
 
 def shutdown_hook():
     cv2.destroyAllWindows()
