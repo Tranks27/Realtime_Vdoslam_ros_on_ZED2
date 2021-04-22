@@ -38,6 +38,7 @@ import time
 
 ####for synchronizer
 from synchronizer.msg import Sync
+from synchronizer.msg import SemanticObjectArray
 
 rospack = rospkg.RosPack()
 
@@ -329,10 +330,11 @@ class MaskRcnnTopic():
 
     def __init__(self, mask_rcnn, topic):
         self.mask_rcnn = mask_rcnn
-        self.image = None
+        # self.image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
         #for sync
-        self.pub = rospy.Publisher("/maskrcnn_raw", Sync, queue_size=5)
+        self.pub = rospy.Publisher("/maskrcnn/maskrcnn_raw", Image, queue_size=5)
+        self.pub_sObj = rospy.Publisher("/maskrcnn/maskrcnn_sObj", SemanticObjectArray, queue_size=5)
 
     def image_callback(self, data):
         input_image = ros_numpy.numpify(data)
@@ -350,20 +352,25 @@ class MaskRcnnTopic():
         print("mask Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec()))
         
         
-        cv2.namedWindow('Input image',cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('Input image', 600, 600)
-        cv2.imshow("Input image", bounding_box_image)
+        # cv2.namedWindow('Input image',cv2.WINDOW_NORMAL)
+        # cv2.resizeWindow('Input image', 600, 600)
+        # cv2.imshow("Input image", bounding_box_image)
         cv2.waitKey(1)
 
         # publish the maskrcnn output image
-        # output_image_msg = ros_numpy.msgify(Image, response_image, encoding='mono8')
-        display_image_msg = ros_numpy.msgify(Image, display_image, encoding='rgb8')
+        output_image_msg = ros_numpy.msgify(Image, response_image, encoding='mono8') # data needed for vdo slam
+        # display_image_msg = ros_numpy.msgify(Image, display_image, encoding='rgb8') #for viz purpose
         
-        image_temp = Sync()
-        image_temp.header.stamp = start_time
-        image_temp.header.frame_id = "maskrcnn_raw_frame"
-        image_temp.img = display_image_msg
-        self.pub.publish(image_temp) # for sync
+        output_image_msg.header.stamp = start_time #image acquisition time
+        output_image_msg.header.frame_id = "maskrcnn_raw_frame"
+        self.pub.publish(output_image_msg) # for sync
+
+        # publish semantic objects
+        sObj_temp = SemanticObjectArray()
+        sObj_temp.header.stamp = start_time
+        sObj_temp.header.frame_id = "maskrcnn_semanticObj_frame"
+        sObj_temp.semantic_objects = semantic_objects
+        self.pub_sObj.publish(sObj_temp)
 
 def shutdown_hook():
     cv2.destroyAllWindows()

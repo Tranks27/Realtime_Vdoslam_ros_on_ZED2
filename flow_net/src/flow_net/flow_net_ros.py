@@ -34,7 +34,6 @@ import rospkg
 #####for synchronizer
 from synchronizer.msg import Sync
 
-
 #TODO relative paths
 rospack = rospkg.RosPack()
 
@@ -190,13 +189,13 @@ class FlowNetTopic():
 
     def __init__(self, flownet, topic):
         self.flownet = flownet
-        self.image = None
+        # self.image = None
         self.is_first = True
         self.previous_image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
 
         #for sync
-        self.pub = rospy.Publisher("/flownet_raw", Sync, queue_size=20)
+        self.pub = rospy.Publisher("/flownet/flownet_raw", Image, queue_size=20)
 
     def image_callback(self, data):
         
@@ -216,19 +215,19 @@ class FlowNetTopic():
         current_time = rospy.Time.from_sec(time.time())
         print("flow Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec())) #time
         
-        cv2.imshow("RGB Flow", rgb_flow)
+        # cv2.imshow("RGB Flow", rgb_flow)
         self.previous_image = input_image
         
 
         # publish the flownet output image
-        # output_image_msg = ros_numpy.msgify(Image, composite, encoding='32FC2')
-        flow_image_msg = ros_numpy.msgify(Image, rgb_flow, encoding='rgb8')
+        # output_image_msg = ros_numpy.msgify(Image, composite, encoding='32FC2') # data needed for vdo slam
+        flow_image_msg = ros_numpy.msgify(Image, rgb_flow, encoding='bgr8') # for viz purpose
+
         
-        image_temp = Sync()
-        image_temp.header.stamp = start_time
-        image_temp.header.frame_id = "flownet_raw_frame"
-        image_temp.img = flow_image_msg
-        self.pub.publish(image_temp) # for sync
+        flow_image_msg.header.stamp = start_time #image acquisition time
+        flow_image_msg.header.frame_id = "flownet_raw_frame"
+        self.pub.publish(flow_image_msg) # for sync
+
 
         cv2.waitKey(1)
         
