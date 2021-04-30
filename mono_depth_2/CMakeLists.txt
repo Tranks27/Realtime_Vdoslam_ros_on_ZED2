@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   rostk_pyutils
+  cv_bridge
   python_service_starter
   sensor_msgs
 )
@@ -53,7 +54,7 @@ target_link_libraries(${PROJECT_NAME}
 catkin_package(
  INCLUDE_DIRS  include
  LIBRARIES ${PROJECT_NAME}
-  CATKIN_DEPENDS rospy std_msgs message_runtime roscpp
+  CATKIN_DEPENDS rospy std_msgs message_runtime roscpp cv_bridge
 )
 
 

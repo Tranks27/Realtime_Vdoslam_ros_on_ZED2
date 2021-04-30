@@ -380,44 +380,48 @@ def shutdown_hook():
 if __name__ == "__main__":
     rospy.init_node("mask_rcnn_ros_node")
     rospy.on_shutdown(shutdown_hook)
-    # import argparse
-    # parser = argparse.ArgumentParser()
+    import argparse
+    parser = argparse.ArgumentParser()
 
-    # parser.add_argument('--topic', default="0")
-    # args = parser.parse_args()
-    # topic = args.topic
+    parser.add_argument('--topic', default="0")
+    args = parser.parse_args()
+    topic = args.topic
 
-    #######topic = rospy.get_param('topic')
+    ######topic = rospy.get_param('topic')
     
-    topic = "/zed2/zed_node/left/image_rect_color"
+    # topic = "/zed2/zed_node/left/image_rect_color"
 
     input_device = "camera"
     maskrcnn = MaskRcnnRos()
 
-
+    ########USE the image or camera directly###########
     if topic == "0":
         rospy.loginfo("Using video camera as input")
 
+        img = cv2.imread("3.bmp")
 
-        cam = cv2.VideoCapture(1)
-        while not rospy.is_shutdown():
-            start_time = time.time()
-            ret_val, img = cam.read()
+        # cam = cv2.VideoCapture(0)
+        # while not rospy.is_shutdown():
+            # start_time = time.time()
+            # ret_val, img = cam.read()
 
             # response_image, labels, label_indexs = maskrcnn.analyse_image(img)
-            response_image, sematic_objects = maskrcnn.analyse_image(img)
-            display_image = maskrcnn.generate_coloured_mask(response_image)
-            bb_imagg = maskrcnn.generated_bounding_boxes(img, sematic_objects)
-            # test_image = maskrcnn.display_predictions(img)
-            print("Time: {:.2f} s / img".format(time.time() - start_time))
-            
-            cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
-            cv2.resizeWindow('detections', 600, 600)
-            cv2.imshow("detections", bb_imagg)
-            # cv2.imshow("Preds", test_image)
-            if cv2.waitKey(1) == 27:
-                break  # esc to quit
+        response_image, sematic_objects = maskrcnn.analyse_image(img)
+        display_image = maskrcnn.generate_coloured_mask(response_image)
+        bb_imagg = maskrcnn.generated_bounding_boxes(img, sematic_objects)
+        # test_image = maskrcnn.display_predictions(img)
+        # print("Time: {:.2f} s / img".format(time.time() - start_time))
+        
+        cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('detections', 600, 600)
+        cv2.imshow("detections", bb_imagg)
+        
+        # cv2.imwrite("3_mask.png",bb_imagg)
 
+        # cv2.imshow("Preds", test_image)
+        # if cv2.waitKey(1) == 27:
+        #     break  # esc to quit
+        cv2.waitKey(0)
         
 
     else:

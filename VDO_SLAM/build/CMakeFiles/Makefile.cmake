@@ -16,6 +16,15 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../cmake/vdo_slam-config.cmake.in"
   "../cmake_modules/FindCSparse.cmake"
   "../cmake_modules/FindEigen3.cmake"
+  "../include/vdo_slam/CMakeLists.txt"
+  "../include/vdo_slam/map/CMakeLists.txt"
+  "../include/vdo_slam/utils/CMakeLists.txt"
+  "../include/vdo_slam/visualizer/CMakeLists.txt"
+  "../src/CMakeLists.txt"
+  "../src/map/CMakeLists.txt"
+  "../src/utils/CMakeLists.txt"
+  "../src/visualizer/CMakeLists.txt"
+  "/usr/local/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config-release.cmake"
   "/usr/local/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake"
   "/usr/local/share/OpenCV/OpenCVConfig-version.cmake"
   "/usr/local/share/OpenCV/OpenCVConfig.cmake"
@@ -38,7 +47,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.10/Modules/CMakeDetermineCompilerId.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeDetermineSystem.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeFindBinUtils.cmake"
-  "/usr/share/cmake-3.10/Modules/CMakeFindDependencyMacro.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeGenericSystem.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeLanguageInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakePackageConfigHelpers.cmake"
@@ -127,10 +135,17 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
   "vdo_slam-config.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/vdo_slam/map/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/map/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/vdo_slam/utils/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/utils/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/vdo_slam/visualizer/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/visualizer/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "include/vdo_slam/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/vdo_slam_example.dir/DependInfo.cmake"
   "CMakeFiles/vdo_slam.dir/DependInfo.cmake"
   )

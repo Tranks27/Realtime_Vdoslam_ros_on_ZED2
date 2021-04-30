@@ -16,13 +16,14 @@
 // eigen
 #include <eigen3/Eigen/Core>
 
-#include "Map.h"
-#include "Frame.h"
-#include "ORBextractor.h"
-#include "System.h"
-#include "Scene.h"
-#include "Converter.h"
-#include "Types.h"
+#include "vdo_slam/map/Map.h"
+#include "vdo_slam/Frame.h"
+#include "vdo_slam/ORBextractor.h"
+#include "vdo_slam/System.h"
+#include "vdo_slam/Scene.h"
+#include "vdo_slam/utils/Types.h"
+#include "vdo_slam/Params.h"
+#include "vdo_slam/visualizer/colour.h"
 
 #include <memory>
 #include <mutex>
@@ -31,9 +32,7 @@ namespace VDO_SLAM {
 
 using namespace std;
 
- class Map;
- class System;
- struct VdoParams;
+//  struct VdoParams;
 
 class Tracking
 {
@@ -63,13 +62,16 @@ class Tracking
     };
 
     public:
-        Tracking(System* pSys, Map* pMap, const VdoParams& params);
-        Tracking(System* pSys, Map* pMap, const string &strSettingPath, const eSensor sensor);
+        Tracking(Map* pMap, const VdoParams& params);
+        Tracking(Map* pMap, const string &strSettingPath, const eSensor sensor);
 
         // Preprocess the input and call Track(). Extract features and performs stereo matching.
-        std::unique_ptr<Scene> GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
-                            const cv::Mat &mTcw_gt, const vector<vector<float> > &vObjPose_gt, const double &timestamp,
-                            cv::Mat &imTraj, const int &nImage);
+        // std::pair<SceneType, std::shared_ptr<Scene>> GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
+        //                     const cv::Mat &mTcw_gt, const vector<vector<float> > &vObjPose_gt, const double &timestamp,
+        //                     cv::Mat &imTraj, const int &nImage);
+
+        std::pair<SceneType, std::shared_ptr<Scene>> GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
+                            const Time& time_, const double &timestamp, cv::Mat &imTraj, const int &nImage);
 
         // Sparse Scene Flow Vector
         void GetSceneFlowObj();
@@ -78,17 +80,17 @@ class Tracking
         std::vector<std::vector<int> > DynObjTracking();
 
         // For flow display on 2d plane
-        void DrawLine(cv::KeyPoint &keys, cv::Point2f &flow, cv::Mat &ref_image, const cv::Scalar &color,
-                    int thickness=2, int line_type=1, const cv::Point2i &offset=cv::Point2i(0,0));
-        void DrawTransparentSquare(cv::Point center, cv::Vec3b color, int radius, double alpha, cv::Mat &ref_image);
-        void DrawGridBirdeye(double res_x, double res_z, const BirdEyeVizProperties &viz_props, cv::Mat &ref_image);
-        void DrawSparseFlowBirdeye(
-            const std::vector<Eigen::Vector3d> &pts, const std::vector<Eigen::Vector3d> &vel,
-            const cv::Mat &camera, const BirdEyeVizProperties &viz_props, cv::Mat &ref_image);
-        void TransformPointToScaledFrustum(double &pose_x, double &pose_z, const BirdEyeVizProperties &viz_props);
+        // void DrawLine(cv::KeyPoint &keys, cv::Point2f &flow, cv::Mat &ref_image, const cv::Scalar &color,
+        //             int thickness=2, int line_type=1, const cv::Point2i &offset=cv::Point2i(0,0));
+        // void DrawTransparentSquare(cv::Point center, cv::Vec3b color, int radius, double alpha, cv::Mat &ref_image);
+        // void DrawGridBirdeye(double res_x, double res_z, const BirdEyeVizProperties &viz_props, cv::Mat &ref_image);
+        // void DrawSparseFlowBirdeye(
+        //     const std::vector<Eigen::Vector3d> &pts, const std::vector<Eigen::Vector3d> &vel,
+        //     const cv::Mat &camera, const BirdEyeVizProperties &viz_props, cv::Mat &ref_image);
+        // void TransformPointToScaledFrustum(double &pose_x, double &pose_z, const BirdEyeVizProperties &viz_props);
 
-        cv::Mat ObjPoseParsingKT(const std::vector<float> &vObjPose_gt);
-        cv::Mat ObjPoseParsingOX(const std::vector<float> &vObjPose_gt);
+        // cv::Mat ObjPoseParsingKT(const std::vector<float> &vObjPose_gt);
+        // cv::Mat ObjPoseParsingOX(const std::vector<float> &vObjPose_gt);
 
         cv::Mat GetInitModelCam(const std::vector<int> &MatchId, std::vector<int> &MatchId_sub);
         cv::Mat GetInitModelObj(const std::vector<int> &ObjId, std::vector<int> &ObjId_sub, const int objid);
@@ -104,9 +106,9 @@ class Tracking
         void GetMetricError(const std::vector<cv::Mat> &CamPose, const std::vector<std::vector<cv::Mat> > &RigMot, const std::vector<std::vector<cv::Mat> > &ObjPosePre,
                             const std::vector<cv::Mat> &CamPose_gt, const std::vector<std::vector<cv::Mat> > &RigMot_gt,
                             const std::vector<std::vector<bool> > &ObjStat);
-        void PlotMetricError(const std::vector<cv::Mat> &CamPose, const std::vector<std::vector<cv::Mat> > &RigMot, const std::vector<std::vector<cv::Mat> > &ObjPosePre,
-                            const std::vector<cv::Mat> &CamPose_gt, const std::vector<std::vector<cv::Mat> > &RigMot_gt,
-                            const std::vector<std::vector<bool> > &ObjStat);
+        // void PlotMetricError(const std::vector<cv::Mat> &CamPose, const std::vector<std::vector<cv::Mat> > &RigMot, const std::vector<std::vector<cv::Mat> > &ObjPosePre,
+        //                     const std::vector<cv::Mat> &CamPose_gt, const std::vector<std::vector<cv::Mat> > &RigMot_gt,
+        //                     const std::vector<std::vector<bool> > &ObjStat);
         void GetVelocityError(const std::vector<std::vector<cv::Mat> > &RigMot, const std::vector<std::vector<cv::Mat> > &PointDyn,
                             const std::vector<std::vector<int> > &FeaLab, const std::vector<std::vector<int> > &RMLab,
                             const std::vector<std::vector<float> > &Velo_gt, const std::vector<std::vector<int> > &TmpMatch,
@@ -175,6 +177,9 @@ class Tracking
         // save current frame ID
         int f_id;
 
+        int global_f_id; //increments every frame regardless -> should be the total 
+        //number of frames analysed
+
         // save the global Tracking ID
         int max_id;
 
@@ -207,7 +212,8 @@ class Tracking
     protected:
 
         // Main tracking function. It is independent of the input sensor.
-        void Track();
+
+        SceneType Track();
 
         // Map initialization
         void Initialization();
@@ -215,12 +221,12 @@ class Tracking
         //ORB
         ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
 
-        // System
-        System* mpSystem;
-
         //Map
         Map* mpMap;
 
+        std::shared_ptr<Scene> scene;
+
+        ColourManager color_manager;
 
         //Calibration matrix
         cv::Mat mK;

@@ -54,47 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tranks/catkin_ws/src/VDO_SLAM
+CMAKE_SOURCE_DIR = /home/tranks/testing_ws/src/VDO_SLAM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tranks/catkin_ws/src/VDO_SLAM/build
-
-#=============================================================================
-# Target rules for target CMakeFiles/vdo_slam_example.dir
-
-# All Build rule for target.
-CMakeFiles/vdo_slam_example.dir/all: CMakeFiles/vdo_slam.dir/all
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/depend
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=15,16 "Built target vdo_slam_example"
-.PHONY : CMakeFiles/vdo_slam_example.dir/all
-
-# Include target in all.
-all: CMakeFiles/vdo_slam_example.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/vdo_slam_example.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles 16
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/vdo_slam_example.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles 0
-.PHONY : CMakeFiles/vdo_slam_example.dir/rule
-
-# Convenience name for target.
-vdo_slam_example: CMakeFiles/vdo_slam_example.dir/rule
-
-.PHONY : vdo_slam_example
-
-# clean rule for target.
-CMakeFiles/vdo_slam_example.dir/clean:
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/clean
-.PHONY : CMakeFiles/vdo_slam_example.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/vdo_slam_example.dir/clean
-
-.PHONY : clean
+CMAKE_BINARY_DIR = /home/tranks/testing_ws/src/VDO_SLAM/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/vdo_slam.dir
@@ -103,7 +66,7 @@ clean: CMakeFiles/vdo_slam_example.dir/clean
 CMakeFiles/vdo_slam.dir/all:
 	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/depend
 	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target vdo_slam"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target vdo_slam"
 .PHONY : CMakeFiles/vdo_slam.dir/all
 
 # Include target in all.
@@ -113,9 +76,9 @@ all: CMakeFiles/vdo_slam.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vdo_slam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/vdo_slam.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles 0
 .PHONY : CMakeFiles/vdo_slam.dir/rule
 
 # Convenience name for target.
@@ -132,6 +95,150 @@ CMakeFiles/vdo_slam.dir/clean:
 clean: CMakeFiles/vdo_slam.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory include/vdo_slam/map
+
+# Convenience name for "all" pass in the directory.
+include/vdo_slam/map/all:
+
+.PHONY : include/vdo_slam/map/all
+
+# Convenience name for "clean" pass in the directory.
+include/vdo_slam/map/clean:
+
+.PHONY : include/vdo_slam/map/clean
+
+# Convenience name for "preinstall" pass in the directory.
+include/vdo_slam/map/preinstall:
+
+.PHONY : include/vdo_slam/map/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/map
+
+# Convenience name for "all" pass in the directory.
+src/map/all:
+
+.PHONY : src/map/all
+
+# Convenience name for "clean" pass in the directory.
+src/map/clean:
+
+.PHONY : src/map/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/map/preinstall:
+
+.PHONY : src/map/preinstall
+
+#=============================================================================
+# Directory level rules for directory include/vdo_slam/utils
+
+# Convenience name for "all" pass in the directory.
+include/vdo_slam/utils/all:
+
+.PHONY : include/vdo_slam/utils/all
+
+# Convenience name for "clean" pass in the directory.
+include/vdo_slam/utils/clean:
+
+.PHONY : include/vdo_slam/utils/clean
+
+# Convenience name for "preinstall" pass in the directory.
+include/vdo_slam/utils/preinstall:
+
+.PHONY : include/vdo_slam/utils/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/utils
+
+# Convenience name for "all" pass in the directory.
+src/utils/all:
+
+.PHONY : src/utils/all
+
+# Convenience name for "clean" pass in the directory.
+src/utils/clean:
+
+.PHONY : src/utils/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/utils/preinstall:
+
+.PHONY : src/utils/preinstall
+
+#=============================================================================
+# Directory level rules for directory include/vdo_slam/visualizer
+
+# Convenience name for "all" pass in the directory.
+include/vdo_slam/visualizer/all:
+
+.PHONY : include/vdo_slam/visualizer/all
+
+# Convenience name for "clean" pass in the directory.
+include/vdo_slam/visualizer/clean:
+
+.PHONY : include/vdo_slam/visualizer/clean
+
+# Convenience name for "preinstall" pass in the directory.
+include/vdo_slam/visualizer/preinstall:
+
+.PHONY : include/vdo_slam/visualizer/preinstall
+
+#=============================================================================
+# Directory level rules for directory src/visualizer
+
+# Convenience name for "all" pass in the directory.
+src/visualizer/all:
+
+.PHONY : src/visualizer/all
+
+# Convenience name for "clean" pass in the directory.
+src/visualizer/clean:
+
+.PHONY : src/visualizer/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/visualizer/preinstall:
+
+.PHONY : src/visualizer/preinstall
+
+#=============================================================================
+# Directory level rules for directory include/vdo_slam
+
+# Convenience name for "all" pass in the directory.
+include/vdo_slam/all:
+
+.PHONY : include/vdo_slam/all
+
+# Convenience name for "clean" pass in the directory.
+include/vdo_slam/clean:
+
+.PHONY : include/vdo_slam/clean
+
+# Convenience name for "preinstall" pass in the directory.
+include/vdo_slam/preinstall:
+
+.PHONY : include/vdo_slam/preinstall
+
+#=============================================================================
+# Directory level rules for directory src
+
+# Convenience name for "all" pass in the directory.
+src/all:
+
+.PHONY : src/all
+
+# Convenience name for "clean" pass in the directory.
+src/clean:
+
+.PHONY : src/clean
+
+# Convenience name for "preinstall" pass in the directory.
+src/preinstall:
+
+.PHONY : src/preinstall
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -7,78 +7,89 @@
 #include <vector>
 #include <iostream>
 #include <memory>
+#include <opencv2/core/core.hpp>
+
+#include <eigen3/Eigen/Dense>
+#include  <vdo_slam_g2o/types/types_seven_dof_expmap.h>
+
+#include "vdo_slam/utils/Types.h"
+#include "vdo_slam/map/MapObject.h"
 
 namespace VDO_SLAM
 {
-    struct SceneObject {
-        //these really should be cv::Mat so we can save them in SE(3) space - currently ignoring rotation
-        cv::Point3f pose;
-        cv::Point2f velocity;
+
+    struct SceneObject : public EuclideanObject, public MapObject {
+
         cv::Mat center_image; //center in the 2D image plane in the form (u, v)
         int semantic_instance_index; 
         std::string label;
-        int tracking_id;
+        int tracking_id; 
+        int frame_id;
+        int unique_id;
+        double timestamp = -1;
+        BoundingBox bounding_box;
+        Time scene_time;
+        // std::vector<cv::KeyPoint> keypoints;
+
+        virtual ~SceneObject() {}
 
 
-        SceneObject(const SceneObject& scene_object) :
-            pose(scene_object.pose),
-            velocity(scene_object.velocity),
-            semantic_instance_index(scene_object.semantic_instance_index),
-            center_image(scene_object.center_image),
-            label(scene_object.label),
-            tracking_id(scene_object.tracking_id) {}
+        bool update_from_map(const Map* map) override;
 
-        SceneObject() {}
-
-        //hack to make class polymorphic
-        virtual void vf() {}
         friend std::ostream &operator << (std::ostream& output, const SceneObject& object);
+
+
+        template<class T>
+        inline static std::shared_ptr<SceneObject> create(T& t);
+
+        template<class T>
+        inline T convert();
         
     };
 
-    class Scene {
+    class Scene : public EuclideanObject, public MapObject {
         
         public:
             Scene();
-            Scene(int _id, double _timestamp);
+            Scene(int frame_id_, const Time& time_);
+            virtual ~Scene() {}
 
-            const cv::Point3f& camera_pos_T() const;
-            const cv::Mat& camera_pos_R() const;
 
-            const cv::Point3f& camera_vel_T() const;
-            const cv::Mat& camera_vel_R() const;
 
-            void add_scene_object(SceneObject _object);
-            void update_camera_pos(cv::Mat& pos_matrix); //should be in form [R | t]
-            void update_camera_vel(cv::Mat& vel_matrix); //should be in form [R | t]
-            std::vector<SceneObject>& get_scene_objects();
-            SceneObject* get_scene_objects_ptr();
+            void add_scene_object(std::shared_ptr<SceneObject>& _object);
+            std::vector<std::shared_ptr<SceneObject>>& get_scene_objects();
+            bool update_from_map(const Map* map) override;
 
-            const int scene_objects_size();
-            const int get_global_fid() const;
-            const int get_id() const;
-            const double get_timestamp() const;
+            int scene_objects_size();
+            int get_id();
+            double get_timestamp();
+
+            cv::Mat rgb_frame;
+            Time scene_time;
+
+            template<class T>
+            inline static std::shared_ptr<Scene> create(T& t);
+
+            template<class T>
+            inline T convert();
+
+
 
         protected:
-            std::vector<SceneObject> scene_objects;
-            cv::Point3f camera_pos_translation;
-            cv::Mat camera_pos_rotation; //should be 3x3 rotation matrix
-
-            cv::Point3f camera_vel_translation;
-            cv::Mat camera_vel_rotation; //should be 3x3 rotation matrix
-
-        private:
-            int global_fid;
-            int id;
+            std::vector<std::shared_ptr<SceneObject>> scene_objects;
+            int frame_id;
             double timestamp;
     };
+
+    typedef std::shared_ptr<SceneObject> SceneObjectPtr;
+    typedef std::unique_ptr<SceneObject> SceneObjectUniquePtr;
+
+
+    typedef std::shared_ptr<Scene> SlamScenePtr;
+    typedef std::unique_ptr<Scene> SlamSceneUniquePtr;
+
     
 } // namespace VDO_SLAM
 
-typedef std::shared_ptr<VDO_SLAM::SceneObject> VdoSlamSceneObjectPtr;
-typedef std::unique_ptr<VDO_SLAM::SceneObject> VdoSlamSceneObjectUniquePtr;
-
-typedef std::shared_ptr<VDO_SLAM::Scene> VdoSlamScenePtr;
-typedef std::unique_ptr<VDO_SLAM::Scene> VdoSlamSceneUniquePtr;
 
 #endif

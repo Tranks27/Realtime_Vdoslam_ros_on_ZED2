@@ -15,7 +15,6 @@
 
 
 #include  <vdo_slam_g2o/types/types_seven_dof_expmap.h>
-#include  <vdo_slam_g2o/types/types_seven_dof_expmap.h>
 
 namespace VDO_SLAM
 {

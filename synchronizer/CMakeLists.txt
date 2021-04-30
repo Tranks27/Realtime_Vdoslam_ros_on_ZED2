@@ -16,9 +16,16 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   actionlib_msgs
-  
+  mask_rcnn
+  vision_msgs
 )
 find_package(OpenCV)
+
+
+
+
+
+
 
 add_message_files(
   FILES
@@ -49,16 +56,19 @@ generate_messages(
 
 
 catkin_package(
- INCLUDE_DIRS #include
+  INCLUDE_DIRS #include
 #  LIBRARIES synchronizer
- CATKIN_DEPENDS cv_bridge 
-                image_transport 
-                message_filters 
-                message_generation 
-                roscpp 
-                sensor_msgs 
-                std_msgs 
-                message_runtime
+  CATKIN_DEPENDS 
+  cv_bridge 
+  image_transport 
+  message_filters 
+  message_generation 
+  roscpp 
+  sensor_msgs 
+  std_msgs 
+  message_runtime
+  mask_rcnn
+  vision_msgs
 #  DEPENDS system_lib
 )
 

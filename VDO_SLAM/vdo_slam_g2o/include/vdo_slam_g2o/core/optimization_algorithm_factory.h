@@ -27,7 +27,7 @@
 #ifndef VDO_SLAM_G2O_OPTMIZATION_ALGORITHM_PROPERTY_H
 #define VDO_SLAM_G2O_OPTMIZATION_ALGORITHM_PROPERTY_H
 
-#include <vdo_slam_g2o_config.hpp>
+#include "vdo_slam_g2o/vdo_slam_g2o_config.hpp"
 
 #include "vdo_slam_g2o/stuff/misc.h"
 #include "vdo_slam_g2o/core/optimization_algorithm_property.h"

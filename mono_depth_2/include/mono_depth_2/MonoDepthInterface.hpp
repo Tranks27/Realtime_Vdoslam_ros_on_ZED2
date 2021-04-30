@@ -65,6 +65,8 @@ namespace mono_depth_2 {
 
     };
 
+    typedef std::shared_ptr<MonoDepthInterface> MonoDepthInterfacePtr;
+
 }; //namespace mono_depth_2
 
 

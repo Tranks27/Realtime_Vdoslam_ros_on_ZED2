@@ -1,8 +1,7 @@
 #ifndef VDO_SLAM_PARAMS_H
 #define VDO_SLAM_PARAMS_H
 
-#include "System.h"
-#include "Types.h"
+#include "vdo_slam/utils/Types.h"
 #include <memory>
 
 namespace VDO_SLAM {

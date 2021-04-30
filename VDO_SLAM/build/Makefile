@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tranks/catkin_ws/src/VDO_SLAM
+CMAKE_SOURCE_DIR = /home/tranks/testing_ws/src/VDO_SLAM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tranks/catkin_ws/src/VDO_SLAM/build
+CMAKE_BINARY_DIR = /home/tranks/testing_ws/src/VDO_SLAM/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,28 +67,6 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -112,6 +90,28 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -126,9 +126,9 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,19 +157,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named vdo_slam_example
-
-# Build rule for target.
-vdo_slam_example: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vdo_slam_example
-.PHONY : vdo_slam_example
-
-# fast build rule for target.
-vdo_slam_example/fast:
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/build
-.PHONY : vdo_slam_example/fast
-
-#=============================================================================
 # Target rules for targets named vdo_slam
 
 # Build rule for target.
@@ -181,33 +168,6 @@ vdo_slam: cmake_check_build_system
 vdo_slam/fast:
 	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/build
 .PHONY : vdo_slam/fast
-
-example/vdo_slam.o: example/vdo_slam.cc.o
-
-.PHONY : example/vdo_slam.o
-
-# target to build an object file
-example/vdo_slam.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/example/vdo_slam.cc.o
-.PHONY : example/vdo_slam.cc.o
-
-example/vdo_slam.i: example/vdo_slam.cc.i
-
-.PHONY : example/vdo_slam.i
-
-# target to preprocess a source file
-example/vdo_slam.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/example/vdo_slam.cc.i
-.PHONY : example/vdo_slam.cc.i
-
-example/vdo_slam.s: example/vdo_slam.cc.s
-
-.PHONY : example/vdo_slam.s
-
-# target to generate assembly for a file
-example/vdo_slam.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam_example.dir/build.make CMakeFiles/vdo_slam_example.dir/example/vdo_slam.cc.s
-.PHONY : example/vdo_slam.cc.s
 
 src/Converter.o: src/Converter.cc.o
 
@@ -262,33 +222,6 @@ src/Frame.s: src/Frame.cc.s
 src/Frame.cc.s:
 	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Frame.cc.s
 .PHONY : src/Frame.cc.s
-
-src/Map.o: src/Map.cc.o
-
-.PHONY : src/Map.o
-
-# target to build an object file
-src/Map.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Map.cc.o
-.PHONY : src/Map.cc.o
-
-src/Map.i: src/Map.cc.i
-
-.PHONY : src/Map.i
-
-# target to preprocess a source file
-src/Map.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Map.cc.i
-.PHONY : src/Map.cc.i
-
-src/Map.s: src/Map.cc.s
-
-.PHONY : src/Map.s
-
-# target to generate assembly for a file
-src/Map.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Map.cc.s
-.PHONY : src/Map.cc.s
 
 src/ORBextractor.o: src/ORBextractor.cc.o
 
@@ -425,140 +358,194 @@ src/Tracking.cc.s:
 	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Tracking.cc.s
 .PHONY : src/Tracking.cc.s
 
-src/Types.o: src/Types.cc.o
+src/map/Map.o: src/map/Map.cc.o
 
-.PHONY : src/Types.o
-
-# target to build an object file
-src/Types.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Types.cc.o
-.PHONY : src/Types.cc.o
-
-src/Types.i: src/Types.cc.i
-
-.PHONY : src/Types.i
-
-# target to preprocess a source file
-src/Types.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Types.cc.i
-.PHONY : src/Types.cc.i
-
-src/Types.s: src/Types.cc.s
-
-.PHONY : src/Types.s
-
-# target to generate assembly for a file
-src/Types.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/Types.cc.s
-.PHONY : src/Types.cc.s
-
-src/cvplot/color.o: src/cvplot/color.cc.o
-
-.PHONY : src/cvplot/color.o
+.PHONY : src/map/Map.o
 
 # target to build an object file
-src/cvplot/color.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/color.cc.o
-.PHONY : src/cvplot/color.cc.o
+src/map/Map.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/map/Map.cc.o
+.PHONY : src/map/Map.cc.o
 
-src/cvplot/color.i: src/cvplot/color.cc.i
+src/map/Map.i: src/map/Map.cc.i
 
-.PHONY : src/cvplot/color.i
+.PHONY : src/map/Map.i
 
 # target to preprocess a source file
-src/cvplot/color.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/color.cc.i
-.PHONY : src/cvplot/color.cc.i
+src/map/Map.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/map/Map.cc.i
+.PHONY : src/map/Map.cc.i
 
-src/cvplot/color.s: src/cvplot/color.cc.s
+src/map/Map.s: src/map/Map.cc.s
 
-.PHONY : src/cvplot/color.s
+.PHONY : src/map/Map.s
 
 # target to generate assembly for a file
-src/cvplot/color.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/color.cc.s
-.PHONY : src/cvplot/color.cc.s
+src/map/Map.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/map/Map.cc.s
+.PHONY : src/map/Map.cc.s
 
-src/cvplot/figure.o: src/cvplot/figure.cc.o
+src/utils/Types.o: src/utils/Types.cc.o
 
-.PHONY : src/cvplot/figure.o
+.PHONY : src/utils/Types.o
 
 # target to build an object file
-src/cvplot/figure.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/figure.cc.o
-.PHONY : src/cvplot/figure.cc.o
+src/utils/Types.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o
+.PHONY : src/utils/Types.cc.o
 
-src/cvplot/figure.i: src/cvplot/figure.cc.i
+src/utils/Types.i: src/utils/Types.cc.i
 
-.PHONY : src/cvplot/figure.i
+.PHONY : src/utils/Types.i
 
 # target to preprocess a source file
-src/cvplot/figure.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/figure.cc.i
-.PHONY : src/cvplot/figure.cc.i
+src/utils/Types.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/Types.cc.i
+.PHONY : src/utils/Types.cc.i
 
-src/cvplot/figure.s: src/cvplot/figure.cc.s
+src/utils/Types.s: src/utils/Types.cc.s
 
-.PHONY : src/cvplot/figure.s
+.PHONY : src/utils/Types.s
 
 # target to generate assembly for a file
-src/cvplot/figure.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/figure.cc.s
-.PHONY : src/cvplot/figure.cc.s
+src/utils/Types.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/Types.cc.s
+.PHONY : src/utils/Types.cc.s
 
-src/cvplot/highgui.o: src/cvplot/highgui.cc.o
+src/utils/VdoUtils.o: src/utils/VdoUtils.cc.o
 
-.PHONY : src/cvplot/highgui.o
+.PHONY : src/utils/VdoUtils.o
 
 # target to build an object file
-src/cvplot/highgui.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/highgui.cc.o
-.PHONY : src/cvplot/highgui.cc.o
+src/utils/VdoUtils.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o
+.PHONY : src/utils/VdoUtils.cc.o
 
-src/cvplot/highgui.i: src/cvplot/highgui.cc.i
+src/utils/VdoUtils.i: src/utils/VdoUtils.cc.i
 
-.PHONY : src/cvplot/highgui.i
+.PHONY : src/utils/VdoUtils.i
 
 # target to preprocess a source file
-src/cvplot/highgui.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/highgui.cc.i
-.PHONY : src/cvplot/highgui.cc.i
+src/utils/VdoUtils.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.i
+.PHONY : src/utils/VdoUtils.cc.i
 
-src/cvplot/highgui.s: src/cvplot/highgui.cc.s
+src/utils/VdoUtils.s: src/utils/VdoUtils.cc.s
 
-.PHONY : src/cvplot/highgui.s
+.PHONY : src/utils/VdoUtils.s
 
 # target to generate assembly for a file
-src/cvplot/highgui.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/highgui.cc.s
-.PHONY : src/cvplot/highgui.cc.s
+src/utils/VdoUtils.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.s
+.PHONY : src/utils/VdoUtils.cc.s
 
-src/cvplot/window.o: src/cvplot/window.cc.o
+src/visualizer/colour.o: src/visualizer/colour.cc.o
 
-.PHONY : src/cvplot/window.o
+.PHONY : src/visualizer/colour.o
 
 # target to build an object file
-src/cvplot/window.cc.o:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/window.cc.o
-.PHONY : src/cvplot/window.cc.o
+src/visualizer/colour.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o
+.PHONY : src/visualizer/colour.cc.o
 
-src/cvplot/window.i: src/cvplot/window.cc.i
+src/visualizer/colour.i: src/visualizer/colour.cc.i
 
-.PHONY : src/cvplot/window.i
+.PHONY : src/visualizer/colour.i
 
 # target to preprocess a source file
-src/cvplot/window.cc.i:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/window.cc.i
-.PHONY : src/cvplot/window.cc.i
+src/visualizer/colour.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.i
+.PHONY : src/visualizer/colour.cc.i
 
-src/cvplot/window.s: src/cvplot/window.cc.s
+src/visualizer/colour.s: src/visualizer/colour.cc.s
 
-.PHONY : src/cvplot/window.s
+.PHONY : src/visualizer/colour.s
 
 # target to generate assembly for a file
-src/cvplot/window.cc.s:
-	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/cvplot/window.cc.s
-.PHONY : src/cvplot/window.cc.s
+src/visualizer/colour.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.s
+.PHONY : src/visualizer/colour.cc.s
+
+src/visualizer/semantics_loader.o: src/visualizer/semantics_loader.cc.o
+
+.PHONY : src/visualizer/semantics_loader.o
+
+# target to build an object file
+src/visualizer/semantics_loader.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o
+.PHONY : src/visualizer/semantics_loader.cc.o
+
+src/visualizer/semantics_loader.i: src/visualizer/semantics_loader.cc.i
+
+.PHONY : src/visualizer/semantics_loader.i
+
+# target to preprocess a source file
+src/visualizer/semantics_loader.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.i
+.PHONY : src/visualizer/semantics_loader.cc.i
+
+src/visualizer/semantics_loader.s: src/visualizer/semantics_loader.cc.s
+
+.PHONY : src/visualizer/semantics_loader.s
+
+# target to generate assembly for a file
+src/visualizer/semantics_loader.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.s
+.PHONY : src/visualizer/semantics_loader.cc.s
+
+src/visualizer/visualization_base.o: src/visualizer/visualization_base.cc.o
+
+.PHONY : src/visualizer/visualization_base.o
+
+# target to build an object file
+src/visualizer/visualization_base.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o
+.PHONY : src/visualizer/visualization_base.cc.o
+
+src/visualizer/visualization_base.i: src/visualizer/visualization_base.cc.i
+
+.PHONY : src/visualizer/visualization_base.i
+
+# target to preprocess a source file
+src/visualizer/visualization_base.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.i
+.PHONY : src/visualizer/visualization_base.cc.i
+
+src/visualizer/visualization_base.s: src/visualizer/visualization_base.cc.s
+
+.PHONY : src/visualizer/visualization_base.s
+
+# target to generate assembly for a file
+src/visualizer/visualization_base.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.s
+.PHONY : src/visualizer/visualization_base.cc.s
+
+src/visualizer/visualizer_2D.o: src/visualizer/visualizer_2D.cc.o
+
+.PHONY : src/visualizer/visualizer_2D.o
+
+# target to build an object file
+src/visualizer/visualizer_2D.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o
+.PHONY : src/visualizer/visualizer_2D.cc.o
+
+src/visualizer/visualizer_2D.i: src/visualizer/visualizer_2D.cc.i
+
+.PHONY : src/visualizer/visualizer_2D.i
+
+# target to preprocess a source file
+src/visualizer/visualizer_2D.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.i
+.PHONY : src/visualizer/visualizer_2D.cc.i
+
+src/visualizer/visualizer_2D.s: src/visualizer/visualizer_2D.cc.s
+
+.PHONY : src/visualizer/visualizer_2D.s
+
+# target to generate assembly for a file
+src/visualizer/visualizer_2D.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.s
+.PHONY : src/visualizer/visualizer_2D.cc.s
 
 # Help Target
 help:
@@ -567,25 +554,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
-	@echo "... vdo_slam_example"
-	@echo "... list_install_components"
-	@echo "... vdo_slam"
 	@echo "... edit_cache"
+	@echo "... vdo_slam"
 	@echo "... rebuild_cache"
+	@echo "... list_install_components"
+	@echo "... install/local"
 	@echo "... install"
-	@echo "... example/vdo_slam.o"
-	@echo "... example/vdo_slam.i"
-	@echo "... example/vdo_slam.s"
 	@echo "... src/Converter.o"
 	@echo "... src/Converter.i"
 	@echo "... src/Converter.s"
 	@echo "... src/Frame.o"
 	@echo "... src/Frame.i"
 	@echo "... src/Frame.s"
-	@echo "... src/Map.o"
-	@echo "... src/Map.i"
-	@echo "... src/Map.s"
 	@echo "... src/ORBextractor.o"
 	@echo "... src/ORBextractor.i"
 	@echo "... src/ORBextractor.s"
@@ -601,21 +581,27 @@ help:
 	@echo "... src/Tracking.o"
 	@echo "... src/Tracking.i"
 	@echo "... src/Tracking.s"
-	@echo "... src/Types.o"
-	@echo "... src/Types.i"
-	@echo "... src/Types.s"
-	@echo "... src/cvplot/color.o"
-	@echo "... src/cvplot/color.i"
-	@echo "... src/cvplot/color.s"
-	@echo "... src/cvplot/figure.o"
-	@echo "... src/cvplot/figure.i"
-	@echo "... src/cvplot/figure.s"
-	@echo "... src/cvplot/highgui.o"
-	@echo "... src/cvplot/highgui.i"
-	@echo "... src/cvplot/highgui.s"
-	@echo "... src/cvplot/window.o"
-	@echo "... src/cvplot/window.i"
-	@echo "... src/cvplot/window.s"
+	@echo "... src/map/Map.o"
+	@echo "... src/map/Map.i"
+	@echo "... src/map/Map.s"
+	@echo "... src/utils/Types.o"
+	@echo "... src/utils/Types.i"
+	@echo "... src/utils/Types.s"
+	@echo "... src/utils/VdoUtils.o"
+	@echo "... src/utils/VdoUtils.i"
+	@echo "... src/utils/VdoUtils.s"
+	@echo "... src/visualizer/colour.o"
+	@echo "... src/visualizer/colour.i"
+	@echo "... src/visualizer/colour.s"
+	@echo "... src/visualizer/semantics_loader.o"
+	@echo "... src/visualizer/semantics_loader.i"
+	@echo "... src/visualizer/semantics_loader.s"
+	@echo "... src/visualizer/visualization_base.o"
+	@echo "... src/visualizer/visualization_base.i"
+	@echo "... src/visualizer/visualization_base.s"
+	@echo "... src/visualizer/visualizer_2D.o"
+	@echo "... src/visualizer/visualizer_2D.i"
+	@echo "... src/visualizer/visualizer_2D.s"
 .PHONY : help
 
 

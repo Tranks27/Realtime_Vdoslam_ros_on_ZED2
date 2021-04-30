@@ -16,7 +16,7 @@
 #include<opencv2/core/core.hpp>
 #include<opencv2/optflow.hpp>
 
-#include <vdo_slam/System.h>
+#include <vdo_slam/vdo_slam.hpp>
 
 
 using namespace std;

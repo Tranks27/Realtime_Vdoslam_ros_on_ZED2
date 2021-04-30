@@ -43,9 +43,11 @@ bool MonoDepthInterface::wait_for_services(ros::Duration timeout) {
 
 bool MonoDepthInterface::analyse(const cv::Mat& current_image, cv::Mat& dst) {
 
+
     if (!service_started) {
         return false;
     }
+
 
     sensor_msgs::ImagePtr current_image_msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", current_image).toImageMsg();
 

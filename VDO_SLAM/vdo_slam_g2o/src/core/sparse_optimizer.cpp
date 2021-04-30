@@ -41,7 +41,7 @@
 #include "vdo_slam_g2o/stuff/timeutil.h"
 #include "vdo_slam_g2o/stuff/macros.h"
 #include "vdo_slam_g2o/stuff/misc.h"
-#include <vdo_slam_g2o_config.hpp>
+#include "vdo_slam_g2o/vdo_slam_g2o_config.hpp"
 
 namespace g2o{
   using namespace std;

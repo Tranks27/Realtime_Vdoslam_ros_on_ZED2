@@ -12,7 +12,8 @@
 #include "vdo_slam/System.h"
 #include "vdo_slam/Tracking.h"
 #include "vdo_slam/Macros.h"
-#include "vdo_slam/Types.h"
+#include "vdo_slam/utils/Types.h"
+#include "vdo_slam/utils/VdoUtils.h"
 
 #include <thread>
 #include <iomanip>
@@ -29,7 +30,7 @@ namespace VDO_SLAM {
 
         //Initialize the Tracking thread
         //(it will live in the main thread of execution, the one that called this constructor)
-        mpTracker = new Tracking(this, mpMap, params);
+        mpTracker = new Tracking(mpMap, params);
     }
 
 
@@ -57,25 +58,55 @@ namespace VDO_SLAM {
 
         //Initialize the Tracking thread
         //(it will live in the main thread of execution, the one that called this constructor)
-        mpTracker = new Tracking(this, mpMap, strSettingsFile, mSensor);
+        mpTracker = new Tracking(mpMap, strSettingsFile, mSensor);
 
     }
 
 
 
 
-    std::unique_ptr<Scene> System::TrackRGBD(const cv::Mat &im, cv::Mat &depthmap, const cv::Mat &flowmap, const cv::Mat &masksem,
-                            const cv::Mat &mTcw_gt, const vector<vector<float> > &vObjPose_gt,
-                            const double &timestamp, cv::Mat &imTraj, const int &nImage)
-    {
+    std::pair<SceneType, std::shared_ptr<Scene>> System::TrackRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
+                            const Time& time_, const double &timestamp, cv::Mat &imTraj, const int &nImage) {
         // if(mSensor!=RGBD)
         // {
         //     cerr << "ERROR: you called TrackRGBD but input sensor was not set to RGBD." << endl;
         //     exit(-1);
         // }
 
-        return mpTracker->GrabImageRGBD(im,depthmap,flowmap,masksem,mTcw_gt,vObjPose_gt,timestamp,imTraj,nImage);
+        return mpTracker->GrabImageRGBD(imRGB,imD,imFlow,maskSEM, time_,timestamp,imTraj,nImage);
+    }
 
+
+    bool System::construct_scenes(std::vector<SlamScenePtr>& scenes, int back_frame_id) {
+        // const int N = mpMap->vpFeatSta.size();
+        //need to check scenes.size() == vmCameraPose_RF.size()
+        assert(scenes.size() == mpMap->vmCameraPose_RF.size());
+        const int N = scenes.size();
+
+        if (N < 2) {
+            return false;
+
+        }
+        int n_frames = N;
+        if(back_frame_id == -1) {
+            n_frames = N;
+            VDO_INFO_MSG(n_frames);
+        }
+        else if(back_frame_id > N) {
+            VDO_WARN_MSG("Back frame ID " << back_frame_id << " greater than size of map " << N);
+            n_frames = N;
+        }
+        else {
+            n_frames = N - back_frame_id;
+        }
+
+        VDO_INFO_MSG("Constructing scenes using last " << n_frames << "/" << N);
+        // for(int i = 0; i < N; i++) {
+        //     mpMap->update_from_map()
+        // }
+        for(SlamScenePtr& scene : scenes) {
+            mpMap->update_from_map(scene.get());
+        }
     }
 
     void System::SaveResultsIJRR2020(const string &filename)

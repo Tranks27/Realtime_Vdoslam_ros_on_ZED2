@@ -63,6 +63,7 @@ add_service_files(
 	   StartFlowNet.srv
 	   StartMaskRcnn.srv
 	   StartMonoDepth.srv
+	   StartMidasDepth.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -126,7 +127,7 @@ catkin_package(
 include_directories(
 		include
 		${catkin_INCLUDE_DIRS}
-		#${PCL_INCLUDE_DIRS}
+		${PCL_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -164,7 +165,7 @@ add_dependencies(${PROJECT_NAME}
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}
 		${catkin_LIBRARIES}
-		#${PCL_LIBRARIES}
+		${PCL_LIBRARIES}
 )
 
 #############

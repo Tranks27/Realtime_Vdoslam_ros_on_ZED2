@@ -25,10 +25,14 @@ PythonServiceController::PythonServiceController(ros::NodeHandle& _nh) :
     path = ros::package::getPath("flow_net");
     python_flow_net_full_path = path + std::string("/scripts/flow_net_rospy.py");
 
+    path = ros::package::getPath("midas_ros");
+    python_midas_depth_full_path = path + std::string("/scripts/midas_rospy.py");
+
 
     start_flow_net_service = nh.advertiseService("start_flow_net", &PythonServiceController::init_flow_net, this);
     start_mask_rcnn_service = nh.advertiseService("start_mask_rcnn", &PythonServiceController::init_mask_rcnn, this);
     start_mono_depth_service = nh.advertiseService("start_mono_depth", &PythonServiceController::init_mono_depth, this);
+    start_midas_depth_service = nh.advertiseService("start_midas_depth", &PythonServiceController::init_midas_depth, this);
     // handler.param<std::string>("/realtime_vdo_slam/topic_prefix", topic_prefix, "/gmsl/");
 }
 
@@ -88,6 +92,24 @@ bool PythonServiceController::init_mono_depth(python_service_starter::StartMonoD
 }
 
 
+bool PythonServiceController::init_midas_depth(python_service_starter::StartMidasDepth::Request& request, python_service_starter::StartMidasDepth::Response& response) {
+    if (request.start) {
+        midas_depth_service_starter = std::make_unique<ServiceStarter>(python_midas_depth_full_path);
+        
+        if(midas_depth_service_starter->start_program()) {
+            ROS_INFO_STREAM("program " << midas_depth_service_starter->get_program_name() << " started");
+            return true;
+        }
+        else {
+            ROS_WARN_STREAM("program " << midas_depth_service_starter->get_program_name() << " failed");
+            return false;
+        }
+        
+    }
+    return true;
+}
+
+
 bool PythonServiceController::shutdown_services() {
     if (flow_net_service_starter && flow_net_service_starter->get_status()) {
         flow_net_service_starter->shutdown();
@@ -98,6 +120,10 @@ bool PythonServiceController::shutdown_services() {
 
     if (mono_depth_service_starter && mono_depth_service_starter->get_status()) {
         mono_depth_service_starter->shutdown();
+    }
+
+    if (midas_depth_service_starter && midas_depth_service_starter->get_status()) {
+        midas_depth_service_starter->shutdown();
     }
     return true;
 }

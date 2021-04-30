@@ -59,33 +59,38 @@ find_package(CSparse REQUIRED)
 find_package(vdo_slam_g2o REQUIRED)
 
 include_directories(
+   include
+   include/${PROJECT_NAME}
    # ${PROJECT_SOURCE_DIR}
    # ${PROJECT_SOURCE_DIR}/include
    ${EIGEN3_INCLUDE_DIR}
    ${CSPARSE_INCLUDE_DIR}
 )
 
-set(PUBLIC_HEADER_FILES
-    include/vdo_slam.hpp
-    include/${PROJECT_NAME}/Converter.h
-    include/${PROJECT_NAME}/Frame.h
-    include/${PROJECT_NAME}/Map.h
-    include/${PROJECT_NAME}/Optimizer.h
-    include/${PROJECT_NAME}/ORBextractor.h
-    include/${PROJECT_NAME}/System.h
-    include/${PROJECT_NAME}/Scene.h
-    include/${PROJECT_NAME}/Tracking.h
-    include/${PROJECT_NAME}/Params.h
-    include/${PROJECT_NAME}/Macros.h
-    include/${PROJECT_NAME}/Types.h
+# set(PUBLIC_HEADER_FILES
+#     include/vdo_slam.hpp
+#     include/${PROJECT_NAME}/Converter.h
+#     include/${PROJECT_NAME}/Frame.h
+#     include/${PROJECT_NAME}/Optimizer.h
+#     include/${PROJECT_NAME}/ORBextractor.h
+#     include/${PROJECT_NAME}/System.h
+#     include/${PROJECT_NAME}/Scene.h
+#     include/${PROJECT_NAME}/Tracking.h
+#     include/${PROJECT_NAME}/Params.h
+#     include/${PROJECT_NAME}/Macros.h
+#     include/${PROJECT_NAME}/utils/Types.h
+#     include/${PROJECT_NAME}/utils/VdoUtils.h
 
-    include/${PROJECT_NAME}/cvplot/color.h
-    include/${PROJECT_NAME}/cvplot/cvplot.h
-    include/${PROJECT_NAME}/cvplot/figure.h
-    include/${PROJECT_NAME}/cvplot/highgui.h
-    include/${PROJECT_NAME}/cvplot/window.h
-    include/${PROJECT_NAME}/cvplot/internal.h
-)
+#     include/${PROJECT_NAME}/map/Map.h
+#     include/${PROJECT_NAME}/map/MapObject.h
+
+#     include/${PROJECT_NAME}/cvplot/color.h
+#     include/${PROJECT_NAME}/cvplot/cvplot.h
+#     include/${PROJECT_NAME}/cvplot/figure.h
+#     include/${PROJECT_NAME}/cvplot/highgui.h
+#     include/${PROJECT_NAME}/cvplot/window.h
+#     include/${PROJECT_NAME}/cvplot/internal.h
+# )
 
 # set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
@@ -99,50 +104,67 @@ configure_package_config_file(
 
 
 
-add_library(${PROJECT_NAME} SHARED
-   src/System.cc
-   src/Tracking.cc
-   src/ORBextractor.cc
-   src/Converter.cc
-   src/Map.cc
-   src/Optimizer.cc
-   src/Frame.cc
-   src/Scene.cc
-   src/Types.cc
+# add_library(${PROJECT_NAME} SHARED
+#    src/utils/Types.cc
+#    src/utils/VdoUtils.cc
+#    src/System.cc
+#    src/Tracking.cc
+#    src/ORBextractor.cc
+#    src/Converter.cc
+#    src/Optimizer.cc
+#    src/Frame.cc
+#    src/Scene.cc
 
-   src/cvplot/color.cc
-   src/cvplot/figure.cc
-   src/cvplot/highgui.cc
-   src/cvplot/window.cc
-   ${PUBLIC_HEADER_FILES}
-)
+#    src/map/Map.cc 
+#    # src/map/MapObject.cc
+
+#    src/cvplot/color.cc
+#    src/cvplot/figure.cc
+#    src/cvplot/highgui.cc
+#    src/cvplot/window.cc
+#    ${PUBLIC_HEADER_FILES}
+# )
+
+add_library(${PROJECT_NAME} SHARED "")
+
+# add_subdirectory(include/vdo_slam/cvplot)
+# add_subdirectory(src/cvplot)
+
+add_subdirectory(include/vdo_slam/map)
+add_subdirectory(src/map)
+
+add_subdirectory(include/vdo_slam/utils)
+add_subdirectory(src/utils)
+
+add_subdirectory(include/vdo_slam/visualizer)
+add_subdirectory(src/visualizer)
+
+add_subdirectory(include/vdo_slam)
+add_subdirectory(src)
 
 message("vdo slam g2o lib ${vdo_slam_g2o_LIB_DIRS}")
 
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PUBLIC
    ${OpenCV_LIBS}
    ${EIGEN3_LIBS}
    ${CSPARSE_LIBRARY}
-   # for mac os (default)
-   #${PROJECT_SOURCE_DIR}/dependencies/g2o/lib/libg2o.dylib
-   # for linux (ubuntu)
-   #${PROJECT_SOURCE_DIR}/dependencies/g2o/lib/libg2o.so
    ${vdo_slam_g2o_LIB_DIRS}
+)
+
+target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC
+   ${OpenCV_INCLUDE_DIRS}
+   ${vdo_slam_g2o_INCLUDE_DIRS}
+   ${include_EIGEN3_INCLUDE}
+   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+   $<INSTALL_INTERFACE:include>
 )
 
 # Configure target warnings (PRIVATE doesn't pass on options to targets linking to target)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wno-psabi)
 
-# Set include directories for build and install
-target_include_directories(${PROJECT_NAME} PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        )
 
-target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC
-   ${vdo_slam_g2o_INCLUDE_DIRS}
-   ${include_EIGEN3_INCLUDE}
-)
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
 
 # Install library as an export target
 install(TARGETS ${PACKAGE_NAME}
@@ -159,6 +181,9 @@ install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}/
         FILES_MATCHING
         PATTERN "*.h"
         PATTERN "*.hpp")
+
+
+
 
 # Install export library to generate cmake
 install(EXPORT ${PROJECT_NAME}-export
@@ -183,10 +208,10 @@ install(FILES
 
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/example)
 
-add_executable(vdo_slam_example
-  example/vdo_slam.cc
-)
-target_link_libraries(vdo_slam_example ${PROJECT_NAME}
-${vdo_slam_g2o_LIB_DIRS})
+# add_executable(vdo_slam_example
+#   example/vdo_slam.cc
+# )
+# target_link_libraries(vdo_slam_example ${PROJECT_NAME}
+# ${vdo_slam_g2o_LIB_DIRS})
 
 
