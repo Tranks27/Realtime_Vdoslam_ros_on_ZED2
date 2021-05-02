@@ -149,6 +149,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
    ${EIGEN3_LIBS}
    ${CSPARSE_LIBRARY}
    ${vdo_slam_g2o_LIB_DIRS}
+   -lvdo_slam_g2o
 )
 
 target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC

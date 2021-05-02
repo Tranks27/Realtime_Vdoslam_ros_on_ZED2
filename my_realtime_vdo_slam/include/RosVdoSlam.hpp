@@ -80,6 +80,18 @@ class RosVdoSlam{
         ros::NodeHandle handle;
 
         /**
+         * @brief Updates the objects within the scene using the aquired semantic objects from mask rcnn. 
+         * This associates the bounding box of each semantic object to the centroid of a SceneObject (u, v) coordinates so 
+         * that we can add semantic labels to the scene objects. A VdoSlamScenePtr is produced which is the summary of all out information.
+         * 
+         * Essentially we try and associate a point (representing a centroid in the image frame), to a bounding box in the same image frame.
+         * 
+         * @param scene std::shared_ptr<VDO_SLAM::SlamScenePtr>&
+         * @param semantic_objects const std::vector<mask_rcnn::SemanticObject>&
+         */
+        void merge_scene_semantics(VDO_SLAM::SlamScenePtr& scene, const std::vector<mask_rcnn::SemanticObject>& semantic_objects);
+        
+        /**
          * @brief Constructs the desired slam system with parameters and configuration defined
          * in the launch file.
          * 
