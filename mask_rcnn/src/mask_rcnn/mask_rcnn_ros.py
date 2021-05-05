@@ -336,26 +336,24 @@ class MaskRcnnTopic():
         self.pub = rospy.Publisher("/maskrcnn/maskrcnn_raw", Image, queue_size=5)
         self.pub_sObj = rospy.Publisher("/maskrcnn/maskrcnn_sObj", SemanticObjectArray, queue_size=5)
 
+
     def image_callback(self, data):
         input_image = ros_numpy.numpify(data)
         start_time = rospy.Time.from_sec(time.time())
         # Naing edit at the end
         response_image, semantic_objects = self.mask_rcnn.analyse_image(input_image[:,:,0:3]) # only selects the first 3 channels excluding alpha channel
         display_image = self.mask_rcnn.generate_coloured_mask(response_image)
-        bounding_box_image = self.mask_rcnn.generated_bounding_boxes(input_image, semantic_objects)
-        # cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
-        # cv2.resizeWindow('detections', 600, 600)
-        # cv2.imshow("detections", display_image)
-        # cv2.waitKey(1)
+        bb_img = self.mask_rcnn.generated_bounding_boxes(input_image, semantic_objects)
+       
 
         current_time = rospy.Time.from_sec(time.time())
         print("mask Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec()))
         
-        
-        # cv2.namedWindow('Input image',cv2.WINDOW_NORMAL)
-        # cv2.resizeWindow('Input image', 600, 600)
-        # cv2.imshow("Input image", bounding_box_image)
-        cv2.waitKey(1)
+        ## show detections
+        # cv2.imshow("maskrcnn detections", bb_img)
+        # cv2.waitKey(1)
+        # cv2.imshow("maskrcnn masks", display_image)
+        # cv2.waitKey(1)
 
         # publish the maskrcnn output image
         output_image_msg = ros_numpy.msgify(Image, response_image, encoding='mono8') # data needed for vdo slam
@@ -375,53 +373,42 @@ class MaskRcnnTopic():
 def shutdown_hook():
     cv2.destroyAllWindows()
 
-
-#TODO: options for type of output
-if __name__ == "__main__":
+def main():
     rospy.init_node("mask_rcnn_ros_node")
     rospy.on_shutdown(shutdown_hook)
-    import argparse
-    parser = argparse.ArgumentParser()
 
-    parser.add_argument('--topic', default="0")
-    args = parser.parse_args()
-    topic = args.topic
-
-    ######topic = rospy.get_param('topic')
-    
-    # topic = "/zed2/zed_node/left/image_rect_color"
+    ## topic name to get from param server, otherwise use default value
+    topic = rospy.get_param('topic',"/zed2/zed_node/left/image_rect_color")
 
     input_device = "camera"
     maskrcnn = MaskRcnnRos()
-
+    
     ########USE the image or camera directly###########
     if topic == "0":
         rospy.loginfo("Using video camera as input")
+        ## Windows for displaying results
+        cv2.namedWindow('maskrcnn detections',cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('maskrcnn detections', 600, 600)
+        cv2.namedWindow('maskrcnn masks',cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('maskrcnn masks', 600, 600)
 
-        img = cv2.imread("3.bmp")
-
-        # cam = cv2.VideoCapture(0)
-        # while not rospy.is_shutdown():
-            # start_time = time.time()
-            # ret_val, img = cam.read()
+        cam = cv2.VideoCapture(0)
+        while not rospy.is_shutdown():
+            start_time = time.time()
+            ret_val, img = cam.read()
 
             # response_image, labels, label_indexs = maskrcnn.analyse_image(img)
-        response_image, sematic_objects = maskrcnn.analyse_image(img)
-        display_image = maskrcnn.generate_coloured_mask(response_image)
-        bb_imagg = maskrcnn.generated_bounding_boxes(img, sematic_objects)
-        # test_image = maskrcnn.display_predictions(img)
-        # print("Time: {:.2f} s / img".format(time.time() - start_time))
+            response_image, sematic_objects = maskrcnn.analyse_image(img)
+            display_image = maskrcnn.generate_coloured_mask(response_image)
+            bb_img = maskrcnn.generated_bounding_boxes(img, sematic_objects)
+            
+            print("Time: {:.2f} s / img".format(time.time() - start_time))
         
-        cv2.namedWindow('detections',cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('detections', 600, 600)
-        cv2.imshow("detections", bb_imagg)
-        
-        # cv2.imwrite("3_mask.png",bb_imagg)
-
-        # cv2.imshow("Preds", test_image)
-        # if cv2.waitKey(1) == 27:
-        #     break  # esc to quit
-        cv2.waitKey(0)
+            # cv2.imshow("maskrcnn detections", bb_img)
+            # cv2.imshow("maskrcnn masks", display_image)
+            
+            if cv2.waitKey(1) == 27:
+                break  # esc to quit
         
 
     else:
@@ -429,5 +416,9 @@ if __name__ == "__main__":
         rospy.loginfo("Attempting to subscribe to rostopic {}".format(topic))
         topic_mask_rcnn = MaskRcnnTopic(maskrcnn, topic)
         rospy.spin()
+
+#TODO: options for type of output
+if __name__ == "__main__":
+    main()
 
     

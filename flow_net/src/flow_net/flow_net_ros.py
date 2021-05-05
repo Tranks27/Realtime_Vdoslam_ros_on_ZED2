@@ -228,7 +228,6 @@ class FlowNetTopic():
         flow_image_msg.header.frame_id = "flownet_raw_frame"
         self.pub.publish(flow_image_msg) # for sync
 
-
         cv2.waitKey(1)
         
 
@@ -239,54 +238,40 @@ def main():
     rospy.init_node("flownet_ros_node")
     rospy.on_shutdown(shutdown_hook)
 
-    import argparse
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument('--topic', default="0")
-    args = parser.parse_args()
-    topic = args.topic
-    ### topic = rospy.get_param('topic')
-    
-    
-    # topic = "/zed2/zed_node/left/image_rect_color"
-
+   ## topic name to get from param server,otherwise use default value
+    topic = rospy.get_param('topic',"/zed2/zed_node/left/image_rect_color")
 
     flownet = FlowNetRos()
     is_first = True
 
     if topic == "0":
         input_device = "camera"
-        # cam = cv2.VideoCapture(0)
-        # previous_image = None
-        previous_image = cv2.imread("2.bmp")
-        # while True:
+        cam = cv2.VideoCapture(0)
+        previous_image = None
+        while True:
 
-        # start_time = time.time()
-        # ret_val, img = cam.read()
-        img = cv2.imread("3.bmp")
-        # if is_first:
-        #     previous_image = img
-        #     is_first = False
-        #     continue
-        composite = flownet.analyse_flow(previous_image, img)
-        rgb_flow = flownet.flow2rgb(composite)
-        # print("Time: {:.2f} s / img".format(time.time() - start_time))
-        cv2.imshow("RGB Flow", rgb_flow)
-        # if cv2.waitKey(1) == 27:
-        #     break  # esc to quit
+            start_time = time.time()
+            ret_val, img = cam.read()
+            
+            if is_first:
+                previous_image = img
+                is_first = False
+                continue
 
-        # previous_image = img
-        cv2.waitKey(0)
+            composite = flownet.analyse_flow(previous_image, img)
+            rgb_flow = flownet.flow2rgb(composite)
+            print("Time: {:.2f} s / img".format(time.time() - start_time))
+            cv2.imshow("RGB Flow", rgb_flow)
+            if cv2.waitKey(1) == 27:
+                break  # esc to quit
+
+            previous_image = img
 
     else:
         input_device = "ros_topic"
         rospy.loginfo("Attempting to subscribe to rostopic {}".format(topic))
         topic_flownet = FlowNetTopic(flownet, topic)
         rospy.spin()
-
-
-    cv2.destroyAllWindows()
-
 
 if __name__ == "__main__":
     main()

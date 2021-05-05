@@ -1,0 +1,10 @@
+<!-- Only run flownet and maskrcnn from the respective packages -->
+<launch>
+    <arg name= "topic" default="/zed2/zed_node/left/image_rect_color"/>
+
+    <node pkg="flow_net" type="flow_net_ros.py" name="flownet_ros_node" output="screen"/>
+        <param name="topic" type="str" value="$(arg topic)" />
+    <node pkg="mask_rcnn" type="mask_rcnn_ros.py" name="mask_rcnn_ros_node" output="screen"/>
+        <param name="topic" type="str" value="$(arg topic)" />
+
+</launch>

@@ -1,0 +1,23 @@
+################################
+# Config file for entire realtime vdo slam package.
+# Both the ImagePrerocessing node and RosVdoSlam node will use the
+# params set here (or at least one of them, depending on launch file
+# settings).
+################################
+
+
+# input_camera_topic: /gmsl/A0/image_color
+# input_camera_topic: /read/camera/rgb/raw_image
+# input_depth_camera_topic: ""
+# # input_camera_topic: /camera/rgb/raw_image
+# input_camera_info_topic: /gmsl/A0/camera_info
+
+#options for which analysis to run
+run_flow_net: True
+run_mask_rcnn: True
+run_mono_depth: True
+
+#options for images
+apply_undistortion: False
+
+#launch-prefix="valgrind --tool=memcheck --xtree-memory=full --xml=yes --xml-file='memcheck.realtime_vdo_slam.%p'"
