@@ -52,6 +52,7 @@ void my_Synchronizer::callback(const sensor_msgs::Image::ConstPtr& f1, \
 
 				my_realtime_vdo_slam::VdoInput msg;
 				msg.header.stamp = r1->header.stamp;
+				msg.rgb = *r1;
 				msg.flow = *f1;
 				msg.mask = *m1;
 				msg.depth = *d1;

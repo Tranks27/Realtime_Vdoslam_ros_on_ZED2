@@ -43,6 +43,7 @@ RosVdoSlam::RosVdoSlam(ros::NodeHandle& n):
             ros_viz = std::make_shared<RosVisualizer>(viz_params);
             ros_viz->connect_handler(ros_viz_handler);
         }
+
         //TODO: should get proper previous time
         previous_time = ros::Time::now();
         image_trajectory = cv::Mat::zeros(800, 600, CV_8UC3);
@@ -55,12 +56,14 @@ RosVdoSlam::RosVdoSlam(ros::NodeHandle& n):
         slam_system = construct_slam_system(handle);
 
         vdo_worker_thread = std::thread(&RosVdoSlam::vdo_worker, this);
+        ROS_INFO("RosVdoSlam constructor finished");
     }
 
 RosVdoSlam::~RosVdoSlam(){
     if(vdo_worker_thread.joinable()){
         vdo_worker_thread.join();
     }
+    ROS_INFO("RosVdoSlam destructor finished");
 }
 
 std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHandle& nh){
@@ -78,7 +81,7 @@ std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHan
         std::string calibration_file;
         nh.getParam("/ros_vdo_slam/calibration_file", calibration_file);
 
-        std::string path = ros::package::getPath("realtime_vdo_slam");
+        std::string path = ros::package::getPath("my_realtime_vdo_slam");
         std::string vdo_slam_config_path = path + "/config/" + calibration_file;
 
 
@@ -93,7 +96,7 @@ std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHan
 
         //wait for topic defined in configuration file
         if (use_camera_info_topic) {
-            std::string camera_info_topic = "/camera/camera_info";
+            std::string camera_info_topic = "/zed2/zed_node/left/camera_info";
             // nh.getParam("/ros_vdoslam/input_camera_info_topic", camera_info_topic);
             ROS_INFO_STREAM("Waiting for camera info topic: " << camera_info_topic);
             sensor_msgs::CameraInfoConstPtr info_ptr = ros::topic::waitForMessage<sensor_msgs::CameraInfo>(camera_info_topic);
@@ -119,6 +122,7 @@ std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHan
                 params.cx = cam_info.camera_matrix.at<double>(0,2);
                 params.fy = cam_info.camera_matrix.at<double>(1,1);
                 params.cy = cam_info.camera_matrix.at<double>(1,2);
+
             }
         }
         //load camera params from launch file
@@ -210,7 +214,7 @@ void RosVdoSlam::vdo_input_callback(const my_realtime_vdo_slam::VdoInputConstPtr
     cv_ptr = cv_bridge::toCvCopy(vdo_input->depth, sensor_msgs::image_encodings::MONO16);
     mono_depth_mat = cv_ptr->image;
 
-    //only for midas for now
+    // only for midas for now
 
     SemanticObjectVector semantic_objects = vdo_input->semantic_objects;
 
@@ -218,10 +222,11 @@ void RosVdoSlam::vdo_input_callback(const my_realtime_vdo_slam::VdoInputConstPtr
     std::shared_ptr<VdoSlamInput> input = std::make_shared<VdoSlamInput>(image,scene_flow_mat,
             mono_depth_mat, mask_rcnn_mat, semantic_objects, time_difference, current_time);
 
-    //add the input to the thread queue so we can deal with it later
+    // add the input to the thread queue so we can deal with it later
     // push_vdo_input(input);
     vdo_input_queue.push(input);
     previous_time = current_time;
+    ROS_INFO("vdo_input_callback finished");
 }
 
 void RosVdoSlam::merge_scene_semantics(SlamScenePtr& scene, const std::vector<mask_rcnn::SemanticObject>& semantic_objects) {
@@ -315,47 +320,32 @@ void RosVdoSlam::vdo_worker(){
             ros::Time image_time = input->image_time;
             VDO_SLAM::Time slam_time = VDO_SLAM::Time::create<ros::Time>(image_time);
             ROS_INFO_STREAM(slam_time);
+
+            ROS_INFO_STREAM("I'm in vdo_worker");
+
             cv::Mat original_rgb;
             input->raw.copyTo(original_rgb);
-
+            
             std::pair<SceneType, std::shared_ptr<Scene>> track_result = slam_system->TrackRGBD(input->raw,input->depth,
-                input->flow,
-                input->mask,
-                slam_time,
-                input->time_diff,
-                image_trajectory,global_optim_trigger);
-
-            // std::unique_ptr<VDO_SLAM::Scene> unique_scene =  
+            input->flow,
+            input->mask,
+            slam_time,
+            input->time_diff,
+            image_trajectory,global_optim_trigger);
+            
 
             SceneType scene_type = track_result.first;
             vdo_scene = track_result.second;
 
             std::vector<mask_rcnn::SemanticObject> semantic_objects = input->semantic_objects;
 
-            // ros_scene = std::make_shared<VDO_SLAM::RosScene>(*scene, input->image_time);
             vdo_scene_vector.push_back(vdo_scene);
-
-
-            // if (scene_type == SceneType::OPTIMIZED) {
-            //     ROS_INFO_STREAM("Reconstructing scene!!!!");
-            //     slam_system->construct_scenes(vdo_scene_vector);
-            //     realtime_vdo_slam::VdoSlamMapPtr map_ptr = RosScene::make_map(vdo_scene_vector);
-
-            //     if (map_ptr != nullptr) {
-            //         map_pub.publish(map_ptr);
-            //     }
-            // }
-            
+       
             merge_scene_semantics(vdo_scene, semantic_objects);
-            // ros_scene = std::make_shared<VDO_SLAM::RosScene>(*vdo_scene, input->image_time);
-            // realtime_vdo_slam::VdoSlamScenePtr summary_msg = ros_scene->to_msg();
+            
             my_realtime_vdo_slam::VdoSlamScenePtr summary_msg = vdo_scene->convert<my_realtime_vdo_slam::VdoSlamScenePtr>();
             
             if(summary_msg != nullptr) {
-                // sensor_msgs::Image image_msg;
-                // utils::mat_to_image_msg(image_msg, input->raw, sensor_msgs::image_encodings::RGB8, summary_msg->header);
-                // summary_msg->original_frame = image_msg;
-
                 //we send a std::shared ptr as the visualizer is in the same node so we maximise sending speed
                 //see ros interprocess comms: http://wiki.ros.org/roscpp/Overview/Publishers%20and%20Subscribers#Intraprocess_Publishing
                 scene_pub.publish(summary_msg);

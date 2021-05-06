@@ -13,9 +13,9 @@
 # input_camera_info_topic: /gmsl/A0/camera_info
 
 #options for which analysis to run
-run_flow_net: True
-run_mask_rcnn: True
-run_mono_depth: True
+run_flow_net: False
+run_mask_rcnn: False
+run_mono_depth: False
 
 #options for images
 apply_undistortion: False

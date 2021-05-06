@@ -30,7 +30,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "ros_vdoslam_node");
     ros::NodeHandle n;
     RosVdoSlam ros_vdo_slam(n);
-    ROS_INFO("I run!");
+
     ros::spin();
     
+    return 0;
 }

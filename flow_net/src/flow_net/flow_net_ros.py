@@ -220,13 +220,13 @@ class FlowNetTopic():
         
 
         # publish the flownet output image
-        # output_image_msg = ros_numpy.msgify(Image, composite, encoding='32FC2') # data needed for vdo slam
-        flow_image_msg = ros_numpy.msgify(Image, rgb_flow, encoding='bgr8') # for viz purpose
+        output_image_msg = ros_numpy.msgify(Image, composite, encoding='32FC2') # data needed for vdo slam
+        # flow_image_msg = ros_numpy.msgify(Image, rgb_flow, encoding='bgr8') # for viz purpose
 
         
-        flow_image_msg.header.stamp = start_time #image acquisition time
-        flow_image_msg.header.frame_id = "flownet_raw_frame"
-        self.pub.publish(flow_image_msg) # for sync
+        output_image_msg.header.stamp = start_time #image acquisition time
+        output_image_msg.header.frame_id = "flownet_raw_frame"
+        self.pub.publish(output_image_msg) # for sync
 
         cv2.waitKey(1)
         
