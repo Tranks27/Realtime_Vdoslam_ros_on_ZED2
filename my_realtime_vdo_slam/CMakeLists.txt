@@ -145,9 +145,9 @@ if(catkin_EXPORTED_LIBRARIES)
 		  ${OpenCV_LIBS}
       )
 endif()
+######## tranks addition
 
-
-
+#####################
 
 install(TARGETS ros_vdoslam_node 
    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

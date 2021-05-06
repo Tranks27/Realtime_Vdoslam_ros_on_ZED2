@@ -72,10 +72,12 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>message_runtime</exec_depend>
   <exec_depend>message_generation</exec_depend>
-
+  
 
   <depend>mask_rcnn</depend>
   <depend>vision_msgs</depend>
+  <depend>my_realtime_vdo_slam</depend>
+  
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->

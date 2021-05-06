@@ -1,9 +1,5 @@
-apex/
-geometry2/
-ros_numpy/
-vision_msgs/
 zed-ros-wrapper/
-image_view/
+dataset_metapackage/
 
 devel/
 logs/
@@ -19,3 +15,4 @@ lib/
 **/mask_rcnn/assets
 **/mask_rcnn/*.egg-info
 **/mask_rcnn/data/*
+

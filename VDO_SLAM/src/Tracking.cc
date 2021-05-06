@@ -312,8 +312,9 @@ Tracking::Tracking(Map *pMap, const string &strSettingPath, const eSensor sensor
         cout << "- used detected feature for background scene..." << endl;
 }
 
-std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
-                            const Time& time_, const double &timestamp, cv::Mat &imTraj, const int &nImage)
+std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, 
+                                                                    const cv::Mat &maskSEM, const Time& time_, const double &timestamp, 
+                                                                    cv::Mat &imTraj, const int &nImage)
 {
     // initialize some paras
     StopFrame = nImage-1;
