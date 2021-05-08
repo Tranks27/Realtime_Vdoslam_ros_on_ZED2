@@ -3,6 +3,7 @@ import numpy as np
 import torch
 from torch import nn
 from maskrcnn_benchmark.layers.misc import interpolate
+from memory_profiler import profile
 
 from maskrcnn_benchmark.structures.bounding_box import BoxList
 
@@ -187,7 +188,7 @@ class Masker(object):
         else:
             result = []
 
-        del res
+        # del res
         return result
 
     def __call__(self, masks, boxes):
@@ -205,6 +206,7 @@ class Masker(object):
             result = self.forward_single_image(mask, box)
             if result is not None:
                 results.append(result)
+                del result
         return results
 
 

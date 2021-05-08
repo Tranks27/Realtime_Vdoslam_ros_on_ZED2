@@ -93,9 +93,12 @@ class MidasRos(RosCppCommunicator):
         # uint8_output = (255 * (prediction - depth_min) / (depth_max - depth_min)).astype("uint8")
 
         #image normal is usual depth style imaage where closer objects are white
-        image_normal =  (2**16 * (prediction - depth_min) / (depth_max - depth_min)).astype("uint16")
+        # image_normal =  (2**16 * (prediction - depth_min) / (depth_max - depth_min)).astype("uint16")
+        image_normal = cv2.normalize(src=prediction, dst=None, alpha=0.01, beta=65536, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_16UC1)
 
-        # image_normal = cv2.bitwise_not(image_normal)
+
+        #adding bitwise not makes smaller values (black) closer to the camera
+        image_normal = cv2.bitwise_not(image_normal)
         return image_normal
 
 

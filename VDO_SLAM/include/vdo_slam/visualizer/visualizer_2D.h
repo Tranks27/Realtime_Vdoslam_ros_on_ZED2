@@ -6,6 +6,7 @@
 #include "vdo_slam/visualizer/visualizer_output_base.h"
 #include "vdo_slam/visualizer/colour.h"
 #include "vdo_slam/Scene.h"
+#include "vdo_slam/utils/Types.h"
 
 #include <vdo_slam_g2o/types/se3quat.h>
 #include <opencv2/opencv.hpp>
@@ -21,6 +22,7 @@ namespace VDO_SLAM {
 
     };
 
+
     typedef std::shared_ptr<VisualizerOutput2D> VisualizerOutput2DPtr;
     typedef std::unique_ptr<VisualizerOutput2D> VisualizerOutput2DUniquePtr;
 
@@ -31,8 +33,9 @@ namespace VDO_SLAM {
             Visualizer2D(VisualizerParamsPtr& params_);
 
             VisualizerOutputPtr spinOnce(SlamScenePtr& slam_scene_) override;
+            void shutdown() override;
 
-            void update_gt_odom(g2o::SE3Quat& odom_gt_);
+            void update_gt_odom(Odometry& odom);
 
         protected:
             void update_object_points_display(SlamScenePtr& slam_scene_);
@@ -46,7 +49,7 @@ namespace VDO_SLAM {
             VisualizerOutput2DUniquePtr output_viz_;
             std::mutex display_lock;
 
-            g2o::SE3Quat odom_gt;
+            SensorDataWrapper<Odometry> odom_gt;
 
     };
 }

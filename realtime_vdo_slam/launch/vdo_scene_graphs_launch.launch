@@ -1,0 +1,22 @@
+<launch>
+
+
+    <arg name="bag_name" default="/media/jesse/Segate/Jesse/thesis/datasets/Week21_2018_processed/a0_mid_vdoslam_output.bag"/>
+    <arg name="scene_topic" default="/vdoslam/output/scene"/>
+    <arg name="camera_info_topic" default="/camera/camera_info"/>
+
+    <group ns="data_provider">
+        <param name="bag_name" value="$(arg bag_name)"/>
+        <param name="scene_topic" value="$(arg scene_topic)"/>
+        <param name="camera_info_topic" value="$(arg camera_info_topic)"/>
+    </group>
+
+    <include file="$(find realtime_vdo_slam)/launch/vdo_pipeline.launch" />
+
+	<arg name="config_file" default="realtime_vdo.yaml"/>
+    <rosparam command="load" file="$(find realtime_vdo_slam)/config/$(arg config_file)"/>
+
+    <node pkg="realtime_vdo_slam" type="vdo_slam_scene_graph_node" name="vdo_slam_scene_graph" output="screen">
+    </node>
+
+</launch>

@@ -54,8 +54,6 @@ namespace VDO_SLAM
             Scene(int frame_id_, const Time& time_);
             virtual ~Scene() {}
 
-
-
             void add_scene_object(std::shared_ptr<SceneObject>& _object);
             std::vector<std::shared_ptr<SceneObject>>& get_scene_objects();
             bool update_from_map(const Map* map) override;

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/vdo_slam.dir/src/map/Map.cc.o"
   "CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o"
   "CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o"
+  "CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o"
   "CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o"
   "CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o"
   "CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o"

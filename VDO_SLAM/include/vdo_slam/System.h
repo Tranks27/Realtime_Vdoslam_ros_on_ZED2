@@ -20,6 +20,8 @@
 #include "vdo_slam/map/Map.h"
 #include "vdo_slam/Tracking.h"
 #include "vdo_slam/utils/Types.h"
+#include "vdo_slam/utils/ThreadedQueue.hpp"
+#include "vdo_slam/utils/statistics.h"
 
 
 
@@ -64,6 +66,8 @@ namespace VDO_SLAM {
          */
         bool construct_scenes(std::vector<SlamScenePtr>& scenes, int back_frame_id = -1);
 
+        void shutdown();
+
         
 
         void SaveResultsIJRR2020(const string &filename);
@@ -78,6 +82,11 @@ namespace VDO_SLAM {
 
         // Tracker. It receives a frame and computes the associated camera pose.
         Tracking* mpTracker;
+
+        // ThreadSafeMaxQueue<SlamScenePtr, 
+        //we repeat this in RosVdoSlam so at some point will need to merge into one
+        //after we bring the semantic merging into VDO-SLAM and out of ROS
+        ThreadsafeQueue<SlamScenePtr> slam_scene_queue_;
 
     };
 

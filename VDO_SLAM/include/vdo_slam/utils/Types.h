@@ -49,16 +49,73 @@ namespace VDO_SLAM {
 
             uint32_t sec, nsec;
 
+            /**
+             * @brief Time in seconds
+             * 
+             * @return double 
+             */
+            inline double to_sec() {
+                return static_cast<double>(sec) + static_cast<double>(nsec) / 1e9;
+            };
+             
+            /**
+             * @brief Time in nano-seconds
+             * 
+             * @return double 
+             */
+            inline double to_nsec() {
+                return static_cast<double>(sec) * 1e9 + static_cast<double>(nsec);
+            };
+
             template<class T>
             inline static Time create(T& t);
 
             template<class T>
             inline T convert();
 
+
             friend std::ostream &operator << (std::ostream& output, const Time& object) {
                 output << "sec: " << object.sec << " nsec: " << object.nsec << std::endl;
                 return output;
             }
+
+    };
+
+
+    /**
+    * @brief Input to the tracking system. Semi replicates the 
+    * VdoInput class in ROS but without the semantic objects. This is
+    * only termporary as we will eventually refactor these objects and make them
+    * part of the VDO_SLAM project and indepednant from ROS
+    * 
+    */
+    struct FrameInput {
+            cv::Mat raw, flow, depth, mask;
+            double time_diff;
+            Time image_time;
+        
+    };
+
+    // typedef std::,
+
+
+
+    struct Odometry {
+
+        g2o::SE3Quat pose;
+        g2o::SE3Quat twist;
+        Time time;
+
+        template<class T>
+        inline static Odometry create(T& t);
+
+        template<class T>
+        inline T convert();
+
+        friend std::ostream &operator << (std::ostream& output, const Odometry& object) {
+            output << "\npose: \n" << object.pose << "\ntwist: \n" << object.twist << "\ntime: \n" << object.time << std::endl;
+            return output;
+        }
 
     };
 

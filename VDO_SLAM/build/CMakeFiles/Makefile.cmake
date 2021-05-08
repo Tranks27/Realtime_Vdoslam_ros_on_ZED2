@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.10.2/CMakeSystem.cmake"
   "../cmake/vdo_slam-config.cmake.in"
+  "../cmake/vdo_slam_definitions.h.in"
   "../cmake_modules/FindCSparse.cmake"
   "../cmake_modules/FindEigen3.cmake"
   "../include/vdo_slam/CMakeLists.txt"
@@ -61,6 +62,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "../include/vdo_slam/definitions.h"
   "vdo_slam-config.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "include/vdo_slam/map/CMakeFiles/CMakeDirectoryInformation.cmake"

@@ -27,10 +27,15 @@
 #ifndef G2O_EDGE_SE3_PRIOR_H_
 #define G2O_EDGE_SE3_PRIOR_H_
 
-#include "vertex_se3.h"
-#include "../core/base_unary_edge.h"
-#include "parameter_se3_offset.h"
-#include "g2o_types_slam3d_api.h"
+#include "vdo_slam_g2o/types/vertex_se3.h"
+#include "vdo_slam_g2o/core/base_unary_edge.h"
+#include "vdo_slam_g2o/types/parameter_se3_offset.h"
+#include "vdo_slam_g2o/types/g2o_types_slam3d_api.h"
+
+// #include "vertex_se3.h"
+// #include "../core/base_unary_edge.h"
+// #include "parameter_se3_offset.h"
+// #include "g2o_types_slam3d_api.h"
 namespace g2o {
   /**
    * \brief prior for an SE3 element

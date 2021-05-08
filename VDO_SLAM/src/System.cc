@@ -28,6 +28,7 @@ namespace VDO_SLAM {
         //Create the Map
         mpMap = new Map();
 
+
         //Initialize the Tracking thread
         //(it will live in the main thread of execution, the one that called this constructor)
         mpTracker = new Tracking(mpMap, params);
@@ -65,16 +66,27 @@ namespace VDO_SLAM {
 
 
 
-    std::pair<SceneType, std::shared_ptr<Scene>> System::TrackRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, 
-                                                                const cv::Mat &maskSEM, const Time& time_, const double &timestamp, 
-                                                                cv::Mat &imTraj, const int &nImage) {
+    std::pair<SceneType, std::shared_ptr<Scene>> System::TrackRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
+                            const Time& time_, const double &timestamp, cv::Mat &imTraj, const int &nImage) {
         // if(mSensor!=RGBD)
         // {
         //     cerr << "ERROR: you called TrackRGBD but input sensor was not set to RGBD." << endl;
         //     exit(-1);
         // }
 
-        return mpTracker->GrabImageRGBD(imRGB,imD,imFlow,maskSEM, time_,timestamp,imTraj,nImage);
+        std::pair<SceneType, std::shared_ptr<Scene>> result_pair = mpTracker->GrabImageRGBD(imRGB,imD,imFlow,maskSEM, time_,timestamp,imTraj,nImage);
+        slam_scene_queue_.push(result_pair.second);
+        return result_pair;
+
+    }
+
+    void System::shutdown() {
+
+        // if(satistics_) {
+        //     satistics_->writeStatistics();
+        // }
+        VDO_INFO_MSG("Shutting down SLAM system");
+
     }
 
 

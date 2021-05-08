@@ -19,6 +19,13 @@ else()
    message("VDO_DEBUG flag set to False.")
 endif()
 
+set(__VDO_SLAM_DIR__ "${CMAKE_SOURCE_DIR}/")
+message("Setting VDO_SLAM_DIR: ${CMAKE_SOURCE_DIR}/")
+
+configure_file(${CMAKE_CURRENT_LIST_DIR}/cmake/vdo_slam_definitions.h.in 
+   ${CMAKE_CURRENT_LIST_DIR}/include/vdo_slam/definitions.h)
+
+
 
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 
@@ -149,6 +156,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
    ${EIGEN3_LIBS}
    ${CSPARSE_LIBRARY}
    ${vdo_slam_g2o_LIB_DIRS}
+   yaml-cpp
    -lvdo_slam_g2o
 )
 

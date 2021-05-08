@@ -18,7 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib_msgs
   mask_rcnn
   vision_msgs
-  my_realtime_vdo_slam
+  realtime_vdo_slam
 )
 find_package(OpenCV)
 
@@ -74,7 +74,7 @@ catkin_package(
   message_runtime
   mask_rcnn
   vision_msgs
-  my_realtime_vdo_slam
+  realtime_vdo_slam
 #  DEPENDS system_lib
 )
 

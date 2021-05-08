@@ -1,0 +1,166 @@
+<launch>
+
+  <include file="$(find realtime_vdo_slam)/launch/vdo_pipeline.launch" />
+
+  <!-- If True expects topics directly from the vdo_slam_preprocessing node. This results in a remapping -->
+  <arg name="online" default="true" />
+
+   <!-- If True VDO will load the System parameters from the calibtration file in the config folder
+   If False, will use the calibration params defined here and the specified camera info topic  -->
+  <arg name="use_calibration_file" default="false" />
+
+  <!-- If true, the interface will overwrite the messages times to the time recieved 
+  and not their header time. This is useful becuase the bagfiles used for testing
+  are in message order but not synchronized by timestamp--> -->
+  <arg name="use_ros_time" default="false" />
+
+
+  <!-- If true, and use calibration file is false, the system will get the camera intrinsics
+  from the camera info topic defined in the config file. If False, the camera information
+  properties must be defined here (K, D etc)-->
+  <arg name="use_camera_info_topic" default="true" />
+
+  <!-- System params for VDO SLAM. Used if  use_calibtration_file is true-->
+	<arg name="calibration_file" default="vdo_config.yaml"/>
+
+  <!-- Config file for the realtime vdo slam package. Used to define input camera and camer info topics
+  for both the ros_vdoslam and image_preprocessing node -->
+  <arg name="config_file" default="realtime_vdo.yaml"/>
+
+  <!--  MONOCULAR=0, STEREO=1, RGBD=2-->
+  <arg name="sensor_mode" default="2"/>
+
+  <!--If tru the ros visualizer will be created-->
+  <arg name="use_viz" default="true"/>
+
+  <!-- the rate (Hz) the viz should run at -->
+  <arg name="viz_rate" default="20"/>
+
+  <!--After how many frames to run global optimization -->
+  <arg name="optimization_trigger_frame" default="-1"/>
+
+  <!--VDO SLAM params. Used if use_calibration_file is false-->
+  <arg name="fx" default="392.3105540020543"/>
+  <arg name="fy" default="467.96648747036744"/>
+  <arg name="cx" default="320.7584729627735"/>
+  <arg name="cy" default="243.46670267884215"/>
+
+
+   <!-- <arg name="fx" default="427.7050099835501"/>
+  <arg name="fy" default="510.1866599144113"/>
+  <arg name="cx" default="323.5111875590873"/>
+  <arg name="cy" default="250.9863176952058"/> -->
+
+  <arg name="width" default="640"/>
+  <arg name="height" default="480"/>
+  <arg name="fps" default="12"/>
+
+  <!-- <arg name="bf" default="387.5744"/> -->
+  <arg name="bf" default="300"/>
+
+  <arg name="RGB" default="0"/>
+  <arg name="data_code" default="2"/>
+
+  <!-- <arg name="depth_map_factor" default="2200"/> -->
+  <arg name="depth_map_factor" default="700"/>
+
+
+  <arg name="thdepth_bg" default="30"/>
+  <arg name="thdepth_obj" default="45"/>
+  <arg name="max_track_points_bg" default="1700"/>
+  <arg name="max_track_points_obj" default="800"/>
+
+  <!-- <arg name="sf_mg_thresh" default="0.05"/>
+  <arg name="sf_ds_thresh" default="0.99"/> -->
+
+  <!-- <arg name="sf_mg_thresh" default="0.12"/> -->
+   <arg name="sf_mg_thresh" default="0.12"/>
+  <arg name="sf_ds_thresh" default="0.5"/>
+
+
+
+  <arg name="window_size" default="5"/>
+  <arg name="overlap_size" default="25"/>
+
+  <arg name="use_sample_feature" default="0"/>
+
+  <arg name="n_features" default="2500"/>
+  <arg name="scale_factor" default="1.2"/>
+  <arg name="n_levels" default="8"/>
+  <arg name="ini_th_fast" default="20"/>
+  <arg name="min_th_fast" default="7"/>
+
+
+
+  <node pkg="realtime_vdo_slam" type="ros_vdoslam_node" name="ros_vdo_slam" output="screen">
+
+    <param name="online" value="$(arg online)" />
+    <!--  MONOCULAR=0, STEREO=1, RGBD=2-->
+    <param name="sensor_mode" value="$(arg sensor_mode)" />
+
+    <param name="optimization_trigger_frame" value="$(arg optimization_trigger_frame)" />
+
+
+    <!-- Remap if needed from vdo generated topics to vdo_slam expected topics. These are the same as the ImageProcessing node. Remapping used 
+    if online -->
+    <remap to="/vdoslam/input/camera/rgb/image_raw" from="/camera/rgb/image_raw" if="$(arg online)"/>
+    <remap to="/vdoslam/input/camera/mask/image_raw" from="/camera/mask/image_raw" if="$(arg online)"/>
+    <remap to="/vdoslam/input/camera/flow/image_raw" from="/camera/flow/image_raw" if="$(arg online)"/>
+    <remap to="/vdoslam/input/camera/depth/image_raw" from="/camera/depth/image_raw" if="$(arg online)"/>
+
+    <remap from="/vdoslam/input/all" to="/camera/all" unless="$(arg online)"/>
+
+
+    <!-- <remap to="/camera/camera_info" from="/camera/camera_info" if="$(arg online)"/> -->
+
+    <param name="use_calibration_file" value="$(arg use_calibration_file)"/>
+
+    <!-- System params for VDO SLAM. Used if  use_calibration_file is true-->
+    <param name="calibration_file" value="$(arg calibration_file)"/>
+    <!-- <rosparam command="load" file="$(find realtime_vdo_slam)/config/$(arg calibtration_file)" if="$(arg use_calibtration_file)"/> -->
+
+    <!--Config file for the realtime_vdo_slam package -->
+    <param name="config_file" value="$(arg config_file)"/>
+    <rosparam command="load" file="$(find realtime_vdo_slam)/config/$(arg config_file)"/>
+
+    <param name="use_viz" value="$(arg use_viz)"/>
+    <param name="viz_rate" value="$(arg viz_rate)"/>
+
+    <param name="use_ros_time" value="$(arg use_ros_time)" />
+
+    <!--only check if we load the information from this launc file. Wait for camera_info msg
+    on topic defined in config file. Else, use the camera info defined here. -->
+    <param name="use_camera_info_topic" value="$(arg use_camera_info_topic)" unless="$(arg use_calibration_file)"/>
+
+
+    <!-- VDO SLAM params. Used if use_calibration_file is false -->
+    <param name="fx" value="$(arg fx)" unless="$(arg use_calibration_file)"/>
+    <param name="fy" value="$(arg fy)" unless="$(arg use_calibration_file)"/>
+    <param name="cx" value="$(arg cx)" unless="$(arg use_calibration_file)"/>
+    <param name="cy" value="$(arg cy)" unless="$(arg use_calibration_file)"/>
+    <param name="width" value="$(arg width)" unless="$(arg use_calibration_file)"/>
+    <param name="height" value="$(arg height)" unless="$(arg use_calibration_file)"/>
+    <param name="fps" value="$(arg fps)" unless="$(arg use_calibration_file)"/>
+    <param name="bf" value="$(arg bf)" unless="$(arg use_calibration_file)"/>
+    <param name="RGB" value="$(arg RGB)" unless="$(arg use_calibration_file)"/>
+    <param name="data_code" value="$(arg data_code)" unless="$(arg use_calibration_file)"/>
+    <param name="depth_map_factor" value="$(arg depth_map_factor)" unless="$(arg use_calibration_file)"/>
+    <param name="thdepth_bg" value="$(arg thdepth_bg)" unless="$(arg use_calibration_file)"/>
+    <param name="thdepth_obj" value="$(arg thdepth_obj)" unless="$(arg use_calibration_file)"/>
+    <param name="max_track_points_bg" value="$(arg max_track_points_bg)" unless="$(arg use_calibration_file)"/>
+    <param name="max_track_points_obj" value="$(arg max_track_points_obj)" unless="$(arg use_calibration_file)"/>
+    <param name="sf_mg_thresh" value="$(arg sf_mg_thresh)" unless="$(arg use_calibration_file)"/>
+    <param name="sf_ds_thresh" value="$(arg sf_ds_thresh)" unless="$(arg use_calibration_file)"/>
+    <param name="window_size" value="$(arg window_size)" unless="$(arg use_calibration_file)"/>
+    <param name="overlap_size" value="$(arg overlap_size)" unless="$(arg use_calibration_file)"/>
+    <param name="use_sample_feature" value="$(arg use_sample_feature)" unless="$(arg use_calibration_file)"/>
+    <param name="n_features" value="$(arg n_features)" unless="$(arg use_calibration_file)"/>
+    <param name="scale_factor" value="$(arg scale_factor)" unless="$(arg use_calibration_file)"/>
+    <param name="n_levels" value="$(arg n_levels)" unless="$(arg use_calibration_file)"/>
+    <param name="ini_th_fast" value="$(arg ini_th_fast)" unless="$(arg use_calibration_file)"/>
+    <param name="min_th_fast" value="$(arg min_th_fast)" unless="$(arg use_calibration_file)"/>
+
+
+
+  </node>
+</launch>

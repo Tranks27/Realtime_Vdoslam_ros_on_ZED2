@@ -82,6 +82,10 @@ namespace VDO_SLAM {
         int ini_th_fast;
         int min_th_fast;
 
+
+        //statistic params
+        bool shoud_write; //if true will write to file in output_results/
+
     };
 
     typedef const std::shared_ptr<VdoParams> VdoParamsConstPtr;

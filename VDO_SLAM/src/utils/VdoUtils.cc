@@ -26,6 +26,21 @@ namespace VDO_SLAM {
 
         }
 
+        std::string sensor_to_string(const eSensor& sensor) {
+            if (sensor == MONOCULAR) {
+                return "MONOCULAR";
+            }
+            else if (sensor == STEREO) {
+                return "STEREO";
+            }
+            else if (sensor == RGBD) {
+                return "RGBD";
+            }
+            else {
+                return "INVALID";
+            }
+        }
+
         cv::Mat homogenous_identity() {
 
             cv::Mat identity = (cv::Mat_<float>(4,4) << 1, 0, 0, 0,

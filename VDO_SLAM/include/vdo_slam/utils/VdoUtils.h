@@ -32,6 +32,14 @@ namespace VDO_SLAM {
         eSensor param_to_sensor(int sensor);
 
         /**
+         * @brief Converts the sensor type to a string for display
+         * 
+         * @param sensor 
+         * @return std::string 
+         */
+        std::string sensor_to_string(const eSensor& sensor);
+
+        /**
          * @brief Constructs a 4x4 matrix in the homogenous form (R|t) where R
          * is the identity matrix and t is a 0 column vector
          * 

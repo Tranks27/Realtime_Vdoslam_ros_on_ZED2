@@ -101,6 +101,10 @@ vdo_slam/Tracking.h
 ../include/vdo_slam/vdo_slam/Tracking.h
 vdo_slam/utils/Types.h
 ../include/vdo_slam/vdo_slam/utils/Types.h
+vdo_slam/utils/ThreadedQueue.hpp
+../include/vdo_slam/vdo_slam/utils/ThreadedQueue.hpp
+vdo_slam/utils/statistics.h
+../include/vdo_slam/vdo_slam/utils/statistics.h
 
 ../include/vdo_slam/Tracking.h
 opencv2/core/core.hpp
@@ -125,10 +129,14 @@ vdo_slam/Params.h
 ../include/vdo_slam/vdo_slam/Params.h
 vdo_slam/visualizer/colour.h
 ../include/vdo_slam/vdo_slam/visualizer/colour.h
+vdo_slam/utils/statistics.h
+../include/vdo_slam/vdo_slam/utils/statistics.h
 memory
 -
 mutex
 -
+
+../include/vdo_slam/definitions.h
 
 ../include/vdo_slam/map/Map.h
 opencv2/core/core.hpp
@@ -140,6 +148,24 @@ vdo_slam/map/MapObject.h
 
 ../include/vdo_slam/map/MapObject.h
 memory
+-
+
+../include/vdo_slam/utils/ThreadedQueue.hpp
+atomic
+-
+chrono
+-
+condition_variable
+-
+memory
+-
+mutex
+-
+queue
+-
+string
+-
+utility
 -
 
 ../include/vdo_slam/utils/Types.h
@@ -162,6 +188,28 @@ vdo_slam/Macros.h
 vdo_slam/utils/Types.h
 ../include/vdo_slam/utils/vdo_slam/utils/Types.h
 memory
+-
+
+../include/vdo_slam/utils/seralization.h
+yaml-cpp/yaml.h
+-
+vdo_slam/Params.h
+../include/vdo_slam/utils/vdo_slam/Params.h
+vdo_slam/Scene.h
+../include/vdo_slam/utils/vdo_slam/Scene.h
+vdo_slam/utils/VdoUtils.h
+../include/vdo_slam/utils/vdo_slam/utils/VdoUtils.h
+
+../include/vdo_slam/utils/statistics.h
+vdo_slam/Params.h
+../include/vdo_slam/utils/vdo_slam/Params.h
+vdo_slam/Scene.h
+../include/vdo_slam/utils/vdo_slam/Scene.h
+vdo_slam/utils/VdoUtils.h
+../include/vdo_slam/utils/vdo_slam/utils/VdoUtils.h
+vdo_slam/definitions.h
+../include/vdo_slam/utils/vdo_slam/definitions.h
+yaml-cpp/yaml.h
 -
 
 ../include/vdo_slam/visualizer/colour-map.h
@@ -197,6 +245,8 @@ vdo_slam/visualizer/colour.h
 ../include/vdo_slam/visualizer/vdo_slam/visualizer/colour.h
 vdo_slam/Scene.h
 ../include/vdo_slam/visualizer/vdo_slam/Scene.h
+vdo_slam/utils/Types.h
+../include/vdo_slam/visualizer/vdo_slam/utils/Types.h
 vdo_slam_g2o/types/se3quat.h
 -
 opencv2/opencv.hpp
@@ -211,9 +261,15 @@ vdo_slam/visualizer/visualizer_output_base.h
 ../include/vdo_slam/visualizer/vdo_slam/visualizer/visualizer_output_base.h
 vdo_slam/visualizer/colour.h
 ../include/vdo_slam/visualizer/vdo_slam/visualizer/colour.h
+vdo_slam/utils/VdoUtils.h
+../include/vdo_slam/visualizer/vdo_slam/utils/VdoUtils.h
+vdo_slam/utils/statistics.h
+../include/vdo_slam/visualizer/vdo_slam/utils/statistics.h
 vdo_slam/Scene.h
 ../include/vdo_slam/visualizer/vdo_slam/Scene.h
 functional
+-
+memory
 -
 
 ../include/vdo_slam/visualizer/visualizer_output_base.h
@@ -226,11 +282,11 @@ memory
 string
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/Converter.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Converter.cc
 vdo_slam/Converter.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Converter.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Converter.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/Frame.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Frame.cc
 opencv2/xfeatures2d.hpp
 -
 opencv2/core/core.hpp
@@ -240,11 +296,11 @@ opencv2/highgui/highgui.hpp
 opencv2/flann.hpp
 -
 vdo_slam/Frame.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Frame.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Frame.h
 vdo_slam/Converter.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Converter.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Converter.h
 vdo_slam/Macros.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Macros.h
 thread
 -
 time.h
@@ -252,7 +308,7 @@ time.h
 chrono
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/ORBextractor.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/ORBextractor.cc
 opencv2/core/core.hpp
 -
 opencv2/highgui/highgui.hpp
@@ -268,11 +324,11 @@ time.h
 iostream
 -
 vdo_slam/ORBextractor.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/ORBextractor.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/ORBextractor.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/Optimizer.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Optimizer.cc
 vdo_slam/Optimizer.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Optimizer.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Optimizer.h
 vdo_slam_g2o/core/block_solver.h
 -
 vdo_slam_g2o/core/optimization_algorithm_levenberg.h
@@ -312,39 +368,39 @@ vdo_slam_g2o/solvers/linear_solver_csparse.h
 Eigen/StdVector
 -
 vdo_slam/Converter.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Converter.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Converter.h
 mutex
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/Scene.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Scene.cc
 vdo_slam/Scene.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Scene.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Scene.h
 vdo_slam/Converter.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Converter.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Converter.h
 vdo_slam/Macros.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Macros.h
 vdo_slam/utils/VdoUtils.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/utils/VdoUtils.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/utils/VdoUtils.h
 vdo_slam/utils/Types.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/utils/Types.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/utils/Types.h
 vdo_slam/map/Map.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/map/Map.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/map/Map.h
 vdo_slam/map/MapObject.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/map/MapObject.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/map/MapObject.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/System.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/System.cc
 vdo_slam/Scene.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Scene.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Scene.h
 vdo_slam/System.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/System.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/System.h
 vdo_slam/Tracking.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Tracking.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Tracking.h
 vdo_slam/Macros.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Macros.h
 vdo_slam/utils/Types.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/utils/Types.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/utils/Types.h
 vdo_slam/utils/VdoUtils.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/utils/VdoUtils.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/utils/VdoUtils.h
 thread
 -
 iomanip
@@ -352,7 +408,7 @@ iomanip
 unistd.h
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/Tracking.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Tracking.cc
 eigen3/Eigen/Core
 -
 opencv2/core/core.hpp
@@ -386,61 +442,75 @@ map
 random
 -
 vdo_slam/Tracking.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Tracking.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Tracking.h
 vdo_slam/System.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/System.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/System.h
 vdo_slam/Macros.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Macros.h
 vdo_slam/Converter.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Converter.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Converter.h
 vdo_slam/utils/VdoUtils.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/utils/VdoUtils.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/utils/VdoUtils.h
 vdo_slam/utils/Types.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/utils/Types.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/utils/Types.h
 vdo_slam/Optimizer.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/vdo_slam/Optimizer.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/vdo_slam/Optimizer.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/map/Map.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map/Map.cc
 iostream
 -
 vdo_slam/map/Map.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/map/vdo_slam/map/Map.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map/vdo_slam/map/Map.h
 vdo_slam/map/MapObject.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/map/vdo_slam/map/MapObject.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map/vdo_slam/map/MapObject.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/Types.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/Types.cc
 vdo_slam/utils/Types.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/vdo_slam/utils/Types.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/utils/Types.h
 vdo_slam/utils/VdoUtils.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/vdo_slam/utils/VdoUtils.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/utils/VdoUtils.h
 vdo_slam/Macros.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/Macros.h
 vdo_slam/Converter.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/vdo_slam/Converter.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/Converter.h
 opencv2/opencv.hpp
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/VdoUtils.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/VdoUtils.cc
 vdo_slam/utils/VdoUtils.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/utils/vdo_slam/utils/VdoUtils.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/utils/VdoUtils.h
 opencv2/opencv.hpp
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/colour.cc
-vdo_slam/visualizer/colour.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/visualizer/colour.h
-vdo_slam/visualizer/colour-map.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/visualizer/colour-map.h
-vdo_slam/visualizer/semantics_loader.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/visualizer/semantics_loader.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/statistics.cc
+vdo_slam/utils/statistics.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/utils/statistics.h
+vdo_slam/utils/seralization.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/utils/seralization.h
 vdo_slam/Macros.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/vdo_slam/Macros.h
+iostream
+-
+string
+-
+sstream
+-
+
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/colour.cc
+vdo_slam/visualizer/colour.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/visualizer/colour.h
+vdo_slam/visualizer/colour-map.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/visualizer/colour-map.h
+vdo_slam/visualizer/semantics_loader.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/visualizer/semantics_loader.h
+vdo_slam/Macros.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/Macros.h
 opencv2/viz/types.hpp
 -
 fstream
 -
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/semantics_loader.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/semantics_loader.cc
 iostream
 -
 sstream
@@ -450,17 +520,19 @@ string
 vector
 -
 vdo_slam/visualizer/semantics_loader.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/visualizer/semantics_loader.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/visualizer/semantics_loader.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/visualization_base.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualization_base.cc
 vdo_slam/visualizer/visualizer_base.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/visualizer/visualizer_base.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/visualizer/visualizer_base.h
+vdo_slam/utils/statistics.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/utils/statistics.h
 
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/visualizer_2D.cc
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualizer_2D.cc
 vdo_slam/visualizer/visualizer_2D.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/visualizer/visualizer_2D.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/visualizer/visualizer_2D.h
 vdo_slam/utils/VdoUtils.h
-/home/tranks/testing_ws/src/VDO_SLAM/src/visualizer/vdo_slam/utils/VdoUtils.h
+/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/vdo_slam/utils/VdoUtils.h
 
 /usr/include/suitesparse/SuiteSparse_config.h
 limits.h
@@ -3799,14 +3871,14 @@ vdo_slam_g2o/types/g2o_types_slam3d_api.h
 /usr/local/include/vdo_slam_g2o/types/vdo_slam_g2o/types/g2o_types_slam3d_api.h
 
 /usr/local/include/vdo_slam_g2o/types/edge_se3_prior.h
-vertex_se3.h
-/usr/local/include/vdo_slam_g2o/types/vertex_se3.h
-../core/base_unary_edge.h
-/usr/local/include/vdo_slam_g2o/core/base_unary_edge.h
-parameter_se3_offset.h
-/usr/local/include/vdo_slam_g2o/types/parameter_se3_offset.h
-g2o_types_slam3d_api.h
-/usr/local/include/vdo_slam_g2o/types/g2o_types_slam3d_api.h
+vdo_slam_g2o/types/vertex_se3.h
+/usr/local/include/vdo_slam_g2o/types/vdo_slam_g2o/types/vertex_se3.h
+vdo_slam_g2o/core/base_unary_edge.h
+/usr/local/include/vdo_slam_g2o/types/vdo_slam_g2o/core/base_unary_edge.h
+vdo_slam_g2o/types/parameter_se3_offset.h
+/usr/local/include/vdo_slam_g2o/types/vdo_slam_g2o/types/parameter_se3_offset.h
+vdo_slam_g2o/types/g2o_types_slam3d_api.h
+/usr/local/include/vdo_slam_g2o/types/vdo_slam_g2o/types/g2o_types_slam3d_api.h
 
 /usr/local/include/vdo_slam_g2o/types/edge_xyz_prior.h
 vdo_slam_g2o/core/base_unary_edge.h

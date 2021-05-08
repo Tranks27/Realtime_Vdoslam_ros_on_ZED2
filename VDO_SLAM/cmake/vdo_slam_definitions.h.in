@@ -1,0 +1,9 @@
+#ifndef VDOSLAM_CONFIG_HPP
+#define VDOSLAM_CONFIG_HPP
+
+
+// @GLOBAL_HEADER_CONTENT@
+
+#define __VDO_SLAM_DIR__ "@__VDO_SLAM_DIR__@"
+
+#endif

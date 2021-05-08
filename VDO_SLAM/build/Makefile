@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tranks/testing_ws/src/VDO_SLAM
+CMAKE_SOURCE_DIR = /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tranks/testing_ws/src/VDO_SLAM/build
+CMAKE_BINARY_DIR = /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -439,6 +439,33 @@ src/utils/VdoUtils.cc.s:
 	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.s
 .PHONY : src/utils/VdoUtils.cc.s
 
+src/utils/statistics.o: src/utils/statistics.cc.o
+
+.PHONY : src/utils/statistics.o
+
+# target to build an object file
+src/utils/statistics.cc.o:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o
+.PHONY : src/utils/statistics.cc.o
+
+src/utils/statistics.i: src/utils/statistics.cc.i
+
+.PHONY : src/utils/statistics.i
+
+# target to preprocess a source file
+src/utils/statistics.cc.i:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.i
+.PHONY : src/utils/statistics.cc.i
+
+src/utils/statistics.s: src/utils/statistics.cc.s
+
+.PHONY : src/utils/statistics.s
+
+# target to generate assembly for a file
+src/utils/statistics.cc.s:
+	$(MAKE) -f CMakeFiles/vdo_slam.dir/build.make CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.s
+.PHONY : src/utils/statistics.cc.s
+
 src/visualizer/colour.o: src/visualizer/colour.cc.o
 
 .PHONY : src/visualizer/colour.o
@@ -590,6 +617,9 @@ help:
 	@echo "... src/utils/VdoUtils.o"
 	@echo "... src/utils/VdoUtils.i"
 	@echo "... src/utils/VdoUtils.s"
+	@echo "... src/utils/statistics.o"
+	@echo "... src/utils/statistics.i"
+	@echo "... src/utils/statistics.s"
 	@echo "... src/visualizer/colour.o"
 	@echo "... src/visualizer/colour.i"
 	@echo "... src/visualizer/colour.s"

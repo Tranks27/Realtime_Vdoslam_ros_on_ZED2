@@ -102,6 +102,9 @@ class MaskRcnnRos(RosCppCommunicator):
 
 
             del response_image
+            del semantic_objects
+            del display_image
+
             return response
 
 
@@ -127,7 +130,7 @@ class MaskRcnnRos(RosCppCommunicator):
         #note: due to changes in predictions.py this will no longer work
         return self.coco_demo.run_on_opencv_image(image)
 
-    @torch.no_grad()
+    # @torch.no_grad()
     def analyse_image(self, image):
         """[Analyses an image using mask rcnn. Creates a semantic instance labelled greyscale image
         and a list of mask_rcnn.SemanticObjects which represent each detected object in the frame]
@@ -138,6 +141,7 @@ class MaskRcnnRos(RosCppCommunicator):
         Returns:
             [np.ndarry, List[SemanticObjects]]: [Semantic instance image, list of detected objects in the scene]
         """
+        torch.cuda.empty_cache()
         predictions = self.coco_demo.compute_prediction(image)
         top_predictions = self.coco_demo.select_top_predictions(predictions)
 
@@ -175,6 +179,8 @@ class MaskRcnnRos(RosCppCommunicator):
 
         semantic_objects = []
 
+        index = 1
+
         for mask, semantic_index, semantic_label, bounding_box in zip(masks, label_indexs, labels, boxes):
             instance_label = instance_track[semantic_index]
 
@@ -200,7 +206,7 @@ class MaskRcnnRos(RosCppCommunicator):
             semantic_object.label = semantic_label 
             semantic_object.label_index = semantic_index
             semantic_object.semantic_instance = instance_label
-            semantic_object.tracking_label = -1 #inialise with -1
+            # semantic_object.tracking_label = -1 #inialise with -1
 
             semantic_objects.append(semantic_object)
 
@@ -210,52 +216,6 @@ class MaskRcnnRos(RosCppCommunicator):
         composite = blank_mask
 
         return composite, semantic_objects
-
-    # def create_pixel_masks(self, image, predictions):
-    #     """
-    #     Adds the instances contours for each predicted object.
-    #     Each label has a different color.
-
-    #     Arguments:
-    #         image (np.ndarray): an image as returned by OpenCV
-    #         predictions (BoxList): the result of the computation by the model.
-    #             It should contain the field `mask` and `labels`.
-    #     """
-    #     width = image.shape[0]
-    #     height = image.shape[1]
-    #     blank_mask = np.zeros((width, height),np.uint8)
-
-    #     if predictions is None:
-    #         return blank_mask, [], []
-    #     masks = predictions.get_field("mask")
-    #     label_indexs = predictions.get_field("labels").numpy()
-    #     labels = self.convert_label_index_to_string(label_indexs)
-
-    #     # colours = self.get_greyscale_colours(label_indexs)
-        
-    #     if masks.ndim < 3:
-    #         masks = np.expand_dims(masks, axis=0)
-    #         masks = np.expand_dims(masks, axis=0)
-
-    #     #track semantic labels in this map
-    #     # we want unique instance-level semantic labelling per class (so car: [1,2], person: [1,2])
-    #     instance_track = {}
-
-    #     for label_index in label_indexs:
-    #         # there is at least one of these objects in the list
-    #         instance_track[label_index] = 1
-
-    #     for mask, semantic_index in zip(masks, label_indexs):
-    #         label = instance_track[semantic_index]
-    #         thresh = mask[0, :, :].astype(np.uint8) * label
-    #         blank_mask += thresh
-    #         instance_track[semantic_index] += 1
-
-
-    #     composite = blank_mask
-
-
-    #     return composite, labels, label_indexs
 
     def convert_label_index_to_string(self, labels):
         return [self.coco_demo.CATEGORIES[i] for i in labels]
@@ -320,6 +280,9 @@ class MaskRcnnRos(RosCppCommunicator):
         coloured_img = coloured_img.astype('uint8')
         return coloured_img
 
+    # def overlay_mask(self, mask, rgb_image):
+    #     mask_alpha = cv2.cvtColor(mask_alpha, cv2.COLOR_RGB2RGBA)
+    #     mask_alpha[:, :, 3] = alpha_data
 
 
 
@@ -330,7 +293,7 @@ class MaskRcnnTopic():
 
     def __init__(self, mask_rcnn, topic):
         self.mask_rcnn = mask_rcnn
-        # self.image = None
+        self.image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
         #for sync
         self.pub = rospy.Publisher("/maskrcnn/maskrcnn_raw", Image, queue_size=5)

@@ -76,7 +76,7 @@
 
   <depend>mask_rcnn</depend>
   <depend>vision_msgs</depend>
-  <depend>my_realtime_vdo_slam</depend>
+  <depend>realtime_vdo_slam</depend>
   
   <!-- The export tag contains other, unspecified, tags -->
   <export>

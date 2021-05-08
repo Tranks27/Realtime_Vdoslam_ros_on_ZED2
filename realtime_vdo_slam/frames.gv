@@ -1,0 +1,25 @@
+digraph G {
+"vdo_map" -> "vdo_odom"[label="Broadcaster: /ros_vdoslam\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1614571547.386 sec old)\nBuffer length: 0.000 sec\n"];
+"vdo_map" -> "odom_offset"[label="Broadcaster: /ros_vdoslam\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1614571547.386 sec old)\nBuffer length: 0.000 sec\n"];
+"vdo_odom" -> "vdo_camera_link"[label="Broadcaster: /ros_vdoslam\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1614571547.386 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /play_1614571507366692731\nAverage rate: 200.521 Hz\nMost recent transform: 1533015562.020 ( 81555985.366 sec old)\nBuffer length: 3.596 sec\n"];
+"map" -> "odom"[label="Broadcaster: /play_1614571507366692731\nAverage rate: 200.799 Hz\nMost recent transform: 1533015562.020 ( 81555985.366 sec old)\nBuffer length: 3.596 sec\n"];
+"base_link" -> "base_link_horizon"[label="Broadcaster: /play_1614571507366692731\nAverage rate: 100.400 Hz\nMost recent transform: 1533015562.020 ( 81555985.366 sec old)\nBuffer length: 3.596 sec\n"];
+"base_footprint" -> "base_footprint_horizon"[label="Broadcaster: /play_1614571507366692731\nAverage rate: 100.400 Hz\nMost recent transform: 1533015562.020 ( 81555985.366 sec old)\nBuffer length: 3.596 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1614571547.386"[ shape=plaintext ] ;
+ }->"vdo_map";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1614571547.386"[ shape=plaintext ] ;
+ }->"gmsl_right_link";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1614571547.386"[ shape=plaintext ] ;
+ }->"map";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1614571547.386"[ shape=plaintext ] ;
+ }->"base_footprint";
+}

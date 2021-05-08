@@ -15,7 +15,7 @@
 
 #include "synchronizer/Sync.h"
 #include "synchronizer/SemanticObjectArray.h"
-#include <my_realtime_vdo_slam/VdoInput.h>
+#include <realtime_vdo_slam/VdoInput.h>
 #include <std_msgs/String.h>
 
 using namespace message_filters;

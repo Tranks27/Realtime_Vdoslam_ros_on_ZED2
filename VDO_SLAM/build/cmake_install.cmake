@@ -1,4 +1,4 @@
-# Install script for directory: /home/tranks/testing_ws/src/VDO_SLAM
+# Install script for directory: /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvdo_slam.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/tranks/testing_ws/src/VDO_SLAM/build/libvdo_slam.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/libvdo_slam.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvdo_slam.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvdo_slam.so")
     file(RPATH_CHANGE
@@ -58,14 +58,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/vdo_slam" TYPE DIRECTORY FILES "/home/tranks/testing_ws/src/VDO_SLAM/include/vdo_slam/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/[^/]*\\.hpp$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/vdo_slam" TYPE DIRECTORY FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/include/vdo_slam/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/[^/]*\\.hpp$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam/vdo_slam-config.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam/vdo_slam-config.cmake"
-         "/home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles/Export/lib/cmake/vdo_slam/vdo_slam-config.cmake")
+         "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles/Export/lib/cmake/vdo_slam/vdo_slam-config.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam/vdo_slam-config-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -74,26 +74,26 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam" TYPE FILE FILES "/home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles/Export/lib/cmake/vdo_slam/vdo_slam-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles/Export/lib/cmake/vdo_slam/vdo_slam-config.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam" TYPE FILE FILES "/home/tranks/testing_ws/src/VDO_SLAM/build/CMakeFiles/Export/lib/cmake/vdo_slam/vdo_slam-config-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles/Export/lib/cmake/vdo_slam/vdo_slam-config-release.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam" TYPE FILE FILES "/home/tranks/testing_ws/src/VDO_SLAM/build/vdo_slam-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/vdo_slam-config.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/include/vdo_slam/map/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/src/map/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/include/vdo_slam/utils/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/src/utils/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/include/vdo_slam/visualizer/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/src/visualizer/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/include/vdo_slam/cmake_install.cmake")
-  include("/home/tranks/testing_ws/src/VDO_SLAM/build/src/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/include/vdo_slam/map/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/src/map/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/include/vdo_slam/utils/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/src/utils/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/include/vdo_slam/visualizer/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/src/visualizer/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/include/vdo_slam/cmake_install.cmake")
+  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/src/cmake_install.cmake")
 
 endif()
 
@@ -105,5 +105,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/tranks/testing_ws/src/VDO_SLAM/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

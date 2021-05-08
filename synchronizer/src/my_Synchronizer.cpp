@@ -12,7 +12,7 @@
 
 #include "synchronizer/Sync.h"
 #include "synchronizer/SemanticObjectArray.h"
-#include <my_realtime_vdo_slam/VdoInput.h>
+#include <realtime_vdo_slam/VdoInput.h>
 #include <std_msgs/String.h>
 
 #include "my_Synchronizer.hpp"
@@ -20,7 +20,7 @@
 using namespace message_filters;
 
 my_Synchronizer::my_Synchronizer(ros::NodeHandle& nh):sync(MySyncPolicy(10), f_sub, m_sub, d_sub, s_sub, r_sub){
-	toVdo_pub = nh.advertise<my_realtime_vdo_slam::VdoInput>("/vdoslam/input/all",100);
+	toVdo_pub = nh.advertise<realtime_vdo_slam::VdoInput>("/vdoslam/input/all",100);
 
 	f_sub.subscribe(nh, "/flownet/flownet_raw", 10);
 	m_sub.subscribe(nh, "/maskrcnn/maskrcnn_raw", 10);
@@ -50,7 +50,7 @@ void my_Synchronizer::callback(const sensor_msgs::Image::ConstPtr& f1, \
 				// 												s1->header.stamp.toSec(), \
 				// 												r1->header.stamp.toSec());
 
-				my_realtime_vdo_slam::VdoInput msg;
+				realtime_vdo_slam::VdoInput msg;
 				msg.header.stamp = r1->header.stamp;
 				msg.rgb = *r1;
 				msg.flow = *f1;
