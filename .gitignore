@@ -16,3 +16,5 @@ lib/
 **/mask_rcnn/*.egg-info
 **/mask_rcnn/data/*
 
+**/VDO_SLAM/build/
+**/VDO_SLAM/vdo_slam_g2o/build/
