@@ -3,7 +3,7 @@
 
 CMakeFiles/vdo_slam_g2o.dir/src/core/batch_stats.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/batch_stats.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/batch_stats.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/cache.cpp.o
  ../include/vdo_slam_g2o/core/cache.h
  ../include/vdo_slam_g2o/core/creators.h
@@ -17,7 +17,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/cache.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/misc.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/cache.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/cache.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/estimate_propagator.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/estimate_propagator.h
@@ -34,7 +34,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/estimate_propagator.cpp.o
  ../include/vdo_slam_g2o/core/sparse_block_matrix_ccs.h
  ../include/vdo_slam_g2o/core/sparse_optimizer.h
  ../include/vdo_slam_g2o/stuff/macros.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/estimate_propagator.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/estimate_propagator.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/factory.cpp.o
  ../include/vdo_slam_g2o/core/cache.h
  ../include/vdo_slam_g2o/core/creators.h
@@ -48,15 +48,15 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/factory.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/misc.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/factory.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/factory.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/hyper_dijkstra.cpp.o
  ../include/vdo_slam_g2o/core/hyper_dijkstra.h
  ../include/vdo_slam_g2o/core/hyper_graph.h
  ../include/vdo_slam_g2o/stuff/macros.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/hyper_dijkstra.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/hyper_dijkstra.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/hyper_graph.cpp.o
  ../include/vdo_slam_g2o/core/hyper_graph.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/hyper_graph.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/hyper_graph.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/hyper_graph_action.cpp.o
  ../include/vdo_slam_g2o/core/hyper_graph.h
  ../include/vdo_slam_g2o/core/hyper_graph_action.h
@@ -68,7 +68,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/hyper_graph_action.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/hyper_graph_action.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/hyper_graph_action.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/jacobian_workspace.cpp.o
  ../include/vdo_slam_g2o/core/hyper_graph.h
  ../include/vdo_slam_g2o/core/jacobian_workspace.h
@@ -77,7 +77,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/jacobian_workspace.cpp.o
  ../include/vdo_slam_g2o/core/parameter.h
  ../include/vdo_slam_g2o/core/parameter_container.h
  ../include/vdo_slam_g2o/stuff/macros.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/jacobian_workspace.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/jacobian_workspace.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/marginal_covariance_cholesky.cpp.o
  ../include/vdo_slam_g2o/core/hyper_graph.h
  ../include/vdo_slam_g2o/core/jacobian_workspace.h
@@ -92,10 +92,10 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/marginal_covariance_cholesky.cpp.o
  ../include/vdo_slam_g2o/core/sparse_block_matrix.hpp
  ../include/vdo_slam_g2o/core/sparse_block_matrix_ccs.h
  ../include/vdo_slam_g2o/stuff/macros.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/marginal_covariance_cholesky.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/marginal_covariance_cholesky.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/matrix_structure.cpp.o
  ../include/vdo_slam_g2o/core/matrix_structure.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/matrix_structure.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/matrix_structure.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimizable_graph.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/cache.h
@@ -123,7 +123,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/optimizable_graph.cpp.o
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimizable_graph.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimizable_graph.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm.cpp.o
  ../include/vdo_slam_g2o/core/hyper_graph.h
  ../include/vdo_slam_g2o/core/matrix_operations.h
@@ -135,7 +135,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_dogleg.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/block_solver.h
@@ -164,14 +164,14 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_dogleg.cpp.o
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/stuff/timeutil.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_dogleg.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_dogleg.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_factory.cpp.o
  ../include/vdo_slam_g2o/core/optimization_algorithm_factory.h
  ../include/vdo_slam_g2o/core/optimization_algorithm_property.h
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/misc.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_factory.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_factory.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_gauss_newton.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/hyper_graph.h
@@ -194,7 +194,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_gauss_newton.cpp.o
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/stuff/timeutil.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_gauss_newton.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_gauss_newton.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_levenberg.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/hyper_graph.h
@@ -217,7 +217,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_levenberg.cpp.o
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/stuff/timeutil.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_levenberg.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_levenberg.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_with_hessian.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/hyper_graph.h
@@ -238,11 +238,11 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/optimization_algorithm_with_hessian.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_with_hessian.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/optimization_algorithm_with_hessian.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/parameter.cpp.o
  ../include/vdo_slam_g2o/core/hyper_graph.h
  ../include/vdo_slam_g2o/core/parameter.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/parameter.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/parameter.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/parameter_container.cpp.o
  ../include/vdo_slam_g2o/core/creators.h
  ../include/vdo_slam_g2o/core/factory.h
@@ -254,17 +254,17 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/parameter_container.cpp.o
  ../include/vdo_slam_g2o/stuff/misc.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/parameter_container.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/parameter_container.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/robust_kernel.cpp.o
  ../include/vdo_slam_g2o/core/robust_kernel.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/robust_kernel.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/robust_kernel.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/robust_kernel_factory.cpp.o
  ../include/vdo_slam_g2o/core/robust_kernel.h
  ../include/vdo_slam_g2o/core/robust_kernel_factory.h
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/misc.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/robust_kernel_factory.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/robust_kernel_factory.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/robust_kernel_impl.cpp.o
  ../include/vdo_slam_g2o/core/robust_kernel.h
  ../include/vdo_slam_g2o/core/robust_kernel_factory.h
@@ -272,7 +272,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/robust_kernel_impl.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/misc.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/robust_kernel_impl.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/robust_kernel_impl.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/solver.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/hyper_graph.h
@@ -282,7 +282,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/solver.cpp.o
  ../include/vdo_slam_g2o/core/sparse_block_matrix.h
  ../include/vdo_slam_g2o/core/sparse_block_matrix.hpp
  ../include/vdo_slam_g2o/core/sparse_block_matrix_ccs.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/solver.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/solver.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/sparse_optimizer.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/estimate_propagator.h
@@ -307,7 +307,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/sparse_optimizer.cpp.o
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/stuff/timeutil.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/sparse_optimizer.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/sparse_optimizer.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/core/sparse_optimizer_terminate_action.cpp.o
  ../include/vdo_slam_g2o/core/batch_stats.h
  ../include/vdo_slam_g2o/core/g2o_core_api.h
@@ -330,13 +330,13 @@ CMakeFiles/vdo_slam_g2o.dir/src/core/sparse_optimizer_terminate_action.cpp.o
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/core/sparse_optimizer_terminate_action.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/core/sparse_optimizer_terminate_action.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/solvers/csparse_extension.cpp.o
  ../include/vdo_slam_g2o/solvers/csparse_extension.h
  ../include/vdo_slam_g2o/solvers/g2o_csparse_extension_api.h
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/solvers/csparse_extension.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/solvers/csparse_extension.cpp
  /usr/include/suitesparse/SuiteSparse_config.h
  /usr/include/suitesparse/cs.h
 CMakeFiles/vdo_slam_g2o.dir/src/solvers/csparse_helper.cpp.o
@@ -344,7 +344,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/solvers/csparse_helper.cpp.o
  ../include/vdo_slam_g2o/solvers/csparse_helper.h
  ../include/vdo_slam_g2o/solvers/g2o_csparse_extension_api.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/solvers/csparse_helper.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/solvers/csparse_helper.cpp
  /usr/include/suitesparse/SuiteSparse_config.h
  /usr/include/suitesparse/cs.h
 CMakeFiles/vdo_slam_g2o.dir/src/solvers/solver_csparse.cpp.o
@@ -387,38 +387,38 @@ CMakeFiles/vdo_slam_g2o.dir/src/solvers/solver_csparse.cpp.o
  ../include/vdo_slam_g2o/stuff/timeutil.h
  ../include/vdo_slam_g2o/types/eigen_types_new.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/solvers/solver_csparse.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/solvers/solver_csparse.cpp
  /usr/include/suitesparse/SuiteSparse_config.h
  /usr/include/suitesparse/cs.h
 CMakeFiles/vdo_slam_g2o.dir/src/stuff/opengl_primitives.cpp.o
  ../include/vdo_slam_g2o/stuff/opengl_primitives.h
  ../include/vdo_slam_g2o/stuff/opengl_wrapper.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/stuff/opengl_primitives.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/stuff/opengl_primitives.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/stuff/property.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/property.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/stuff/property.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/stuff/property.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/stuff/string_tools.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/os_specific.h
  ../include/vdo_slam_g2o/stuff/string_tools.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/stuff/string_tools.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/stuff/string_tools.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/stuff/timeutil.cpp.o
  ../include/vdo_slam_g2o/stuff/timeutil.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/stuff/timeutil.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/stuff/timeutil.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/dquat2mat.cpp.o
  ../include/vdo_slam_g2o/types/dquat2mat.h
  ../include/vdo_slam_g2o/types/g2o_types_slam3d_api.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat.cpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat_maxima_generated.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat_maxima_generated.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/dquat2mat_maxima_generated.cpp.o
  ../include/vdo_slam_g2o/types/dquat2mat.h
  ../include/vdo_slam_g2o/types/g2o_types_slam3d_api.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat_maxima_generated.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat_maxima_generated.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -448,7 +448,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3.cpp.o
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3_offset.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -481,7 +481,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3_offset.cpp.o
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3_offset.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3_offset.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3_pointxyz.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -512,7 +512,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3_pointxyz.cpp.o
  ../include/vdo_slam_g2o/types/vertex_pointxyz.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3_pointxyz.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3_pointxyz.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3_prior.cpp.o
  ../include/vdo_slam_g2o/core/base_edge.h
  ../include/vdo_slam_g2o/core/base_unary_edge.h
@@ -544,7 +544,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/edge_se3_prior.cpp.o
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3_prior.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/edge_se3_prior.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/edge_xyz_prior.cpp.o
  ../include/vdo_slam_g2o/core/base_edge.h
  ../include/vdo_slam_g2o/core/base_unary_edge.h
@@ -568,7 +568,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/edge_xyz_prior.cpp.o
  ../include/vdo_slam_g2o/types/g2o_types_slam3d_api.h
  ../include/vdo_slam_g2o/types/vertex_pointxyz.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/edge_xyz_prior.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/edge_xyz_prior.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/isometry3d_gradients.cpp.o
  ../include/vdo_slam_g2o/types/dquat2mat.h
  ../include/vdo_slam_g2o/types/eigen_types_new.h
@@ -579,9 +579,9 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/isometry3d_gradients.cpp.o
  ../include/vdo_slam_g2o/types/se3_ops.hpp
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat.cpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat_maxima_generated.cpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/isometry3d_gradients.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/dquat2mat_maxima_generated.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/isometry3d_gradients.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/isometry3d_mappings.cpp.o
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/stuff/misc.h
@@ -592,7 +592,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/isometry3d_mappings.cpp.o
  ../include/vdo_slam_g2o/types/se3_ops.hpp
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/isometry3d_mappings.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/isometry3d_mappings.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/parameter_se3_offset.cpp.o
  ../include/vdo_slam_g2o/core/base_vertex.h
  ../include/vdo_slam_g2o/core/base_vertex.hpp
@@ -619,7 +619,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/parameter_se3_offset.cpp.o
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/parameter_se3_offset.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/parameter_se3_offset.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/types_dyn_slam3d.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -655,7 +655,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/types_dyn_slam3d.cpp.o
  ../include/vdo_slam_g2o/types/vertex_pointxyz.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/types_dyn_slam3d.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/types_dyn_slam3d.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/types_sba.cpp.o
  ../include/vdo_slam_g2o/core/base_vertex.h
  ../include/vdo_slam_g2o/core/base_vertex.hpp
@@ -668,7 +668,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/types_sba.cpp.o
  ../include/vdo_slam_g2o/core/parameter_container.h
  ../include/vdo_slam_g2o/stuff/macros.h
  ../include/vdo_slam_g2o/types/types_sba.h
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/types_sba.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/types_sba.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/types_seven_dof_expmap.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -696,7 +696,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/types_seven_dof_expmap.cpp.o
  ../include/vdo_slam_g2o/types/types_seven_dof_expmap.h
  ../include/vdo_slam_g2o/types/types_six_dof_expmap.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/types_seven_dof_expmap.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/types_seven_dof_expmap.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/types_six_dof_expmap.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -724,7 +724,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/types_six_dof_expmap.cpp.o
  ../include/vdo_slam_g2o/types/types_sba.h
  ../include/vdo_slam_g2o/types/types_six_dof_expmap.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/types_six_dof_expmap.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/types_six_dof_expmap.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/types_slam3d.cpp.o
  ../include/vdo_slam_g2o/core/base_binary_edge.h
  ../include/vdo_slam_g2o/core/base_binary_edge.hpp
@@ -767,7 +767,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/types_slam3d.cpp.o
  ../include/vdo_slam_g2o/types/vertex_pointxyz.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/types_slam3d.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/types_slam3d.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/vertex_pointxyz.cpp.o
  ../include/vdo_slam_g2o/core/base_vertex.h
  ../include/vdo_slam_g2o/core/base_vertex.hpp
@@ -786,7 +786,7 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/vertex_pointxyz.cpp.o
  ../include/vdo_slam_g2o/types/g2o_types_slam3d_api.h
  ../include/vdo_slam_g2o/types/vertex_pointxyz.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/vertex_pointxyz.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/vertex_pointxyz.cpp
 CMakeFiles/vdo_slam_g2o.dir/src/types/vertex_se3.cpp.o
  ../include/vdo_slam_g2o/core/base_vertex.h
  ../include/vdo_slam_g2o/core/base_vertex.hpp
@@ -812,4 +812,4 @@ CMakeFiles/vdo_slam_g2o.dir/src/types/vertex_se3.cpp.o
  ../include/vdo_slam_g2o/types/se3quat.h
  ../include/vdo_slam_g2o/types/vertex_se3.h
  ../include/vdo_slam_g2o/vdo_slam_g2o_config.hpp
- /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/src/types/vertex_se3.cpp
+ /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/src/types/vertex_se3.cpp

@@ -4,6 +4,6 @@
 
 // 
 
-#define __VDO_SLAM_DIR__ "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/"
+#define __VDO_SLAM_DIR__ "/home/tranks/catkin_ws/src/VDO_SLAM/"
 
 #endif

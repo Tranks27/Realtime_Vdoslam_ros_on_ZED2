@@ -103,6 +103,7 @@ target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES} 
   ${OpenCV_LIBS}
   ${PROJECT_NAME}
+  -lvdo_slam
 )
 add_dependencies(${PROJECT_NAME}_node 
   # synchronizer_generate_messages_cpp

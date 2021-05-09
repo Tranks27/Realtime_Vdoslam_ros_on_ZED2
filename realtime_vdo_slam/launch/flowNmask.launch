@@ -1,7 +1,19 @@
 <!-- Only run flownet and maskrcnn from the respective packages -->
 <launch>
-    <arg name= "topic" default="/zed2/zed_node/left/image_rect_color"/>
 
+    <!-- <param name="use_sim_time" value="true" /> -->
+    <!-- <node pkg="rosbag" type="play" name="play"
+	 args="-clock -l /home/tranks/catkin_ws/sample_bag.bag"/> -->
+
+    <arg name= "topic" default="/camera/left"/>
+    <!-- <arg name= "topic" default="/zed2/zed_node/left/image_rect_color"/> -->
+
+    <arg name= "left_image_input_topic" default="theora in:=/zed2/zed_node/left/image_rect_color raw out:=/camera/left"/>
+    
+    <!-- republish node for more efficient image transfers -->
+    <node pkg="image_transport" name="republish" type="republish"  output="screen" args="$(arg left_image_input_topic)"/> 
+    
+    
     <node pkg="flow_net" type="flow_net_ros.py" name="flownet_ros_node" output="screen"/>
         <param name="topic" type="str" value="$(arg topic)" />
     <node pkg="mask_rcnn" type="mask_rcnn_ros.py" name="mask_rcnn_ros_node" output="screen"/>

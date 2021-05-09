@@ -11,7 +11,7 @@
 
   <!-- If true, the interface will overwrite the messages times to the time recieved 
   and not their header time. This is useful becuase the bagfiles used for testing
-  are in message order but not synchronized by timestamp--> -->
+  are in message order but not synchronized by timestamp--> 
   <arg name="use_ros_time" default="false" />
 
 
@@ -51,12 +51,12 @@
   <arg name="cx" default="323.5111875590873"/>
   <arg name="cy" default="250.9863176952058"/> -->
 
-  <arg name="width" default="640"/>
-  <arg name="height" default="480"/>
-  <arg name="fps" default="12"/>
+  <arg name="width" default="896"/>
+  <arg name="height" default="503"/>
+  <arg name="fps" default="15"/>
 
-  <!-- <arg name="bf" default="387.5744"/> -->
-  <arg name="bf" default="300"/>
+  <!-- <arg name="bf" default="300"/> -->
+  <arg name="bf" default="57.86"/>
 
   <arg name="RGB" default="0"/>
   <arg name="data_code" default="2"/>
@@ -74,7 +74,7 @@
   <arg name="sf_ds_thresh" default="0.99"/> -->
 
   <!-- <arg name="sf_mg_thresh" default="0.12"/> -->
-   <arg name="sf_mg_thresh" default="0.12"/>
+    <arg name="sf_mg_thresh" default="0.12"/>
   <arg name="sf_ds_thresh" default="0.5"/>
 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o
+# Install script for directory: /home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvdo_slam_g2o.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/libvdo_slam_g2o.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/libvdo_slam_g2o.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvdo_slam_g2o.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvdo_slam_g2o.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -54,14 +54,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/vdo_slam_g2o" TYPE DIRECTORY FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/include/vdo_slam_g2o/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/[^/]*\\.hpp$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/vdo_slam_g2o" TYPE DIRECTORY FILES "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/include/vdo_slam_g2o/" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/[^/]*\\.hpp$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake"
-         "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/CMakeFiles/Export/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake")
+         "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/CMakeFiles/Export/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -70,30 +70,30 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/CMakeFiles/Export/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/CMakeFiles/Export/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/CMakeFiles/Export/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/CMakeFiles/Export/lib/cmake/vdo_slam_g2o/vdo_slam_g2o-config-release.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/vdo_slam_g2o-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/vdo_slam_g2o-config.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/include/vdo_slam_g2o/vdo_slam_g2o_config.hpp")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/vdo_slam_g2o" TYPE FILE FILES "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/include/vdo_slam_g2o/vdo_slam_g2o_config.hpp")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/core/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/src/core/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/solvers/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/src/solvers/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/stuff/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/src/stuff/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/types/cmake_install.cmake")
-  include("/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/src/types/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/core/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/src/core/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/solvers/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/src/solvers/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/stuff/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/src/stuff/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/include/vdo_slam_g2o/types/cmake_install.cmake")
+  include("/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/src/types/cmake_install.cmake")
 
 endif()
 
@@ -105,5 +105,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

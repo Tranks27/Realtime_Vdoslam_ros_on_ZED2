@@ -1,4 +1,4 @@
-# Install script for directory: /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map
+# Install script for directory: /home/tranks/catkin_ws/src/VDO_SLAM/src/map
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

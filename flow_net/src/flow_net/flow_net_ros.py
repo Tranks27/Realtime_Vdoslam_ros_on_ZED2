@@ -213,6 +213,7 @@ class FlowNetTopic():
         rgb_flow = self.flownet.flow2rgb(composite)
         
         current_time = rospy.Time.from_sec(time.time())
+        
         print("flow Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec())) #time
         
         # cv2.imshow("RGB Flow", rgb_flow)
@@ -239,7 +240,8 @@ def main():
     rospy.on_shutdown(shutdown_hook)
 
    ## topic name to get from param server,otherwise use default value
-    topic = rospy.get_param('topic',"/zed2/zed_node/left/image_rect_color")
+    topic = rospy.get_param('topic',"/camera/left")
+    # topic = rospy.get_param('topic',"/zed2/zed_node/left/image_rect_color")
 
     flownet = FlowNetRos()
     is_first = True

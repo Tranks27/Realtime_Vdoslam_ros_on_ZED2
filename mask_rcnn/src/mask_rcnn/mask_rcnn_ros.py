@@ -341,7 +341,8 @@ def main():
     rospy.on_shutdown(shutdown_hook)
 
     ## topic name to get from param server, otherwise use default value
-    topic = rospy.get_param('topic',"/zed2/zed_node/left/image_rect_color")
+    topic = rospy.get_param('topic',"/camera/left")
+    # topic = rospy.get_param('topic',"/zed2/zed_node/left/image_rect_color")
 
     input_device = "camera"
     maskrcnn = MaskRcnnRos()

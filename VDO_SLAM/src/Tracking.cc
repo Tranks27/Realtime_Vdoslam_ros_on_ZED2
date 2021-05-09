@@ -60,7 +60,7 @@ Tracking::Tracking(Map* pMap, const VdoParams& params) :
     mState(NO_IMAGES_YET),
     mpMap(pMap),
     max_id(1),
-    color_manager("/home/jesse/Code/src/ros/src/multi_robot_perception/VDO_SLAM/include/vdo_slam/visualizer/classes.csv")
+    color_manager(std::string(__VDO_SLAM_DIR__) + "include/vdo_slam/visualizer/classes.csv")
 {
     mSensor = params.sensor_type;
     // VDO_SLAM::eSensor sensor;
@@ -197,7 +197,7 @@ Tracking::Tracking(Map* pMap, const VdoParams& params) :
 
 Tracking::Tracking(Map *pMap, const string &strSettingPath, const eSensor sensor):
     mState(NO_IMAGES_YET), mSensor(sensor), mpMap(pMap), max_id(1),
-    color_manager("/home/jesse/Code/src/ros/src/multi_robot_perception/VDO_SLAM/include/vdo_slam/visualizer/classes.csv")
+    color_manager(std::string(__VDO_SLAM_DIR__) + "include/vdo_slam/visualizer/classes.csv")
 {
     // Load camera parameters from settings file
     cout << "mSensor " << mSensor << endl;

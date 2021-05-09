@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM
+CMAKE_SOURCE_DIR = /home/tranks/catkin_ws/src/VDO_SLAM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build
+CMAKE_BINARY_DIR = /home/tranks/catkin_ws/src/VDO_SLAM/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/vdo_slam.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/vdo_slam.dir/flags.make
 
 CMakeFiles/vdo_slam.dir/src/map/Map.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/map/Map.cc.o: ../src/map/Map.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vdo_slam.dir/src/map/Map.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/map/Map.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map/Map.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vdo_slam.dir/src/map/Map.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/map/Map.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/map/Map.cc
 
 CMakeFiles/vdo_slam.dir/src/map/Map.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/map/Map.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map/Map.cc > CMakeFiles/vdo_slam.dir/src/map/Map.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/map/Map.cc > CMakeFiles/vdo_slam.dir/src/map/Map.cc.i
 
 CMakeFiles/vdo_slam.dir/src/map/Map.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/map/Map.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/map/Map.cc -o CMakeFiles/vdo_slam.dir/src/map/Map.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/map/Map.cc -o CMakeFiles/vdo_slam.dir/src/map/Map.cc.s
 
 CMakeFiles/vdo_slam.dir/src/map/Map.cc.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/vdo_slam.dir/src/map/Map.cc.o.provides.build: CMakeFiles/vdo_slam.dir
 
 CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o: ../src/utils/Types.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/Types.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/Types.cc
 
 CMakeFiles/vdo_slam.dir/src/utils/Types.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/utils/Types.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/Types.cc > CMakeFiles/vdo_slam.dir/src/utils/Types.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/Types.cc > CMakeFiles/vdo_slam.dir/src/utils/Types.cc.i
 
 CMakeFiles/vdo_slam.dir/src/utils/Types.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/utils/Types.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/Types.cc -o CMakeFiles/vdo_slam.dir/src/utils/Types.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/Types.cc -o CMakeFiles/vdo_slam.dir/src/utils/Types.cc.s
 
 CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/vdo_slam.dir/src/utils/Types.cc.o.provides.build: CMakeFiles/vdo_slam
 
 CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o: ../src/utils/VdoUtils.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/VdoUtils.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/VdoUtils.cc
 
 CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/VdoUtils.cc > CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/VdoUtils.cc > CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.i
 
 CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/VdoUtils.cc -o CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/VdoUtils.cc -o CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.s
 
 CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/vdo_slam.dir/src/utils/VdoUtils.cc.o.provides.build: CMakeFiles/vdo_s
 
 CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o: ../src/utils/statistics.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/statistics.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/statistics.cc
 
 CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/statistics.cc > CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/statistics.cc > CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.i
 
 CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/utils/statistics.cc -o CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/utils/statistics.cc -o CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.s
 
 CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/vdo_slam.dir/src/utils/statistics.cc.o.provides.build: CMakeFiles/vdo
 
 CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o: ../src/visualizer/colour.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/colour.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/colour.cc
 
 CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/colour.cc > CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/colour.cc > CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.i
 
 CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/colour.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/colour.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.s
 
 CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/vdo_slam.dir/src/visualizer/colour.cc.o.provides.build: CMakeFiles/vd
 
 CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o: ../src/visualizer/semantics_loader.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/semantics_loader.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/semantics_loader.cc
 
 CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/semantics_loader.cc > CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/semantics_loader.cc > CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.i
 
 CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/semantics_loader.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/semantics_loader.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.s
 
 CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/vdo_slam.dir/src/visualizer/semantics_loader.cc.o.provides.build: CMa
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o: ../src/visualizer/visualization_base.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualization_base.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/visualization_base.cc
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualization_base.cc > CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/visualization_base.cc > CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.i
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualization_base.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/visualization_base.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.s
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/vdo_slam.dir/src/visualizer/visualization_base.cc.o.provides.build: C
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o: ../src/visualizer/visualizer_2D.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualizer_2D.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/visualizer_2D.cc
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualizer_2D.cc > CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/visualizer_2D.cc > CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.i
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/visualizer/visualizer_2D.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/visualizer/visualizer_2D.cc -o CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.s
 
 CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/vdo_slam.dir/src/visualizer/visualizer_2D.cc.o.provides.build: CMakeF
 
 CMakeFiles/vdo_slam.dir/src/Converter.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/Converter.cc.o: ../src/Converter.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/vdo_slam.dir/src/Converter.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Converter.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Converter.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/vdo_slam.dir/src/Converter.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Converter.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/Converter.cc
 
 CMakeFiles/vdo_slam.dir/src/Converter.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/Converter.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Converter.cc > CMakeFiles/vdo_slam.dir/src/Converter.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/Converter.cc > CMakeFiles/vdo_slam.dir/src/Converter.cc.i
 
 CMakeFiles/vdo_slam.dir/src/Converter.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/Converter.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Converter.cc -o CMakeFiles/vdo_slam.dir/src/Converter.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/Converter.cc -o CMakeFiles/vdo_slam.dir/src/Converter.cc.s
 
 CMakeFiles/vdo_slam.dir/src/Converter.cc.o.requires:
 
@@ -275,16 +275,16 @@ CMakeFiles/vdo_slam.dir/src/Converter.cc.o.provides.build: CMakeFiles/vdo_slam.d
 
 CMakeFiles/vdo_slam.dir/src/Frame.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/Frame.cc.o: ../src/Frame.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/vdo_slam.dir/src/Frame.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Frame.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Frame.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/vdo_slam.dir/src/Frame.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Frame.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/Frame.cc
 
 CMakeFiles/vdo_slam.dir/src/Frame.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/Frame.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Frame.cc > CMakeFiles/vdo_slam.dir/src/Frame.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/Frame.cc > CMakeFiles/vdo_slam.dir/src/Frame.cc.i
 
 CMakeFiles/vdo_slam.dir/src/Frame.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/Frame.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Frame.cc -o CMakeFiles/vdo_slam.dir/src/Frame.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/Frame.cc -o CMakeFiles/vdo_slam.dir/src/Frame.cc.s
 
 CMakeFiles/vdo_slam.dir/src/Frame.cc.o.requires:
 
@@ -299,16 +299,16 @@ CMakeFiles/vdo_slam.dir/src/Frame.cc.o.provides.build: CMakeFiles/vdo_slam.dir/s
 
 CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o: ../src/Optimizer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Optimizer.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/Optimizer.cc
 
 CMakeFiles/vdo_slam.dir/src/Optimizer.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/Optimizer.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Optimizer.cc > CMakeFiles/vdo_slam.dir/src/Optimizer.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/Optimizer.cc > CMakeFiles/vdo_slam.dir/src/Optimizer.cc.i
 
 CMakeFiles/vdo_slam.dir/src/Optimizer.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/Optimizer.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Optimizer.cc -o CMakeFiles/vdo_slam.dir/src/Optimizer.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/Optimizer.cc -o CMakeFiles/vdo_slam.dir/src/Optimizer.cc.s
 
 CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o.requires:
 
@@ -323,16 +323,16 @@ CMakeFiles/vdo_slam.dir/src/Optimizer.cc.o.provides.build: CMakeFiles/vdo_slam.d
 
 CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o: ../src/ORBextractor.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/ORBextractor.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/ORBextractor.cc
 
 CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/ORBextractor.cc > CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/ORBextractor.cc > CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.i
 
 CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/ORBextractor.cc -o CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/ORBextractor.cc -o CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.s
 
 CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o.requires:
 
@@ -347,16 +347,16 @@ CMakeFiles/vdo_slam.dir/src/ORBextractor.cc.o.provides.build: CMakeFiles/vdo_sla
 
 CMakeFiles/vdo_slam.dir/src/System.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/System.cc.o: ../src/System.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/vdo_slam.dir/src/System.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/System.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/System.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/vdo_slam.dir/src/System.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/System.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/System.cc
 
 CMakeFiles/vdo_slam.dir/src/System.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/System.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/System.cc > CMakeFiles/vdo_slam.dir/src/System.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/System.cc > CMakeFiles/vdo_slam.dir/src/System.cc.i
 
 CMakeFiles/vdo_slam.dir/src/System.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/System.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/System.cc -o CMakeFiles/vdo_slam.dir/src/System.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/System.cc -o CMakeFiles/vdo_slam.dir/src/System.cc.s
 
 CMakeFiles/vdo_slam.dir/src/System.cc.o.requires:
 
@@ -371,16 +371,16 @@ CMakeFiles/vdo_slam.dir/src/System.cc.o.provides.build: CMakeFiles/vdo_slam.dir/
 
 CMakeFiles/vdo_slam.dir/src/Scene.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/Scene.cc.o: ../src/Scene.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/vdo_slam.dir/src/Scene.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Scene.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Scene.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/vdo_slam.dir/src/Scene.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Scene.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/Scene.cc
 
 CMakeFiles/vdo_slam.dir/src/Scene.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/Scene.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Scene.cc > CMakeFiles/vdo_slam.dir/src/Scene.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/Scene.cc > CMakeFiles/vdo_slam.dir/src/Scene.cc.i
 
 CMakeFiles/vdo_slam.dir/src/Scene.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/Scene.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Scene.cc -o CMakeFiles/vdo_slam.dir/src/Scene.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/Scene.cc -o CMakeFiles/vdo_slam.dir/src/Scene.cc.s
 
 CMakeFiles/vdo_slam.dir/src/Scene.cc.o.requires:
 
@@ -395,16 +395,16 @@ CMakeFiles/vdo_slam.dir/src/Scene.cc.o.provides.build: CMakeFiles/vdo_slam.dir/s
 
 CMakeFiles/vdo_slam.dir/src/Tracking.cc.o: CMakeFiles/vdo_slam.dir/flags.make
 CMakeFiles/vdo_slam.dir/src/Tracking.cc.o: ../src/Tracking.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/vdo_slam.dir/src/Tracking.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Tracking.cc.o -c /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Tracking.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/vdo_slam.dir/src/Tracking.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/vdo_slam.dir/src/Tracking.cc.o -c /home/tranks/catkin_ws/src/VDO_SLAM/src/Tracking.cc
 
 CMakeFiles/vdo_slam.dir/src/Tracking.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vdo_slam.dir/src/Tracking.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Tracking.cc > CMakeFiles/vdo_slam.dir/src/Tracking.cc.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tranks/catkin_ws/src/VDO_SLAM/src/Tracking.cc > CMakeFiles/vdo_slam.dir/src/Tracking.cc.i
 
 CMakeFiles/vdo_slam.dir/src/Tracking.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vdo_slam.dir/src/Tracking.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/src/Tracking.cc -o CMakeFiles/vdo_slam.dir/src/Tracking.cc.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tranks/catkin_ws/src/VDO_SLAM/src/Tracking.cc -o CMakeFiles/vdo_slam.dir/src/Tracking.cc.s
 
 CMakeFiles/vdo_slam.dir/src/Tracking.cc.o.requires:
 
@@ -501,7 +501,7 @@ libvdo_slam.so: /usr/local/lib/libopencv_photo.so.3.4.11
 libvdo_slam.so: /usr/local/lib/libopencv_imgproc.so.3.4.11
 libvdo_slam.so: /usr/local/lib/libopencv_core.so.3.4.11
 libvdo_slam.so: CMakeFiles/vdo_slam.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX shared library libvdo_slam.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX shared library libvdo_slam.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vdo_slam.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -532,6 +532,6 @@ CMakeFiles/vdo_slam.dir/clean:
 .PHONY : CMakeFiles/vdo_slam.dir/clean
 
 CMakeFiles/vdo_slam.dir/depend:
-	cd /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build /home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/build/CMakeFiles/vdo_slam.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tranks/catkin_ws/src/VDO_SLAM/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tranks/catkin_ws/src/VDO_SLAM /home/tranks/catkin_ws/src/VDO_SLAM /home/tranks/catkin_ws/src/VDO_SLAM/build /home/tranks/catkin_ws/src/VDO_SLAM/build /home/tranks/catkin_ws/src/VDO_SLAM/build/CMakeFiles/vdo_slam.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/vdo_slam.dir/depend
 

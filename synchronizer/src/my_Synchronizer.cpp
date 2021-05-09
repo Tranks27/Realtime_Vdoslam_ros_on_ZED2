@@ -26,7 +26,8 @@ my_Synchronizer::my_Synchronizer(ros::NodeHandle& nh):sync(MySyncPolicy(10), f_s
 	m_sub.subscribe(nh, "/maskrcnn/maskrcnn_raw", 10);
 	d_sub.subscribe(nh, "/zed2/zed_node/depth/depth_registered", 10);
 	s_sub.subscribe(nh, "/maskrcnn/maskrcnn_sObj", 10);
-	r_sub.subscribe(nh, "/zed2/zed_node/left/image_rect_color", 10);
+	// r_sub.subscribe(nh, "/zed2/zed_node/left/image_rect_color", 10);
+	r_sub.subscribe(nh, "/camera/left", 10);
 
 	sync.registerCallback(boost::bind(&my_Synchronizer::callback, this,_1, _2, _3, _4, _5));
 }

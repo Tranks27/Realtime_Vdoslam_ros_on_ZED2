@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wall -W -O3 -DNDEBUG -O3 -march=native -fPIC   -Wno-psabi
 
 CXX_DEFINES = -DUNIX -Dvdo_slam_g2o_EXPORTS
 
-CXX_INCLUDES = -I/usr/include/suitesparse -I/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/build -I/home/tranks/multirobot_ws/src/multi_robot_perception/VDO_SLAM/vdo_slam_g2o/include -I/usr/local/include/eigen3 
+CXX_INCLUDES = -I/usr/include/suitesparse -I/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/build -I/home/tranks/catkin_ws/src/VDO_SLAM/vdo_slam_g2o/include -I/usr/local/include/eigen3 
 
