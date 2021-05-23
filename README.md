@@ -1,7 +1,7 @@
 # Summary
 University of Sydney Undergraduate thesis (Ongoing) 
 
-Modified from https://github.com/jessemorris/multi_robot_perception to use on realtime vdoslam on a live camera ZED2.
+Modified from https://github.com/jessemorris/multi_robot_perception to do realtime processing on a live camera ZED2.
 
 
 
