@@ -48,7 +48,7 @@ sys.path.insert(0, package_path)
 #e2e_mask_rcnn_R_101_FPN_1x_caffe2
 #e2e_mask_rcnn_X_101_32x8d_FPN_1x_caffe2
 #e2e_mask_rcnn_X_101_32x8d_FPN_1x_caffe2
-#e2e_mask_rcnn_R_50_FPN_1x_caffe2.yaml
+#e2e_mask_rcnn_R_50_FPN_1x_caffe2
 class MaskRcnnRos(RosCppCommunicator):
 
     def __init__(self, config_path = package_path + "/src/mask_rcnn/configs/caffe2/e2e_mask_rcnn_R_50_FPN_1x_caffe2.yaml"):
@@ -157,7 +157,17 @@ class MaskRcnnRos(RosCppCommunicator):
         masks = top_predictions.get_field("mask")
         boxes = top_predictions.bbox
         label_indexs = top_predictions.get_field("labels").numpy()
+
+        # Naing edit
+        x = np.where(label_indexs != 1) # get indexes of labels which are not person
+        #remove items which are not person class
+        masks = np.delete(masks,x, axis=0)
+        boxes = np.delete(boxes,x, axis=0)
+        label_indexs = np.delete(label_indexs,x)
+        
         labels = self.convert_label_index_to_string(label_indexs)
+
+
 
         assert(len(labels) == len(label_indexs) == len(boxes))
 
@@ -295,7 +305,7 @@ class MaskRcnnTopic():
         self.mask_rcnn = mask_rcnn
         self.image = None
         self.sub = rospy.Subscriber(topic, Image, self.image_callback, queue_size=30)
-        #for sync
+        #for synchronizer package
         self.pub = rospy.Publisher("/maskrcnn/maskrcnn_raw", Image, queue_size=5)
         self.pub_sObj = rospy.Publisher("/maskrcnn/maskrcnn_sObj", SemanticObjectArray, queue_size=5)
 
@@ -303,7 +313,10 @@ class MaskRcnnTopic():
     def image_callback(self, data):
         input_image = ros_numpy.numpify(data)
         start_time = rospy.Time.from_sec(time.time())
-        # Naing edit at the end
+        
+        # cv2.imshow("Input image", input_image)
+        # cv2.waitKey(1)
+        
         response_image, semantic_objects = self.mask_rcnn.analyse_image(input_image[:,:,0:3]) # only selects the first 3 channels excluding alpha channel
         display_image = self.mask_rcnn.generate_coloured_mask(response_image)
         bb_img = self.mask_rcnn.generated_bounding_boxes(input_image, semantic_objects)
@@ -319,12 +332,12 @@ class MaskRcnnTopic():
         # cv2.waitKey(1)
 
         # publish the maskrcnn output image
-        output_image_msg = ros_numpy.msgify(Image, response_image, encoding='mono8') # data needed for vdo slam
-        # display_image_msg = ros_numpy.msgify(Image, display_image, encoding='rgb8') #for viz purpose
+        output_mask_msg = ros_numpy.msgify(Image, response_image, encoding='mono8') # data needed for vdo slam
+        # output_mask_msg = ros_numpy.msgify(Image, display_image, encoding='rgb8') #for viz purpose
         
-        output_image_msg.header.stamp = start_time #image acquisition time
-        output_image_msg.header.frame_id = "maskrcnn_raw_frame"
-        self.pub.publish(output_image_msg) # for sync
+        output_mask_msg.header.stamp = start_time #image acquisition time
+        output_mask_msg.header.frame_id = "maskrcnn_raw_frame"
+        self.pub.publish(output_mask_msg) # for sync
 
         # publish semantic objects
         sObj_temp = SemanticObjectArray()
@@ -361,7 +374,7 @@ def main():
             start_time = time.time()
             ret_val, img = cam.read()
 
-            # response_image, labels, label_indexs = maskrcnn.analyse_image(img)
+            
             response_image, sematic_objects = maskrcnn.analyse_image(img)
             display_image = maskrcnn.generate_coloured_mask(response_image)
             bb_img = maskrcnn.generated_bounding_boxes(img, sematic_objects)

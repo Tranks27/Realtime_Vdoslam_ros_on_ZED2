@@ -20,8 +20,8 @@ namespace VDO_SLAM
 
 using namespace std;
 
-#define FRAME_GRID_ROWS 48
-#define FRAME_GRID_COLS 64
+#define FRAME_GRID_ROWS 51 // round up from 503, default 48
+#define FRAME_GRID_COLS 90 // round up from 896, default 64
 
 class Frame
 {
@@ -31,7 +31,11 @@ public:
     // Copy constructor.
     Frame(const Frame &frame);
 
-    // Constructor for RGB-D cameras.
+    //****** Constructor for RGB-D cameras. 
+    // Use detected orb features to get static/background keypoints, 
+    // Use semantic mask to get dynamic object keypoints
+    // Assign these keypoints/features to a grid for faster matching
+    //******
     Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlow, const cv::Mat &maskSEM, const double &timeStamp, ORBextractor* extractor,
           cv::Mat &K, cv::Mat &distCoef, const float &bf, const float &thDepth, const float &thDepthObj, const int &UseSampleFea);
 

@@ -17,6 +17,7 @@ namespace VDO_SLAM {
         RADTAN,
         RAD_POLY,
         EQUIDISTANT,
+        PLUMB_BOB,
         INVALID
     };
 

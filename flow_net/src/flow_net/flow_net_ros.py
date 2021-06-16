@@ -217,6 +217,7 @@ class FlowNetTopic():
         print("flow Time: {:.2f} s / img".format(current_time.to_sec() - start_time.to_sec())) #time
         
         # cv2.imshow("RGB Flow", rgb_flow)
+        # cv2.imshow("input", input_image)
         self.previous_image = input_image
         
 

@@ -275,7 +275,7 @@ class COCODemo(object):
                 the BoxList via `prediction.fields()`
         """
         # apply pre-processing to image
-        # size sould be torch.Size([3, 800, 1066]) -> which is cfg.INPUT.MIN/MAX_SIZE_TEST
+        # size sould be torch.Size([3, 800, 1088]) -> which is cfg.INPUT.MIN/MAX_SIZE_TEST
         # image_tensor = self.transforms(original_image)
         # del image_tensor
         image = cv2.resize(original_image, (800, 1088), interpolation = cv2.INTER_AREA)
@@ -295,9 +295,8 @@ class COCODemo(object):
         image_list = image_list.to(self.device)
         # # compute predictions
         predictions = self.model(image_list)
-        # print(predictions)
         predictions = [o.to(self.cpu_device) for o in predictions]
-
+        
         # del image_list
 
         # always single image is passed at a time

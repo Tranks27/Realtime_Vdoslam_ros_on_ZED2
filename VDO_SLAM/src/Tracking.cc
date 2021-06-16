@@ -13,6 +13,8 @@
 #include<opencv2/core/core.hpp>
 #include<opencv2/features2d/features2d.hpp>
 #include <opencv2/highgui.hpp>
+
+#include <opencv2/imgproc.hpp>
 // #include <cvplot/cvplot.h>
 
 // #include"Converter.h"
@@ -63,24 +65,8 @@ Tracking::Tracking(Map* pMap, const VdoParams& params) :
     color_manager(std::string(__VDO_SLAM_DIR__) + "include/vdo_slam/visualizer/classes.csv")
 {
     mSensor = params.sensor_type;
-    // VDO_SLAM::eSensor sensor;
     VDO_DEBUG_MSG(params.sensor_type);
-    // if (params.sensor_type == 0) {
-    //     mSensor = VDO_SLAM::eSensor::MONOCULAR;
-    //     cout << "- sensor: MONOCULAR " << endl;
-    // }
-    // else if (params.sensor_type == 1) {
-    //     mSensor = VDO_SLAM::eSensor::STEREO;
-    //     cout << "- sensor: STEREO " << endl;
-    // }
-    // else if (params.sensor_type == 2) {
-    //     mSensor = VDO_SLAM::eSensor::RGBD;
-    //     cout << "- sensor: RGBD " << endl;
-    // }
-    // else {
-    //     VDO_ERROR_MSG("param.sens_type is invalid: " << params.sensor_type);
-    //     //TODO: exit?
-    // }
+   
 
 
     float fx = params.fx;
@@ -159,6 +145,10 @@ Tracking::Tracking(Map* pMap, const VdoParams& params) :
             mTestData = VirtualKITTI;
             cout << "- tested dataset: Virtual KITTI " << endl;
             break;
+        case 4:
+            mTestData = REAL;
+            cout << "- tested dataset: REAL " << endl;
+            break;
     }
 
     if(mSensor==eSensor::STEREO || mSensor==eSensor::RGBD ||mSensor==eSensor::MONOCULAR)
@@ -199,6 +189,8 @@ Tracking::Tracking(Map *pMap, const string &strSettingPath, const eSensor sensor
     mState(NO_IMAGES_YET), mSensor(sensor), mpMap(pMap), max_id(1),
     color_manager(std::string(__VDO_SLAM_DIR__) + "include/vdo_slam/visualizer/classes.csv")
 {
+    /**********not using this constructor***********
+
     // Load camera parameters from settings file
     cout << "mSensor " << mSensor << endl;
     cv::FileStorage fSettings(strSettingPath, cv::FileStorage::READ);
@@ -278,6 +270,10 @@ Tracking::Tracking(Map *pMap, const string &strSettingPath, const eSensor sensor
             mTestData = VirtualKITTI;
             cout << "- tested dataset: Virtual KITTI " << endl;
             break;
+        case 4:
+            mTestData = REAL;
+            cout << "- tested dataset: REAL " << endl;
+            break;
     }
 
     if(sensor==eSensor::STEREO || sensor==eSensor::RGBD ||sensor==eSensor::MONOCULAR)
@@ -310,6 +306,8 @@ Tracking::Tracking(Map *pMap, const string &strSettingPath, const eSensor sensor
         cout << "- used sampled feature for background scene..." << endl;
     else
         cout << "- used detected feature for background scene..." << endl;
+
+    */
 }
 
 std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
@@ -339,22 +337,28 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
                 mDepthMap.at<float>(i,j)=0;
             }
             else {
-                if (mTestData==OMD) {
-                    mDepthMap.at<float>(i,j) = imD.at<uint16_t>(i,j)/mDepthMapFactor;
-                }
-                else if (mTestData==KITTI)
-                {
-                    if (mSensor == eSensor::RGBD) {
-                        mDepthMap.at<float>(i,j) = mbf/(imD.at<uint16_t>(i,j)/mDepthMapFactor);
-                    }
-                    else if (mSensor == eSensor::MONOCULAR) {
-                        //for monocular the input image does need to be reversed - the code actually inverts the depth map to "normal"
-                        // when it does mbf/depth/factor. 
-                        float value = (imD.at<uint16_t>(i,j)/mDepthMapFactor);
-                        // VDO_INFO_MSG(value);
-                        // VDO_INFO_MSG(imD.at<uint16_t>(i,j));
-                        mDepthMap.at<float>(i,j) = value;
-                    }
+                // mDepthMap.at<float>(i,j) = mbf/(imD.at<uint16_t>(i,j)/mDepthMapFactor);
+                mDepthMap.at<float>(i,j) = 256 * mbf/imD.at<uint16_t>(i,j);
+                
+                ///////////Temporary///////////////
+                // if (mTestData==OMD || mTestData==REAL) {
+                //     mDepthMap.at<float>(i,j) = imD.at<uint16_t>(i,j)/mDepthMapFactor;
+                // }
+                // else if (mTestData==KITTI)
+                // {
+                //     if (mSensor == eSensor::RGBD) {
+                //         mDepthMap.at<float>(i,j) = mbf/(imD.at<uint16_t>(i,j)/mDepthMapFactor);
+                //     }
+                //     else if (mSensor == eSensor::MONOCULAR) {
+                //         //for monocular the input image does need to be reversed - the code actually inverts the depth map to "normal"
+                //         // when it does mbf/depth/factor. 
+                //         float value = (imD.at<uint16_t>(i,j)/mDepthMapFactor);
+                //         // VDO_INFO_MSG(value);
+                //         // VDO_INFO_MSG(imD.at<uint16_t>(i,j));
+                //         mDepthMap.at<float>(i,j) = value;
+                //     }
+                // }    
+                ////////////////////////////
 
                      // when it does mbf/depth/factor. 
                         // float value = (imD.at<uint16_t>(i,j)/mDepthMapFactor);
@@ -368,7 +372,7 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
                     // float value = mbf/(imD.at<uint16_t>(i,j)/mDepthMapFactor);
 
                     // std::cout <<   mDepthMap.at<float>(i,j) << " ";
-                }
+                
             }
         }
         // std::cout << std::endl;
@@ -376,7 +380,13 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
 
 
     cv::Mat imDepth = mDepthMap;
-    // cv::Mat imDepth = imD;
+    
+    // //Debug
+    // cv::Mat imDepth2 = mDepthMap;
+    // cv::imshow("Depth before", imD);
+    // cv::imshow("Depth after", imDepth);
+    // cout << "Next=" <<endl << imDepth<< endl << endl;
+  
 
     // Transfer color image to grey image
     if(mImGray.channels()==3)
@@ -420,6 +430,7 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
     // cv::waitKey(0);
     mCurrentFrame = Frame(mImGray,imDepth,imFlow,maskSEM,timestamp,mpORBextractorLeft,mK,mDistCoef,mbf,mThDepth,mThDepthObj,nUseSampleFea);
 
+    // create a scene object with frame id, time stamp and rgb image.
     scene = std::make_shared<Scene>(global_f_id, time_);
     scene->rgb_frame = imRGB;
 
@@ -520,14 +531,16 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
     //         mCurrentFrame.vObjPose_gt[i] = ObjPoseParsingKT(vObjPose_gt[i]);
     // }
 
-    // Save temperal matches for visualization
+    // Save temperal matches for visualization, N_s is the static points
     TemperalMatch = vector<int>(mCurrentFrame.N_s,-1);
-    // Initialize object label
+    // Initialize object label, fill the empty entries with -2
     mCurrentFrame.vObjLabel.resize(mCurrentFrame.mvObjKeys.size(),-2);
 
     // *** main ***
     // VDO_DEBUG_MSG("Start Tracking ......");
+    VDO_INFO_MSG("Start Tracking ......");
     SceneType scene_type = Track();
+    VDO_INFO_MSG("End Tracking ......");
     // VDO_DEBUG_MSG("End Tracking ......");
 
     // Update Global ID
@@ -669,7 +682,8 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
             //         break;
             // }
         }
-        cv::imshow("Static Background and Object Points", imRGB);
+        // // Tranks edit
+        // cv::imshow("Static Background and Object Points", imRGB);
         // cv::imwrite("feat.png",imRGB);
         if (f_id<4)
             cv::waitKey(1);
@@ -851,7 +865,8 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
             // }
         }
 
-        imshow( "Camera and Object Trajectories", imTraj);
+        // // Tranks edit
+        // imshow( "Camera and Object Trajectories", imTraj);
         if (f_id<3)
             cv::waitKey(1);
         else
@@ -1455,6 +1470,7 @@ SceneType Tracking::Track()
 
     //jesse -> this was false before?
     bLocalBatch = true;
+    // Do partial batch optimization, in this case every 20 frames (determined by window_size and overlap_size userinput params)
     if ( (f_id-nOVERLAP_SIZE+1)%(nWINDOW_SIZE-nOVERLAP_SIZE)==0 && f_id>=nWINDOW_SIZE-1 && bLocalBatch)
     {
         cout << "-------------------------------------------" << endl;
@@ -1468,7 +1484,7 @@ SceneType Tracking::Track()
         e_5 = clock();
         loc_ba_time = (double)(e_5-s_5)/CLOCKS_PER_SEC*1000;
         mpMap->fLBA_time.push_back(loc_ba_time);
-        // cout << "local optimization time: " << loc_ba_time << endl;
+        cout << "local optimization time: " << loc_ba_time << endl;
     }
 
     // =================================================================================================
@@ -1479,7 +1495,7 @@ SceneType Tracking::Track()
     // cout << "StopFrame: " << StopFrame << endl;
     bGlobalBatch = true;
     VDO_DEBUG_MSG(f_id);
-    if (f_id==StopFrame) // bFrame2Frame f_id>=2
+    if (f_id==StopFrame) // bFrame2Frame f_id>=2 // determined by global_optim_trigger user input
     {
     
         // Get Full Batch Optimization
@@ -1519,7 +1535,7 @@ SceneType Tracking::Track()
 
 void Tracking::Initialization()
 {
-    // cout << "Initialization ......" << endl;
+    // cout << "Map Initialization ......" << endl;
 
     // initialize the 3d points
     {
@@ -3123,7 +3139,7 @@ void Tracking::RenewFrameInfo(const std::vector<int> &TM_sta)
     mCurrentFrame.mvFlowNext = mvFlowNextTmp;
     mCurrentFrame.mvCorres = mvCorresTmp;
 
-    // cout << "updating STATIC features finished...... " << mvKeysTmp.size() << endl;
+    cout << "updating STATIC features finished...... " << mvKeysTmp.size() << endl;
 
     // ---------------------------------------------------------------------------------------
     // ++++++++++++++++++++++++++++ Update for Dynamic Object Features +++++++++++++++++++++++
@@ -3158,6 +3174,7 @@ void Tracking::RenewFrameInfo(const std::vector<int> &TM_sta)
             if (x>=mImGrayLast.cols || y>=mImGrayLast.rows || x<=0 || y<=0)
                 continue;
 
+            // Only take keypoints that are valid in all segMap, depthMap and flowMap.
             if (mSegMap.at<int>(y,x)!=0 && mDepthMap.at<float>(y,x)<25 && mDepthMap.at<float>(y,x)>0)
             {
                 const float flow_x = mFlowMap.at<cv::Vec2f>(y,x)[0];
@@ -3313,9 +3330,11 @@ void Tracking::UpdateMask()
     // find the unique labels in semantic label
     auto UniLab = mLastFrame.vSemObjLabel;
     std::sort(UniLab.begin(), UniLab.end());
-    UniLab.erase(std::unique( UniLab.begin(), UniLab.end() ), UniLab.end() );
+    UniLab.erase(std::unique( UniLab.begin(), UniLab.end() ), UniLab.end() ); //erase the duplicate labels and outputs a vecotr only containing unique labels
 
     // collect the predicted labels and semantic labels in vector
+    // Sort out the predicted labels into dedicated groups, i.e. if we
+    // have 5 Unique Labels(UniLab), put the predicted labels under these 5 groups accordingly
     std::vector<std::vector<int> > ObjID(UniLab.size());
     for (int i = 0; i < mLastFrame.vSemObjLabel.size(); ++i)
     {
@@ -3328,6 +3347,7 @@ void Tracking::UpdateMask()
             }
         }
     }
+    ///***ObjID = { {a1,a2,a3,...}, {b1,b2,b3,...}, {c1,c2,c3,...},...}***///
 
     // check each object label distribution in the coming frame
     for (int i = 0; i < ObjID.size(); ++i)
@@ -3336,7 +3356,7 @@ void Tracking::UpdateMask()
         std::vector<int> LabTmp;
         for (int j = 0; j < ObjID[i].size(); ++j)
         {
-            const int u = mLastFrame.mvObjCorres[ObjID[i][j]].pt.x;
+            const int u = mLastFrame.mvObjCorres[ObjID[i][j]].pt.x; // labelled keypoint's x coord 
             const int v = mLastFrame.mvObjCorres[ObjID[i][j]].pt.y;
             if (u<mImGray.cols && u>0 && v<mImGray.rows && v>0)
             {

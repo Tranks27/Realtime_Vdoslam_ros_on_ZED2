@@ -76,6 +76,12 @@ VDO_SLAM::CameraInformation::CameraInformation(sensor_msgs::CameraInfoConstPtr& 
                                             map1, map2);
         distortion_model = DistortionModel::EQUIDISTANT;
     }
+    else if (camera_info_msg.distortion_model == "plumb_bob"){
+        camera_matrix = cv::Mat(3, 3, CV_64F, &camera_info_msg.K[0]);
+        dist_coeffs = cv::Mat(4, 1, CV_64F, &camera_info_msg.D[0]);
+
+        distortion_model = DistortionModel::PLUMB_BOB;
+    }
     else {
         ROS_WARN_STREAM("Distortion Model [" << camera_info_msg.distortion_model << " not recognised.");
         camera_matrix = cv::Mat(3, 3, CV_64F, &camera_info_msg.K[0]);
@@ -95,5 +101,9 @@ void VDO_SLAM::CameraInformation::apply_undistortion(const cv::Mat& src, cv::Mat
     }
     else if (camera_info_msg.distortion_model == "equidistant") {
         cv::fisheye::undistortImage(src, dst, camera_matrix, dist_coeffs, modified_camera_matrix);
+    }
+    else if (camera_info_msg.distortion_model == "plumb_bob") {
+        ROS_WARN_STREAM("Plumb bob model undistortion function not set. Don't try to undistort image");
+        return;
     }
 }

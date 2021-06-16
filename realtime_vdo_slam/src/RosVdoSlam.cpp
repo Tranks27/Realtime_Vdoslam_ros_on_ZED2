@@ -106,7 +106,7 @@ std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHan
 
         //wait for topic defined in configuration file
         if (use_camera_info_topic) {
-            std::string camera_info_topic = "/zed2/zed_node/left/camera_info";
+            std::string camera_info_topic = "/zed2/zed_node/rgb/camera_info";
             // nh.getParam("/ros_vdoslam/input_camera_info_topic", camera_info_topic);
             ROS_INFO_STREAM("Waiting for camera info topic: " << camera_info_topic);
             sensor_msgs::CameraInfoConstPtr info_ptr = ros::topic::waitForMessage<sensor_msgs::CameraInfo>(camera_info_topic);
@@ -134,11 +134,11 @@ std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHan
         }
         //load camera params from launch file
         else {
-            
-            nh.getParam("/ros_vdo_slam/fx", params.fx);
-            nh.getParam("/ros_vdo_slam/fy", params.fy);
-            nh.getParam("/ros_vdo_slam/cx", params.cx);
-            nh.getParam("/ros_vdo_slam/cy", params.cy);
+            ROS_WARN_STREAM("camera_info_topic is not being used");
+            // nh.getParam("/ros_vdo_slam/fx", params.fx);
+            // nh.getParam("/ros_vdo_slam/fy", params.fy);
+            // nh.getParam("/ros_vdo_slam/cx", params.cx);
+            // nh.getParam("/ros_vdo_slam/cy", params.cy);
             
         }
 
@@ -154,7 +154,8 @@ std::shared_ptr<VDO_SLAM::System> RosVdoSlam::construct_slam_system(ros::NodeHan
         nh.getParam("/ros_vdo_slam/height", params.height);
 
         nh.getParam("/ros_vdo_slam/fps", params.fps);
-        nh.getParam("/ros_vdo_slam/bf", params.bf);
+        // nh.getParam("/ros_vdo_slam/bf", params.bf);
+        params.bf = params.fx * 0.12; // fx is always changing depending on camera_info topic, 0.12m is zed2 baseline
 
         nh.getParam("/ros_vdo_slam/RGB", params.RGB);
         nh.getParam("/ros_vdo_slam/data_code", params.data_code);
@@ -275,7 +276,7 @@ void RosVdoSlam::merge_scene_semantics(SlamScenePtr& scene, const std::vector<ma
     }
     else {
         tracked.resize(scene_objects.size());
-        //fill with -1 such that we dont try ad associate
+        //fill with -1 such that we dont try and associate
         std::fill(tracked.begin(), tracked.end(), -1);
     }
 
@@ -305,6 +306,7 @@ void RosVdoSlam::merge_scene_semantics(SlamScenePtr& scene, const std::vector<ma
             if (tracking_class_map.find(object_ptr->tracking_id) != tracking_class_map.end() ) {
                 //found -> assign label to scene object. Note, we will not have bounding box
                 object_ptr->label = tracking_class_map[object_ptr->tracking_id];
+                object_ptr->bounding_box = BoundingBox();
             } 
             else {
                 ROS_WARN_STREAM("Tracking association was invalid: Coud not find association in tracking map or by matching");
@@ -335,12 +337,19 @@ void RosVdoSlam::vdo_worker() {
             cv::Mat original_rgb;
             input->raw.copyTo(original_rgb);
 
+            ros::Time my_vdo_start_time = ros::Time::now();
             std::pair<SceneType, std::shared_ptr<Scene>> track_result = slam_system->TrackRGBD(input->raw,input->depth,
                 input->flow,
                 input->mask,
                 slam_time,
                 slam_time.to_sec(),
                 image_trajectory,global_optim_trigger);
+
+            // cv::imshow("Depth", input->depth);
+            
+            // ros::Duration vdo_time_diff = ros::Time::now() - my_vdo_start_time;
+            // std::cout<< "vdo_slam took: "<< vdo_time_diff.toSec() << std::endl;
+            // std::cout<< "vdo_slam framerate: " << 1/vdo_time_diff.toSec() << std::endl;
 
             // std::unique_ptr<VDO_SLAM::Scene> unique_scene =  
 
@@ -372,8 +381,10 @@ void RosVdoSlam::vdo_worker() {
                 //see ros interprocess comms: http://wiki.ros.org/roscpp/Overview/Publishers%20and%20Subscribers#Intraprocess_Publishing
                 scene_pub.publish(summary_msg);
 
-
             }
+            ros::Duration vdo_time_diff = ros::Time::now() - my_vdo_start_time;
+            std::cout<< "vdo_slam took: "<< vdo_time_diff.toSec() << std::endl;
+            std::cout<< "vdo_slam framerate: " << 1/vdo_time_diff.toSec() << std::endl;
         }
     }
 

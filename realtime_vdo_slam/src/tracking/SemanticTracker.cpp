@@ -36,7 +36,7 @@ std::vector<int> SemanticTracker::assign_tracking_labels(const std::vector<cv::P
     //rows should be vdo objects and cols should be bounding boxes
     std::vector<std::vector<double>> euclid_cost_matrix(object_centroids_length,v);
     for (int i = 0; i < object_centroids_length; i++) {
-        std::vector<double> cols;
+        // std::vector<double> cols;
         for (int j = 0; j < semantic_object_length; j++) {
             double cost = get_euclid_distance(semantic_object_bb[j], vdo_object_centroids[i]);
             euclid_cost_matrix[i][j] = cost;
@@ -45,7 +45,9 @@ std::vector<int> SemanticTracker::assign_tracking_labels(const std::vector<cv::P
     }
 
     std::vector<int> assignment;
-    double cost = hungarian_solver.Solve(euclid_cost_matrix, assignment);
+    //Match the semantic bb with vdo objects using hungarian solver for max IOU values
+    //Store the costs in the assignment vector 
+    double cost = hungarian_solver.Solve(euclid_cost_matrix, assignment); 
 
     assert(assignment.size() == object_centroids_length);
 

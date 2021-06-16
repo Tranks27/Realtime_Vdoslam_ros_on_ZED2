@@ -79,7 +79,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
     mvLevelSigma2 = mpORBextractorLeft->GetScaleSigmaSquares();
     mvInvLevelSigma2 = mpORBextractorLeft->GetInverseScaleSigmaSquares();
 
-    ExtractORB(0,imGray);
+    ExtractORB(0,imGray); // extract keypoints
 
     N = mvKeys.size();
     if(mvKeys.empty())
@@ -90,6 +90,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
     if (UseSampleFea==0)
     {
         // // // Option I: ~~~~~~~ use detected features ~~~~~~~~~~ // // //
+        // Only consider valid values of maskSem, imDepth and imflow for each keypoint
         for (int i = 0; i < mvKeys.size(); ++i)
         {
             int x = mvKeys[i].pt.x;
@@ -104,7 +105,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
             }
 
             if (imDepth.at<float>(y,x)>mThDepth || imDepth.at<float>(y,x)<=0)  {// new added in Aug 21 2019
-                // VDO_DEBUG_MSG("Depth was bad " << imDepth.at<float>(y,x));
+                VDO_DEBUG_MSG("Depth was bad " << imDepth.at<float>(y,x));
                 continue;
             }
 
@@ -129,51 +130,52 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
     else
     {
         // // // Option II: ~~~~~~~ use sampled features ~~~~~~~~~~ // // //
-        // cout << imFlow.size() << endl;
-        clock_t s_1, e_1;
-        double fea_det_time;
-        s_1 = clock();
-        std::vector<cv::KeyPoint> mvKeysSamp = SampleKeyPoints(imGray.rows, imGray.cols);
-        VDO_DEBUG_MSG("number key points: " << mvKeysSamp.size());
-        e_1 = clock();
-        fea_det_time = (double)(e_1-s_1)/CLOCKS_PER_SEC*1000;
-        // std::cout << "feature detection time: " << fea_det_time << std::endl;
+        // // cout << imFlow.size() << endl;
+        // clock_t s_1, e_1;
+        // double fea_det_time;
+        // s_1 = clock();
+        // std::vector<cv::KeyPoint> mvKeysSamp = SampleKeyPoints(imGray.rows, imGray.cols);
+        // VDO_DEBUG_MSG("number key points: " << mvKeysSamp.size());
+        // e_1 = clock();
+        // fea_det_time = (double)(e_1-s_1)/CLOCKS_PER_SEC*1000;
+        // // std::cout << "feature detection time: " << fea_det_time << std::endl;
 
 
-        for (int i = 0; i < mvKeysSamp.size(); ++i)
-        {
-            int x = mvKeysSamp[i].pt.x;
-            int y = mvKeysSamp[i].pt.y;
+        // for (int i = 0; i < mvKeysSamp.size(); ++i)
+        // {
+        //     int x = mvKeysSamp[i].pt.x;
+        //     int y = mvKeysSamp[i].pt.y;
 
-            if (maskSEM.at<int>(y,x)!=0) {  // new added in Jun 13 2019
-                if (mask_id_map.find(maskSEM.at<int>(y,x)) == mask_id_map.end()) {
-                    mask_id_map[maskSEM.at<int>(y,x)] = true;
-                }
-                continue;
-            }
+        //     if (maskSEM.at<int>(y,x)!=0) {  // new added in Jun 13 2019
+        //         if (mask_id_map.find(maskSEM.at<int>(y,x)) == mask_id_map.end()) {
+        //             mask_id_map[maskSEM.at<int>(y,x)] = true;
+        //         }
+        //         continue;
+        //     }
 
 
-            // std::cout << "im depth int " << imDepth.at<int>(y,x) << std::endl;
-            // std::cout << "im depth float " << imDepth.at<int>(y,x) << std::endl;
-            if (imDepth.at<float>(y,x)>mThDepth || imDepth.at<float>(y,x)<=0) { // new added in Aug 21 2019
-                // std::cout << "Depth was bad " << imDepth.at<float>(y,x) << std::endl;
-                continue;
-            }
+        //     // std::cout << "im depth int " << imDepth.at<int>(y,x) << std::endl;
+        //     // std::cout << "im depth float " << imDepth.at<int>(y,x) << std::endl;
+        //     if (imDepth.at<float>(y,x)>mThDepth || imDepth.at<float>(y,x)<=0) { // new added in Aug 21 2019
+        //         // std::cout << "Depth was bad " << imDepth.at<float>(y,x) << std::endl;
+        //         continue;
+        //     }
 
-            float flow_xe = imFlow.at<cv::Vec2f>(y,x)[0];
-            float flow_ye = imFlow.at<cv::Vec2f>(y,x)[1];
+        //     float flow_xe = imFlow.at<cv::Vec2f>(y,x)[0];
+        //     float flow_ye = imFlow.at<cv::Vec2f>(y,x)[1];
 
-            if(flow_xe!=0 && flow_ye!=0)
-            {
-                if(mvKeysSamp[i].pt.x+flow_xe < imGray.cols && mvKeysSamp[i].pt.y+flow_ye < imGray.rows && mvKeysSamp[i].pt.x+flow_xe>0 && mvKeysSamp[i].pt.y+flow_ye>0)
-                {
-                    mvStatKeysTmp.push_back(mvKeysSamp[i]);
-                    mvCorres.push_back(cv::KeyPoint(mvKeysSamp[i].pt.x+flow_xe,mvKeysSamp[i].pt.y+flow_ye,0,0,0,mvKeysSamp[i].octave,-1));
-                    mvFlowNext.push_back(cv::Point2f(flow_xe,flow_ye));
+        //     if(flow_xe!=0 && flow_ye!=0)
+        //     {
+        //         if(mvKeysSamp[i].pt.x+flow_xe < imGray.cols && mvKeysSamp[i].pt.y+flow_ye < imGray.rows && mvKeysSamp[i].pt.x+flow_xe>0 && mvKeysSamp[i].pt.y+flow_ye>0)
+        //         {
+        //             mvStatKeysTmp.push_back(mvKeysSamp[i]);
+        //             mvCorres.push_back(cv::KeyPoint(mvKeysSamp[i].pt.x+flow_xe,mvKeysSamp[i].pt.y+flow_ye,0,0,0,mvKeysSamp[i].octave,-1));
+        //             mvFlowNext.push_back(cv::Point2f(flow_xe,flow_ye));
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
+        VDO_ERROR_MSG("Sample features being used for Frame construction, code is not active");
     }
 
     // ---------------------------------------------------------------------------------------
@@ -185,7 +187,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
     // cv::waitKey(0);
 
     N_s_tmp = mvCorres.size();
-    VDO_INFO_MSG("number of random sample points: " << mvCorres.size());
+    VDO_INFO_MSG("number of keypoints: " << mvCorres.size());
 
     // assign the depth value to each keypoint
     mvStatDepthTmp = vector<float>(N_s_tmp,-1);
@@ -214,12 +216,14 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
         {
             // cout << maskSEM.at<int>(i,j) << " ";
             // check ground truth motion mask
+            // if mask and depth at that point is valid
             if (maskSEM.at<int>(i,j)!=0 && imDepth.at<float>(i,j)<mThDepthObj && imDepth.at<float>(i,j)>0)
             {
                 // get flow
                 const float flow_x = imFlow.at<cv::Vec2f>(i,j)[0];
                 const float flow_y = imFlow.at<cv::Vec2f>(i,j)[1];
 
+                // check if flow is valid or within bounds
                 if(j+flow_x < imGray.cols && j+flow_x > 0 && i+flow_y < imGray.rows && i+flow_y > 0)
                 {
                     // save correspondences
@@ -245,16 +249,16 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
     VDO_DEBUG_MSG("vSemObjLabel size: " << vSemObjLabel.size());
     UndistortKeyPoints();
 
-    ComputeStereoFromRGBD(imDepth);
+    // ComputeStereoFromRGBD(imDepth); // Tranks edit
 
     // This is done only for the first Frame (or after a change in the calibration)
     if(mbInitialComputations)
     {
         ComputeImageBounds(imGray);
 
-        mfGridElementWidthInv=static_cast<float>(FRAME_GRID_COLS)/static_cast<float>(mnMaxX-mnMinX);
-        mfGridElementHeightInv=static_cast<float>(FRAME_GRID_ROWS)/static_cast<float>(mnMaxY-mnMinY);
-
+        mfGridElementWidthInv=static_cast<float>(FRAME_GRID_COLS)/static_cast<float>(mnMaxX-mnMinX); // 0.1
+        mfGridElementHeightInv=static_cast<float>(FRAME_GRID_ROWS)/static_cast<float>(mnMaxY-mnMinY); // 0.1
+        
         fx = K.at<float>(0,0);
         fy = K.at<float>(1,1);
         cx = K.at<float>(0,2);
@@ -265,7 +269,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const cv::Mat &imFlo
         mbInitialComputations=false;
     }
 
-    mb = mbf/fx;
+    // mb = mbf/fx;
 
     AssignFeaturesToGrid();
 
@@ -287,6 +291,7 @@ void Frame::AssignFeaturesToGrid()
         int nGridPosX, nGridPosY;
         if(PosInGrid(kp,nGridPosX,nGridPosY))
             mGrid[nGridPosX][nGridPosY].push_back(i);
+                
     }
 }
 
@@ -294,9 +299,9 @@ void Frame::ExtractORB(int flag, const cv::Mat &im)
 {
     if(flag==0){
         // std::cout << "Using CV Orb" << std::endl;
-        cv::Mat mask;
+        // cv::Mat mask;
         // mpORBextractorLeft->detect_features(im, mask, mvKeys, mDescriptors);
-        (*mpORBextractorLeft)(im,cv::Mat(),mvKeys,mDescriptors);
+        (*mpORBextractorLeft)(im,cv::Mat(),mvKeys,mDescriptors); //this calls the operator() function in orbExtractor
         // cv::Ptr<cv::Feature2D> f2d = cv::xfeatures2d::SURF::create(400);
         // cv::Ptr<cv::Feature2D> f2d = cv::xfeatures2d::SIFT::create();
         // f2d->compute(im, mvKeys, mSift);
@@ -384,7 +389,7 @@ vector<size_t> Frame::GetFeaturesInArea(const float &x, const float  &y, const f
 
 bool Frame::PosInGrid(const cv::KeyPoint &kp, int &posX, int &posY)
 {
-    posX = round((kp.pt.x-mnMinX)*mfGridElementWidthInv);
+    posX = round((kp.pt.x-mnMinX)*mfGridElementWidthInv); // pos scaled down by 0.1 since mfGridElementWidthInv=0.1. For viz purposes I think?
     posY = round((kp.pt.y-mnMinY)*mfGridElementHeightInv);
 
     //Keypoint's coordinates are undistorted, which could cause to go out of the image
@@ -399,9 +404,13 @@ void Frame::UndistortKeyPoints()
     if(mDistCoef.at<float>(0)==0.0)
     {
         mvKeysUn=mvKeys;
-        return;
+        // return;
+    }
+    else{
+        VDO_ERROR_MSG("Distortion matrix not 0. Undistortion failed");
     }
 
+    /*
     // Fill matrix with points
     cv::Mat mat(N,2,CV_32F);
     for(int i=0; i<N; i++)
@@ -424,12 +433,14 @@ void Frame::UndistortKeyPoints()
         kp.pt.y=mat.at<float>(i,1);
         mvKeysUn[i]=kp;
     }
+    */
 }
 
 void Frame::ComputeImageBounds(const cv::Mat &imLeft)
 {
     if(mDistCoef.at<float>(0)!=0.0)
     {
+        /*
         cv::Mat mat(4,2,CV_32F);
         mat.at<float>(0,0)=0.0; mat.at<float>(0,1)=0.0;
         mat.at<float>(1,0)=imLeft.cols; mat.at<float>(1,1)=0.0;
@@ -445,6 +456,8 @@ void Frame::ComputeImageBounds(const cv::Mat &imLeft)
         mnMaxX = max(mat.at<float>(1,0),mat.at<float>(3,0));
         mnMinY = min(mat.at<float>(0,1),mat.at<float>(1,1));
         mnMaxY = max(mat.at<float>(2,1),mat.at<float>(3,1));
+        */
+        VDO_ERROR_MSG("ComputeImageBounds() function error");
 
     }
     else

@@ -44,7 +44,7 @@ void my_Synchronizer::callback(const sensor_msgs::Image::ConstPtr& f1, \
 
 
 
-				ROS_INFO("This is the combined node output");
+				// ROS_INFO("This is the combined node output");
 				// ROS_INFO("f-m-d-s-r timestamps: %.2f/%.2f/%.2f/%.2f/%.2f", f1->header.stamp.toSec(), \
 				// 												m1->header.stamp.toSec(), \
 				// 												d1->header.stamp.toSec(), \
@@ -65,7 +65,7 @@ void my_Synchronizer::callback(const sensor_msgs::Image::ConstPtr& f1, \
 
 
 /**********************************************************/
-//  to test and see the actual images from the synced topic. 
+//  DEBUG to test and see the actual images from the synced topic. 
 // 	Note: need to change the data in flownet and maskrcnn topics to visualizable ones**
 
 // static const std::string cvWindow1 = "flownet image";

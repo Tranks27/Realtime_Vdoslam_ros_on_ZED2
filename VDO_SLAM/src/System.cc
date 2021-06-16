@@ -37,6 +37,8 @@ namespace VDO_SLAM {
 
     System::System(const string &strSettingsFile, const eSensor sensor):mSensor(sensor)
     {
+        /**********not using this constructor***********
+        
         // ===== output welcome message ======
         cout << endl << 
         " ----------------------------------------------------------------------------" << endl <<
@@ -61,6 +63,7 @@ namespace VDO_SLAM {
         //(it will live in the main thread of execution, the one that called this constructor)
         mpTracker = new Tracking(mpMap, strSettingsFile, mSensor);
 
+        */
     }
 
 

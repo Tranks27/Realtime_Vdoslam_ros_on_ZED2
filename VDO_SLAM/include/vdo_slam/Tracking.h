@@ -74,7 +74,7 @@ class Tracking
         std::pair<SceneType, std::shared_ptr<Scene>> GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
                             const Time& time_, const double &timestamp, cv::Mat &imTraj, const int &nImage);
 
-        // Sparse Scene Flow Vector
+        // Sparse Scene Flow Vector, calculate 3d_flow between previous frame and current frame 
         void GetSceneFlowObj();
 
         // Dynamic Object Tracking
@@ -116,7 +116,8 @@ class Tracking
                             const std::vector<std::vector<bool> > &ObjStat);
 
         void RenewFrameInfo(const std::vector<int> &TM_sta);
-
+        
+        //Update Mask information, find label that appears most in frame, recover missing masks
         void UpdateMask();
 
 
@@ -238,12 +239,13 @@ class Tracking
         cv::Mat mDistCoef;
         float mbf;
 
-        // Threshold close/far points
+        // Threshold between close and far points (definitions found in ORBSLAM2)
         // Points seen as close by the stereo/RGBD sensor are considered reliable
         float mThDepth;
         float mThDepthObj;
 
         // The depth map scale factor.
+        // For RGB-D inputs only. For some datasets (e.g. TUM) the depthmap values are scaled.
         float mDepthMapFactor;
 
         //Current matches in frame

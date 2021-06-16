@@ -20,3 +20,7 @@ lib/
 /VDO_SLAM/vdo_slam_g2o/build/
 
 *.bag
+
+dumb_image_processor/
+orb_slam_2_ros/
+zed-ros-examples/

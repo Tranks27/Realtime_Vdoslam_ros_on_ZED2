@@ -1,4 +1,4 @@
-<!-- Only run flownet and maskrcnn from the respective packages -->
+<!-- Run flownet and maskrcnn from the respective packages as well as synchronizer node-->
 <launch>
 
     <!-- <param name="use_sim_time" value="true" /> -->
@@ -8,8 +8,8 @@
     <arg name= "topic" default="/camera/left"/>
     <!-- <arg name= "topic" default="/zed2/zed_node/left/image_rect_color"/> -->
 
-    <arg name= "left_image_input_topic" default="theora in:=/zed2/zed_node/left/image_rect_color raw out:=/camera/left"/>
-    
+    <!-- <arg name= "left_image_input_topic" default="theora in:=/zed2/zed_node/left/image_rect_color raw out:=/camera/left"/> -->
+    <arg name= "left_image_input_topic" default="theora in:=/zed2/zed_node/rgb/image_rect_color raw out:=/camera/left"/>
     <!-- republish node for more efficient image transfers -->
     <node pkg="image_transport" name="republish" type="republish"  output="screen" args="$(arg left_image_input_topic)"/> 
     
@@ -18,5 +18,6 @@
         <param name="topic" type="str" value="$(arg topic)" />
     <node pkg="mask_rcnn" type="mask_rcnn_ros.py" name="mask_rcnn_ros_node" output="screen"/>
         <param name="topic" type="str" value="$(arg topic)" />
+    <node pkg="synchronizer" type="synchronizer_node" name="synchronizer_node" output="screen"/>
 
 </launch>

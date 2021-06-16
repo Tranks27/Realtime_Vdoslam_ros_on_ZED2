@@ -31,7 +31,7 @@ find_package(catkin REQUIRED COMPONENTS
 	std_msgs
 	cv_bridge
 	nav_msgs
-	midas_ros
+	# midas_ros
 	sensor_msgs
 	message_filters
 	nodelet
@@ -203,7 +203,7 @@ catkin_package(
 	flow_net
 	mask_rcnn
 	# mono_depth_2
-	midas_ros
+	# midas_ros
 	message_runtime
 	message_filters
 	nodelet

@@ -41,7 +41,8 @@ using namespace std;
 void Optimizer::PartialBatchOptimization(Map* pMap, const cv::Mat Calib_K, const int WINDOW_SIZE)
 {
     const int N = pMap->vpFeatSta.size(); // Number of Frames
-    std::vector<std::vector<std::pair<int, int> > > StaTracks = pMap->TrackletSta;
+    cout << "Number of frames : " << pMap->vpFeatSta.size() << endl;
+    std::vector<std::vector<std::pair<int, int> > > StaTracks = pMap->TrackletSta; // feature tracklets: pair.first = frameID; pair.second = featureID;
     std::vector<std::vector<std::pair<int, int> > > DynTracks = pMap->TrackletDyn;
 
     // =======================================================================================
@@ -55,13 +56,15 @@ void Optimizer::PartialBatchOptimization(Map* pMap, const cv::Mat Calib_K, const
     // initialize
     for (int i = 0; i < N; ++i)
     {
-        std::vector<int>  vnFLS_tmp(pMap->vpFeatSta[i].size(),-1);
+        std::vector<int>  vnFLS_tmp(pMap->vpFeatSta[i].size(),-1); // size is the number of staic keypoints in each frame
+        // cout << "VpfeatSTA is : " << pMap->vpFeatSta[i].size() << endl;
         vnFeaLabSta[i] = vnFLS_tmp;
         vnFeaMakSta[i] = vnFLS_tmp;
     }
     for (int i = 0; i < N; ++i)
     {
-        std::vector<int>  vnFLD_tmp(pMap->vpFeatDyn[i].size(),-1);
+        std::vector<int>  vnFLD_tmp(pMap->vpFeatDyn[i].size(),-1); // size is the number of dynamic keypoints in each frame
+        // cout << "vpFeatDYN is : " << pMap->vpFeatDyn[i].size() << endl;
         vnFeaLabDyn[i] = vnFLD_tmp;
         vnFeaMakDyn[i] = vnFLD_tmp;
     }
@@ -69,13 +72,13 @@ void Optimizer::PartialBatchOptimization(Map* pMap, const cv::Mat Calib_K, const
     // label static feature
     for (int i = 0; i < StaTracks.size(); ++i)
     {
-        // filter the tracklets via threshold
-        if (StaTracks[i].size()<3) // 3 the length of track on background.
+        // filter the tracklets via threshold, 
+        if (StaTracks[i].size()<3) // 3 the length of track on background. i.e. invalid if a feature was detected for less than 3 frames
             continue;
         valid_sta++;
         // label them
         for (int j = 0; j < StaTracks[i].size(); ++j)
-            vnFeaLabSta[StaTracks[i][j].first][StaTracks[i][j].second] = i;
+            vnFeaLabSta[StaTracks[i][j].first][StaTracks[i][j].second] = i; // vnFeaLabSta[frameID][featureID] = label
     }
     // label dynamic feature
     for (int i = 0; i < DynTracks.size(); ++i)

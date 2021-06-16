@@ -54,7 +54,7 @@
 
   <depend>vision_msgs</depend>
   <depend>tf</depend>
-  <depend>midas_ros</depend>
+  <!-- <depend>midas_ros</depend> -->
 
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
@@ -65,7 +65,7 @@
   <depend>visualization_msgs</depend>
   <depend>flow_net</depend>
   <depend>mask_rcnn</depend>
-  <depend>mono_depth_2</depend>
+  <!-- <depend>mono_depth_2</depend> -->
 
 
 

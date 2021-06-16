@@ -39,51 +39,50 @@
   <!--After how many frames to run global optimization -->
   <arg name="optimization_trigger_frame" default="-1"/>
 
-  <!--VDO SLAM params. Used if use_calibration_file is false-->
-  <arg name="fx" default="392.3105540020543"/>
-  <arg name="fy" default="467.96648747036744"/>
-  <arg name="cx" default="320.7584729627735"/>
-  <arg name="cy" default="243.46670267884215"/>
+  <!--ZED2 params. Used if use_calibration_file is false-->
+  <!-- <arg name="fx" default="482.69146728515625"/>
+  <arg name="cx" default="435.5943908691406"/>
+  <arg name="fy" default="481.7337646484375"/>
+  <arg name="cy" default="218.7559051513672"/> -->
 
-
-   <!-- <arg name="fx" default="427.7050099835501"/>
-  <arg name="fy" default="510.1866599144113"/>
-  <arg name="cx" default="323.5111875590873"/>
-  <arg name="cy" default="250.9863176952058"/> -->
 
   <arg name="width" default="896"/>
   <arg name="height" default="503"/>
   <arg name="fps" default="15"/>
 
   <!-- <arg name="bf" default="300"/> -->
-  <arg name="bf" default="57.86"/>
+  <!-- Stereo baseline times fx, camera_baseline(bf) = f_x * baseline (approx.) -->
+  <!-- baseline = 0.12m and fx = 373.76, so bf = b x f  -->
+  <arg name="bf" default="44.85"/>
 
-  <arg name="RGB" default="0"/>
+  <arg name="RGB" default="1"/>
   <arg name="data_code" default="2"/>
 
   <!-- <arg name="depth_map_factor" default="2200"/> -->
-  <arg name="depth_map_factor" default="700"/>
+  <arg name="depth_map_factor" default="1"/>
 
-
-  <arg name="thdepth_bg" default="30"/>
-  <arg name="thdepth_obj" default="45"/>
+  
+  <arg name="thdepth_bg" default="50"/><!-- depth threshold for background (close/far points) -->
+  <arg name="thdepth_obj" default="45"/><!-- depth threshold for objects (close/far points) -->
   <arg name="max_track_points_bg" default="1700"/>
   <arg name="max_track_points_obj" default="800"/>
 
   <!-- <arg name="sf_mg_thresh" default="0.05"/>
   <arg name="sf_ds_thresh" default="0.99"/> -->
 
+  <!-- scene flow paras magnitude and percentage -->
   <!-- <arg name="sf_mg_thresh" default="0.12"/> -->
-    <arg name="sf_mg_thresh" default="0.12"/>
+  <arg name="sf_mg_thresh" default="0.05"/>
   <arg name="sf_ds_thresh" default="0.5"/>
 
 
-
+<!-- local batch paras (window and overlap) -->
   <arg name="window_size" default="5"/>
   <arg name="overlap_size" default="25"/>
 
   <arg name="use_sample_feature" default="0"/>
-
+  
+<!-- Orb paras -->
   <arg name="n_features" default="2500"/>
   <arg name="scale_factor" default="1.2"/>
   <arg name="n_levels" default="8"/>
@@ -103,12 +102,12 @@
 
     <!-- Remap if needed from vdo generated topics to vdo_slam expected topics. These are the same as the ImageProcessing node. Remapping used 
     if online -->
-    <remap to="/vdoslam/input/camera/rgb/image_raw" from="/camera/rgb/image_raw" if="$(arg online)"/>
+    <!-- <remap to="/vdoslam/input/camera/rgb/image_raw" from="/camera/rgb/image_raw" if="$(arg online)"/>
     <remap to="/vdoslam/input/camera/mask/image_raw" from="/camera/mask/image_raw" if="$(arg online)"/>
     <remap to="/vdoslam/input/camera/flow/image_raw" from="/camera/flow/image_raw" if="$(arg online)"/>
     <remap to="/vdoslam/input/camera/depth/image_raw" from="/camera/depth/image_raw" if="$(arg online)"/>
 
-    <remap from="/vdoslam/input/all" to="/camera/all" unless="$(arg online)"/>
+    <remap from="/vdoslam/input/all" to="/camera/all" unless="$(arg online)"/> -->
 
 
     <!-- <remap to="/camera/camera_info" from="/camera/camera_info" if="$(arg online)"/> -->
@@ -134,10 +133,10 @@
 
 
     <!-- VDO SLAM params. Used if use_calibration_file is false -->
-    <param name="fx" value="$(arg fx)" unless="$(arg use_calibration_file)"/>
+    <!-- <param name="fx" value="$(arg fx)" unless="$(arg use_calibration_file)"/>
     <param name="fy" value="$(arg fy)" unless="$(arg use_calibration_file)"/>
     <param name="cx" value="$(arg cx)" unless="$(arg use_calibration_file)"/>
-    <param name="cy" value="$(arg cy)" unless="$(arg use_calibration_file)"/>
+    <param name="cy" value="$(arg cy)" unless="$(arg use_calibration_file)"/> -->
     <param name="width" value="$(arg width)" unless="$(arg use_calibration_file)"/>
     <param name="height" value="$(arg height)" unless="$(arg use_calibration_file)"/>
     <param name="fps" value="$(arg fps)" unless="$(arg use_calibration_file)"/>
