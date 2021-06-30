@@ -61,7 +61,7 @@
   <depend>nav_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>tf2_geometry_msgs</depend>
-  <depend>python_service_starter</depend>
+  <!-- <depend>python_service_starter</depend> -->
   <depend>visualization_msgs</depend>
   <depend>flow_net</depend>
   <depend>mask_rcnn</depend>

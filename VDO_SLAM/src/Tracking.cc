@@ -632,7 +632,7 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
         int sta_x = 300, sta_y = 100, radi = 2, thic = 5;  // (160/120/2/5)
         float scale = 6; // 6
         cv::Mat CamPos = Converter::toInvMatrix(mCurrentFrame.mTcw);
-        cout << "CamPos is : " << CamPos <<endl;
+        // cout << "CamPos is : " << CamPos <<endl;
 
         //x is 0, 3 y is 2,3?
         int x = int(CamPos.at<float>(0,3)*scale) + sta_x;

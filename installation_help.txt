@@ -1,0 +1,115 @@
+###Install Opencv3.4.11 
+1. Follow this link and choose the second method (install from source) on Ubuntu 20.04
+https://linuxize.com/post/how-to-install-opencv-on-ubuntu-20-04/
+OR Ubuntu 18.04
+https://linuxize.com/post/how-to-install-opencv-on-ubuntu-18-04/
+2. For opencv 3.4.11, use “git checkout 3.4.11” inside opencv and opencv_contrib folders
+3. Now, you can run opencv in python3
+4. For opencv to work in C language, we need to install the missing library
+“sudo apt-get install libopencv-highgui-dev”
+
+### Uninstall Opencv
+1. Inside the build directory of opencv (opencv_build/opencv/build), if installed from source
+$ sudo make uninstall 
+https://stackoverflow.com/questions/9276169/removing-all-installed-opencv-libs/#answer-50808950
+2. Follow this
+https://medium.com/@changrongko/opencv-how-to-uninstall-opencv-dfe1a5a50193
+3. Uninstalling like this also removes opencv files from ROS, so also make sure to reinstall ros-melodic with instructions here
+https://stackoverflow.com/questions/58484540/no-rule-to-make-target-libopencv-calib3d-so-3-2-0-but-opencv-3-4-1-installed-wh#_=_
+Optional: if python 2 and 3 are showing different cv versions, you may delete the one in python2 by the same method but make sure to only delete “*opencv*3.2*” in the `find` command line
+
+### install nlohmann
+```$ sudo apt install nlohmann-json-dev```
+- The above instructions will make it build successfully. After that just try to run ```$ python3 scripts/mask_rcnn_rospy.py``` and then install the pip packages as necessary.
+
+###Apex installation, 
+- follow this https://github.com/NVIDIA/apex but instead of 3rd line, run this
+```$ sudo python3 setup.py install```
+
+###<tf2_sensor_msgs, vision_msgs>
+- go to catkin_ws/src and install them by their github link that can be found on ros wiki.
+OR follow the recommended way:
+- $ sudo apt install ros-melodic-package-name
+
+### CPARSE
+sudo apt-get install libsuitesparse-dev
+
+### Install Eigen
+1. Download the required version of eigen3
+2. open the “install” file and follow the second method (which uses cmake)
+
+### Install CUDA(easier way is through downloading the ZED SDK below)
+On linux, follow
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/
+For installing samples, look for that step in a similar installation procedure
+https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html
+To run samples, we need to install third party libraries
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#install-libraries
+
+### Uninstall CUDA
+sudo apt-get purge nvidia*
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo rm -rf /usr/local/cuda*
+sudo apt-get purge cuda*
+
+### Install ZED SDK
+- installed ZED SDK as shown on website with CUDA 11.1 automatically installed
+https://www.stereolabs.com/docs/installation/linux/
+
+- in order to use “nvcc” command, follow this link to export the toolkit to the environment PATH. https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#mandatory-post
+Solution found here: 
+https://stackoverflow.com/questions/53422407/different-cuda-versions-shown-by-nvcc-and-nvidia-smi#answer-53504578
+
+### Install pytorch
+https://www.codegrepper.com/code-examples/shell/how+to+install+pytorch+0.4.1
+
+
+### (optional) Install Eclipse (recommended for CUDA)
+https://websiteforstudents.com/how-to-install-eclipse-ide-on-ubuntu-20-04-18-04/
+Install nsight Eclipse plugins for cuda
+https://docs.nvidia.com/cuda/nsightee-plugins-install-guide/index.html
+
+### (optional) Install dataset_metapackage to be able to run Jesse’s vdoslam_tests package
+https://gitlab.acfr.usyd.edu.au/its/dataset_metapackage
+
+### (Optional & not directly associated with this project) 
+Running MASK-RCNN implementation
+
+- Follow this tutorial:
+https://www.analyticsvidhya.com/blog/2019/07/computer-vision-implementing-mask-r-cnn-image-segmentation/
+- install pycocotools
+- installing correct versions of keras and tensorflow
+tensorflow==1.9.0
+keras==2.2.0
+- Working maskrcnn jupyter notebook example
+https://github.com/matterport/Mask_RCNN/files/4499391/MaskRCNN_180420.zip
+
+### (Optional & not directly associated with this project)
+Running Flownet2 implementation
+
+1. Follow this tut:
+https://github.com/NVIDIA/flownet2-pytorch
+2.  install the required packages using pip3
+3.  install pytorch 1.4.0 by changing the version number this link:
+https://www.codegrepper.com/code-examples/shell/how+to+install+pytorch+0.4.1
+4. download the MPI Sintel dataset here. Must choose the complete dataset [see issue]
+http://sintel.is.tue.mpg.de/downloads
+5. More complete tutorial for running flownet2 [includes creating the model]
+https://cloud.tencent.com/developer/article/1461933
+Running inference:
+$ python3 main.py --inference --model FlowNet2 --save_flow --inference_dataset MpiSintelClean --inference_dataset_root /home/tranks/Downloads/MPI-Sintel-complete/training  --resume /home/tranks/Downloads/FlowNet2_checkpoint.pth.tar 
+OR
+$ python3 main.py --inference --model FlowNet2 --save_flow --inference_dataset ImagesFromFolder --inference_dataset_root /home/tranks/Downloads/MPI-Sintel-testing/test/clean/wall/  --resume /home/tranks/Downloads/FlowNet2_checkpoint.pth.tar 
+
+6. format of .flo files
+https://vision.middlebury.edu/flow/code/flow-code/README.txt
+7. running the .flo files (branch from step 5 since code is incopiable)
+https://github.com/georgegach/flowiz/blob/master/demo/test.ipynb
+https://github.com/georgegach/flowiz/blob/master/flowiz/flowiz.py
+8. making a video out of images
+https://stackoverflow.com/questions/44947505/how-to-make-a-movie-out-of-images-in-python
+
+EXTRA notes:
+    • to use alternative models such as Flownet2C, download the “checkpoints” folder for that model on the official github and use it instead.
+    • Flownet2 can’t run on 2MB-size images (saying out of CUDA memory) but Flownet2C can. 

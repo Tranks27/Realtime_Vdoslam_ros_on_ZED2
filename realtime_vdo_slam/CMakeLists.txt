@@ -22,7 +22,7 @@ find_package(catkin REQUIRED COMPONENTS
 	flow_net
 	mask_rcnn
 	# mono_depth_2
-	python_service_starter
+	# python_service_starter
 	geometry_msgs
 	tf2_geometry_msgs
 	visualization_msgs
@@ -189,7 +189,7 @@ catkin_package(
 	roscpp
 	rosbag
 	image_transport
-	python_service_starter
+	# python_service_starter
 	std_msgs
 	tf2_ros
 	tf2

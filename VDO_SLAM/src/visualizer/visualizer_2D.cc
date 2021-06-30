@@ -27,45 +27,45 @@ namespace VDO_SLAM {
         statistics_manager_->logScene(*slam_scene_);
 
 
-        display_lock.lock();
+        // display_lock.lock();
         
-        double x = slam_scene_->poseT()[0];
-        double y = slam_scene_->poseT()[1];
-        double z = slam_scene_->poseT()[2];
+        // double x = slam_scene_->poseT()[0];
+        // double y = slam_scene_->poseT()[1];
+        // double z = slam_scene_->poseT()[2];
 
-        int x_display =  static_cast<int>(x*params->scale) + params->x_offset;
-        int y_display =  static_cast<int>(y*params->scale) + params->y_offset;
+        // int x_display =  static_cast<int>(x*params->scale) + params->x_offset;
+        // int y_display =  static_cast<int>(y*params->scale) + params->y_offset;
 
-        //add odom to cv mat
-        cv::rectangle(output_viz_->object_point_display_, cv::Point(x_display, y_display), cv::Point(x_display+10, y_display+10), cv::Scalar(0,0,255),1);
-        cv::rectangle(output_viz_->object_point_display_, cv::Point(10, 30), cv::Point(550, 60), CV_RGB(0,0,0), CV_FILLED);
-        cv::putText(output_viz_->object_point_display_, "Camera Trajectory (RED SQUARE)", cv::Point(10, 30), cv::FONT_HERSHEY_COMPLEX, 0.6, CV_RGB(255, 255, 255), 1);
+        // //add odom to cv mat
+        // cv::rectangle(output_viz_->object_point_display_, cv::Point(x_display, y_display), cv::Point(x_display+10, y_display+10), cv::Scalar(0,0,255),1);
+        // cv::rectangle(output_viz_->object_point_display_, cv::Point(10, 30), cv::Point(550, 60), CV_RGB(0,0,0), CV_FILLED);
+        // cv::putText(output_viz_->object_point_display_, "Camera Trajectory (RED SQUARE)", cv::Point(10, 30), cv::FONT_HERSHEY_COMPLEX, 0.6, CV_RGB(255, 255, 255), 1);
 
-        char text[100];
-        sprintf(text, "x = %02fm y = %02fm z = %02fm", x, y, z);
-        cv::putText(output_viz_->object_point_display_, text, cv::Point(10, 50), cv::FONT_HERSHEY_COMPLEX, 0.6, cv::Scalar::all(255), 1);
+        // char text[100];
+        // sprintf(text, "x = %02fm y = %02fm z = %02fm", x, y, z);
+        // cv::putText(output_viz_->object_point_display_, text, cv::Point(10, 50), cv::FONT_HERSHEY_COMPLEX, 0.6, cv::Scalar::all(255), 1);
 
-        std::vector<SceneObjectPtr> scene_objects = slam_scene_->get_scene_objects();
-        for(SceneObjectPtr& scene_object : scene_objects) {
-            double x = scene_object->poseT()[0];
-            double y = scene_object->poseT()[1];
+        // std::vector<SceneObjectPtr> scene_objects = slam_scene_->get_scene_objects();
+        // for(SceneObjectPtr& scene_object : scene_objects) {
+        //     double x = scene_object->poseT()[0];
+        //     double y = scene_object->poseT()[1];
 
-            int x_display =  static_cast<int>(x*params->scale) + params->x_offset;
-            int y_display =  static_cast<int>(y*params->scale) + params->y_offset;
-            int track = scene_object->tracking_id;
+        //     int x_display =  static_cast<int>(x*params->scale) + params->x_offset;
+        //     int y_display =  static_cast<int>(y*params->scale) + params->y_offset;
+        //     int track = scene_object->tracking_id;
 
-            HashableColor color = color_manager_.get_colour_for_tracking_id(track);
-            cv::circle(output_viz_->object_point_display_, cv::Point(x_display, y_display), 2, color, 5);
+        //     HashableColor color = color_manager_.get_colour_for_tracking_id(track);
+        //     cv::circle(output_viz_->object_point_display_, cv::Point(x_display, y_display), 2, color, 5);
 
 
-        }
+        // }
 
-        if(params->display_window) {
-            cv::imshow("Object points and camera trajectory", output_viz_->object_point_display_);
-            cv::waitKey(1);
-        }
+        // if(params->display_window) {
+        //     cv::imshow("Object points and camera trajectory", output_viz_->object_point_display_);
+        //     cv::waitKey(1);
+        // }
 
-        display_lock.unlock();
+        // display_lock.unlock();
 
     }
 

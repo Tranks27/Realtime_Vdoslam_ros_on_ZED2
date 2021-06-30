@@ -1,3 +1,0 @@
-programs:
-  - {name: "mono_depth", script: "mono.py"}
-  - {name: "mask_rcnn", script: "mask.py"}

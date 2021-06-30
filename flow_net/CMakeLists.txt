@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   rostk_pyutils
-  python_service_starter
+  # python_service_starter
   sensor_msgs
   cv_bridge
 )
@@ -35,15 +35,15 @@ include_directories(
 	${OpenCV_INCLUDE_DIRS}
 )
 
-add_library(${PROJECT_NAME}
-	src/FlowNetInterface.cpp
-  )
+# add_library(${PROJECT_NAME}
+# 	# src/FlowNetInterface.cpp
+#   )
 
 
-target_link_libraries(${PROJECT_NAME}
-		${catkin_LIBRARIES}
-    ${OpenCV_LIBS}
-)
+# target_link_libraries(${PROJECT_NAME}
+# 		${catkin_LIBRARIES}
+#     ${OpenCV_LIBS}
+# )
 
 
 
@@ -53,16 +53,16 @@ target_link_libraries(${PROJECT_NAME}
 
 catkin_package(
  INCLUDE_DIRS  include
- LIBRARIES ${PROJECT_NAME}
+#  LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS rospy std_msgs message_runtime roscpp cv_bridge
 )
 
 
 
-install(TARGETS ${PROJECT_NAME}
-        ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+# install(TARGETS ${PROJECT_NAME}
+#         ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY include/${PROJECT_NAME}/
         DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
