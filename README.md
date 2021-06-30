@@ -71,7 +71,7 @@ catkin build
 ```
 should make everything else.
 
-## Current Overview
+## Overview
 
 ### Flow Net
 ROS wrapper and simplified implentation of FlowNet Lite (https://github.com/sniklaus/pytorch-liteflownet). Runs inference using a current and previous image and responds with a image NxMx2 flow matrix
