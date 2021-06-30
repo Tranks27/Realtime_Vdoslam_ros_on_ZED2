@@ -45,8 +45,8 @@ sudo make install
 
 Please refer to src/installation_help.txt for the full list and installation guides that I've followed.
 
-### Flownet
-- To run flownet, pip3 install these (path, imageio). Inside src/flownet/
+### Flownet2
+- To run FlowNet2, pip3 install these (path, imageio). Inside src/flownet/
 ```$ pip3 install -r requirements.txt```
 [Note: cupy takes time to install, don’t stress]
 
