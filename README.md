@@ -107,6 +107,6 @@ The modified VDO-SLAM library outputs a summary of each analysed frame including
 - cuda out of memory 
 fix: reduce the image input size or use larger GPU memory (>4GB). Here ZED2 camera allows us to downsample the image input, so we did that (70% of HD720 size). 
 
--undefined reference to: vtable ...
+- undefined reference to: vtable ...
 fix: In CmakeList.txt 1) make sure the library  .cpp files are put behind the executables 2) manually add -lvdo_slam library in the project Cmakelist.txt and add -lvdo_slam_g2o in the VDO_SLAM CmakeList.txt.
 
