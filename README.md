@@ -105,11 +105,14 @@ The modified VDO-SLAM library outputs a summary of each analysed frame including
 
 ### Known error and fixes
 - When building the project, some undefined or dependency errors may occur. This is due to disorder in the way the packages are built.
+
 fix: try to run `catkin build` repeatedly OR build each package in the order of mask-rcnn, flownet, synchronzer, realtime_vdo_slam.
 
 - cuda out of memory 
+
 fix: reduce the image input size or use larger GPU memory (>4GB). Here ZED2 camera allows us to downsample the image input, so we did that (70% of HD720 size). 
 
 - undefined reference to: vtable ...
+
 fix: In CmakeList.txt 1) make sure the library  .cpp files are put behind the executables 2) manually add -lvdo_slam library in the project Cmakelist.txt and add -lvdo_slam_g2o in the VDO_SLAM CmakeList.txt.
 
