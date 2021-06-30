@@ -17,7 +17,9 @@
 
 #include "my_Synchronizer.hpp"
 
+using namespace std;
 using namespace message_filters;
+
 
 my_Synchronizer::my_Synchronizer(ros::NodeHandle& nh):sync(MySyncPolicy(10), f_sub, m_sub, d_sub, s_sub, r_sub){
 	toVdo_pub = nh.advertise<realtime_vdo_slam::VdoInput>("/vdoslam/input/all",100);
@@ -59,7 +61,7 @@ void my_Synchronizer::callback(const sensor_msgs::Image::ConstPtr& f1, \
 				msg.depth = *d1;
 				msg.semantic_objects = s1->semantic_objects;
 				toVdo_pub.publish(msg);
-
+				
 }
 
 

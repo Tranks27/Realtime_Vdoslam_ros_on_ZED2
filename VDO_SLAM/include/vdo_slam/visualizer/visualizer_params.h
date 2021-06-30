@@ -15,9 +15,11 @@ namespace VDO_SLAM {
         std::string classes_filepath;
 
         //used for display mat
-        int x_offset = 150;
-        int y_offset = 150;
-        int scale = 6;
+        // int x_offset = 150;
+        // int y_offset = 150;
+        int x_offset = 300;
+        int y_offset = 100;
+        int scale = 6; //6
 
     };
 

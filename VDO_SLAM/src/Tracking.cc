@@ -313,6 +313,7 @@ Tracking::Tracking(Map *pMap, const string &strSettingPath, const eSensor sensor
 std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::Mat &imRGB, cv::Mat &imD, const cv::Mat &imFlow, const cv::Mat &maskSEM,
                             const Time& time_, const double &timestamp, cv::Mat &imTraj, const int &nImage)
 {
+
     // initialize some paras
     StopFrame = nImage-1;
     bJoint = true;
@@ -339,6 +340,8 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
             else {
                 // mDepthMap.at<float>(i,j) = mbf/(imD.at<uint16_t>(i,j)/mDepthMapFactor);
                 mDepthMap.at<float>(i,j) = 256 * mbf/imD.at<uint16_t>(i,j);
+
+                // cout << "Proprocessed depth is: " << mDepthMap.at<float>(i,j) << endl;
                 
                 ///////////Temporary///////////////
                 // if (mTestData==OMD || mTestData==REAL) {
@@ -578,7 +581,18 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
                 continue;
             if(maskSEM.at<int>(KeyPoints_tmp[0].pt.y,KeyPoints_tmp[0].pt.x)!=0)
                 continue;
-            cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,0), 1); // red
+            // cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,0), 1); // red
+        
+            //re-draw keypoints as squares for better viz	
+            const float r = 3;	
+            for(cv::KeyPoint& kp : KeyPoints_tmp) {	
+                cv::Point2f pt1,pt2;	
+                pt1.x=kp.pt.x-r;	
+                pt1.y=kp.pt.y-r;	
+                pt2.x=kp.pt.x+r;	
+                pt2.y=kp.pt.y+r;	
+                cv::rectangle(imRGB,pt1,pt2,cv::Scalar(0,255,0));	
+            }
         }
         // static and dynamic objects
         VDO_INFO_MSG("Static + dynamic obj: " <<  mCurrentFrame.vObjLabel.size());
@@ -594,111 +608,31 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
             if (KeyPoints_tmp[0].pt.x>=(mImGray.cols-1) || KeyPoints_tmp[0].pt.x<=0 || KeyPoints_tmp[0].pt.y>=(mImGray.rows-1) || KeyPoints_tmp[0].pt.y<=0)
                 continue;
 
+            // Show the tracked points (optional)
             HashableColor color = color_manager.get_colour_for_tracking_id(l);
             cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, color, 1);
 
-            // switch (l)
-            // {
-            //     case 0:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,255), 1); // red
-            //         break;
-            //     case 1:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), 1); // 255, 165, 0
-            //         break;
-            //     case 2:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,0), 1);
-            //         break;
-            //     case 3:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0, 255, 0), 1); // 255,255,0
-            //         break;
-            //     case 4:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,0,0), 1); // 255,192,203
-            //         break;
-            //     case 5:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,255), 1);
-            //         break;
-            //     case 6:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), 1);
-            //         break;
-            //     case 7:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,255), 1);
-            //         break;
-            //     case 8:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,228,196), 1);
-            //         break;
-            //     case 9:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(180, 105, 255), 1);
-            //         break;
-            //     case 10:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(165,42,42), 1);
-            //         break;
-            //     case 11:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(35, 142, 107), 1);
-            //         break;
-            //     case 12:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(45, 82, 160), 1);
-            //         break;
-            //     case 13:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,0,255), 1); // red
-            //         break;
-            //     case 14:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255, 165, 0), 1);
-            //         break;
-            //     case 15:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,0), 1);
-            //         break;
-            //     case 16:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,0), 1);
-            //         break;
-            //     case 17:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,192,203), 1);
-            //         break;
-            //     case 18:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(0,255,255), 1);
-            //         break;
-            //     case 19:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(128, 0, 128), 1);
-            //         break;
-            //     case 20:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,255,255), 1);
-            //         break;
-            //     case 21:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(255,228,196), 1);
-            //         break;
-            //     case 22:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(180, 105, 255), 1);
-            //         break;
-            //     case 23:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(165,42,42), 1);
-            //         break;
-            //     case 24:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(35, 142, 107), 1);
-            //         break;
-            //     case 25:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(45, 82, 160), 1);
-            //         break;
-            //     case 41:
-            //         cv::drawKeypoints(imRGB, KeyPoints_tmp, imRGB, cv::Scalar(60, 20, 220), 1);
-            //         break;
-            // }
+            
         }
         // // Tranks edit
         // cv::imshow("Static Background and Object Points", imRGB);
         // cv::imwrite("feat.png",imRGB);
-        if (f_id<4)
-            cv::waitKey(1);
-        else
-            cv::waitKey(1);
+        // if (f_id<4)
+        //     cv::waitKey(1);
+        // else
+        //     cv::waitKey(1);
 
     }
 
     // // ************** show trajectory results ***************
-    if (mTestData==KITTI && !mCurrentFrame.mTcw.empty())
+    // if (mTestData==KITTI && !mCurrentFrame.mTcw.empty()) //Tranks edit
+    if (!mCurrentFrame.mTcw.empty())
     {
         // cout << "Showing trajectory results on KITTi" << endl;
         int sta_x = 300, sta_y = 100, radi = 2, thic = 5;  // (160/120/2/5)
         float scale = 6; // 6
         cv::Mat CamPos = Converter::toInvMatrix(mCurrentFrame.mTcw);
+        cout << "CamPos is : " << CamPos <<endl;
 
         //x is 0, 3 y is 2,3?
         int x = int(CamPos.at<float>(0,3)*scale) + sta_x;
@@ -759,6 +693,7 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
             // twist_hom.at<double>(0, 3) = mCurrentFrame.vSpeed[i].x/36;
             // twist_hom.at<double>(1, 3) = mCurrentFrame.vSpeed[i].y/36;
 
+
             // SceneObjectPtr scene_object = std::make_shared<SceneObject>();
 
             // scene_object->pose_from_homogenous_mat(pose_hom);
@@ -780,93 +715,12 @@ std::pair<SceneType, std::shared_ptr<Scene>> Tracking::GrabImageRGBD(const cv::M
             //     track = track % 25;
             // }
 
-            // // scene->add_scene_object(scene_object);
-            // switch (track)
-            // {
-            //     case 1:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(128, 0, 128), thic); // orange
-            //         break;
-            //     case 2:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(0,255,255), thic); // green
-            //         break;
-            //     case 3:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(0, 255, 0), thic); // yellow
-            //         break;
-            //     case 4:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(0,0,255), thic); // pink
-            //         break;
-            //     case 5:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,255,0), thic); // cyan (yellow green 47,255,173)
-            //         break;
-            //     case 6:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(128, 0, 128), thic); // purple
-            //         break;
-            //     case 7:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,255,255), thic);  // white
-            //         break;
-            //     case 8:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(196,228,255), thic); // bisque
-            //         break;
-            //     case 9:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(180, 105, 255), thic);  // blue
-            //         break;
-            //     case 10:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(42,42,165), thic);  // brown
-            //         break;
-            //     case 11:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(35, 142, 107), thic);
-            //         break;
-            //     case 12:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(45, 82, 160), thic);
-            //         break;
-            //     case 13:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(0,0,255), thic); // red
-            //         break;
-            //     case 14:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255, 165, 0), thic);
-            //         break;
-            //     case 15:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(0,255,0), thic);
-            //         break;
-            //     case 16:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,255,0), thic);
-            //         break;
-            //     case 17:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,192,203), thic);
-            //         break;
-            //     case 18:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(0,255,255), thic);
-            //         break;
-            //     case 19:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(128, 0, 128), thic);
-            //         break;
-            //     case 20:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,255,255), thic);
-            //         break;
-            //     case 21:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(255,228,196), thic);
-            //         break;
-            //     case 22:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(180, 105, 255), thic);
-            //         break;
-            //     case 23:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(165,42,42), thic);
-            //         break;
-            //     case 24:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(35, 142, 107), thic);
-            //         break;
-            //     case 25:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(45, 82, 160), thic);
-            //         break;
-            //     case 41:
-            //         cv::circle(imTraj, cv::Point(x, y), radi, CV_RGB(60, 20, 220), thic);
-            //         break;
-
-            // }
+            // scene->add_scene_object(scene_object);
+            
         }
 
         // // Tranks edit
-        // imshow( "Camera and Object Trajectories", imTraj);
+        imshow( "Working Camera and Object Trajectories", imTraj);
         if (f_id<3)
             cv::waitKey(1);
         else
@@ -1176,7 +1030,7 @@ SceneType Tracking::Track()
 
             if (ObjIdTest_in.size()<50)
             {
-                VDO_DEBUG_MSG("Object Initialization Fail! ! !");
+                VDO_WARN_MSG("Object Initialization Fail! ! !");
                 mCurrentFrame.bObjStat[i] = false;
                 mCurrentFrame.vObjMod_gt[i] = cv::Mat::eye(4,4, CV_32F);
                 mCurrentFrame.vObjMod[i] = cv::Mat::eye(4,4, CV_32F);
