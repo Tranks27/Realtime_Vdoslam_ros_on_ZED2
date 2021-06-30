@@ -1,5 +1,5 @@
 # Summary
-University of Sydney Undergraduate thesis
+University of Sydney Undergraduate thesis.
 Thesis paper found on: https://drive.google.com/file/d/1gsRZIXxiakbXKQpu4TQrqEdD6hvJWXPG/view?usp=sharing
 
 Modified from https://github.com/jessemorris/multi_robot_perception to do realtime processing on a live camera ZED2.
@@ -11,7 +11,7 @@ Modified from https://github.com/jessemorris/multi_robot_perception to do realti
 - GPU (at least 4GB of memory, preferred 5GB)
 - At least 12 GB RAM
 - OpenCV & OpenCV Contrib (at least v3.2, tested with 3.4.11)
-- ZED2 SDK v3.5.0
+- ZED SDK v3.5.0
 - apex (for mask-rcnn)
 - and others depending on your current setup
 
