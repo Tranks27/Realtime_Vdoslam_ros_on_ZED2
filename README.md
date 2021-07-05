@@ -18,6 +18,8 @@ Modified from https://github.com/jessemorris/multi_robot_perception to do realti
 
 
 ## Building
+The project has three main ros packages: MaskRCNN, FlowNet and realtime_vdo_slam. All of them must be built before the program can run successfully.
+
 ### Mask Rcnn
 1. src/mask_rcnn must be build with 
 ```
