@@ -12,6 +12,7 @@ Modified from https://github.com/jessemorris/multi_robot_perception to do realti
 - At least 12 GB RAM
 - OpenCV & OpenCV Contrib (at least v3.2, tested with 3.4.11)
 - ZED SDK v3.5.0 with CUDA 11.1
+- ZED ROS wrapper
 - apex (for mask-rcnn)
 - and others depending on your current setup
 
