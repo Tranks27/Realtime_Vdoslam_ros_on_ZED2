@@ -34,7 +34,7 @@ sudo make install
 ```
 3. install modules from the requirements.txt
 ```$ pip3 install -r requirements.txt```
-[Note: not included in requirements.txt are memory-profiler, so install it by yourself]
+[Note: not included in requirements.txt are memory-profiler, etc. so install them when it prompts you]
 
 4. Several other packages and libraries are also required. 
 - nlohmann
@@ -46,7 +46,7 @@ sudo make install
 - Cparse
 - and more
 
-Please refer to src/installation_help.txt for the full list and installation guides that I've followed.
+Please refer to `installation_help.txt` for the full list and installation guides that I've followed.
 
 ### Flownet2
 - To run FlowNet2, pip3 install these (path, imageio). Inside src/flownet/
@@ -96,7 +96,7 @@ To see the groundtruth trajectory of the camera, replace the first command with
 $ roslaunch vdo_display_rviz display_zed2.launch
 ```
 
-ROS wrapper for the VDO-SLAM library. This starts the program in the following manner
+The above commands start the program in the following manner
 1. launch the ros node for zed2 camera
 2. launch the preprocessing modules flowNet and Mask-RCNN
 3. launch the vdo slam
